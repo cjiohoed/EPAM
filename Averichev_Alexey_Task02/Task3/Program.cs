@@ -16,9 +16,8 @@ namespace Task3
             }
             return false;
         }
-        static void Main(string[] args)
+        static void Sum (int maxValue)
         {
-            int maxValue = 1000;
             int sum = 0;
             for (int i = 1; i < maxValue; i++)
             {
@@ -30,6 +29,11 @@ namespace Task3
             Console.WriteLine($"Sum of numbers 1-{maxValue} dividing by 3 and 5: {sum}");
             Console.Write("Press any key...");
             Console.ReadKey();
+        }
+        static void Main(string[] args)
+        {
+            Sum(1000);
+            
         }
     }
 }

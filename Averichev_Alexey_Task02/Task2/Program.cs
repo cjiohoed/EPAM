@@ -16,8 +16,9 @@ namespace Task2
             }
             Console.WriteLine();
         }
-        static void StarLines(int value)
+        static void StarLines()
         {
+            int value = Input();
             for (int i = 1; i <= value; i++)
             {
                 StarLine(i);
@@ -27,13 +28,31 @@ namespace Task2
         }
         static int Input()
         {
-            Console.Write("Input value of strings: ");
-            int s = int.Parse(Console.ReadLine());
-            return s;
+            int result;
+            string s;
+            do
+            {
+                Console.Write("Input value of rows: ");
+                s = Console.ReadLine();
+                if (string.IsNullOrEmpty(s))
+                {
+                    Console.Write("Value is null or empty! ");
+                }
+                else if (!int.TryParse(s, out result))
+                {
+                    Console.Write("Incorrect parse! ");
+                }
+                else if (result <= 0)
+                {
+                    Console.Write("Value can't be null or negative! ");
+                }
+            }
+            while (string.IsNullOrEmpty(s) | !int.TryParse(s, out result) || result <= 0);
+            return result;
         }
         static void Main(string[] args)
         {
-            StarLines(Input());
+            StarLines();
         }
     }
 }

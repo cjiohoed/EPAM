@@ -31,34 +31,39 @@ namespace Task5
         {
             int result;
             string s;
-
             do
             {
-                do
+                Console.Write("Enter the number of levels: ");
+                s = Console.ReadLine();
+                if (string.IsNullOrEmpty(s))
                 {
-                    Console.Write("Enter the number of levels: ");
-                    s = Console.ReadLine();
+                    Console.Write("Value is null or empty! ");
                 }
-                while (string.IsNullOrEmpty(s));
-                result = int.Parse(s);
+                else if (!int.TryParse(s, out result))
+                {
+                    Console.Write("Incorrect parse! ");
+                }
+                else if (result <= 0)
+                {
+                    Console.Write("Value can't be null or negative! ");
+                }
             }
-            while (result <= 0);
+            while (string.IsNullOrEmpty(s) | !int.TryParse(s, out result) || result <= 0);
             return result;
         }
-        static void FirTree(int levels)
+        static void ChristmasTree()
         {
+            int levels = Input();
             for (int i = 1; i <= levels; i++)
             {
                 PrintTrigon(i, levels);
             }
+            Console.Write("Press any key...");
+            Console.ReadKey();
         }
         static void Main(string[] args)
         {
-
-            FirTree(Input());
-
-            Console.Write("Press any key...");
-            Console.ReadKey();
+            ChristmasTree();
         }
     }
 }

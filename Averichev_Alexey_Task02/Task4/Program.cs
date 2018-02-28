@@ -15,8 +15,9 @@ namespace Task4
                 Console.Write(symb);
             }
         }
-        static void PrintTrigon(int value)
+        static void PrintTrigon()
         {
+            int value = Input();
             for (int s = 1; s <= value; s++)
             {
                 int stars = 2 * s - 1;
@@ -33,24 +34,30 @@ namespace Task4
         {
             int result;
             string s;
-
             do
             {
-                do
+                Console.Write("Input rows value of the trigon: ");
+                s = Console.ReadLine();
+                if (string.IsNullOrEmpty(s))
                 {
-                    Console.Write("Input height of the pyramid in rows: ");
-                    s = Console.ReadLine();
+                    Console.Write("Value is null or empty! ");
                 }
-                while (string.IsNullOrEmpty(s));
-                result = int.Parse(s);
+                else if (!int.TryParse(s, out result))
+                {
+                    Console.Write("Incorrect parse! ");
+                }
+                else if (result <= 0)
+                {
+                    Console.Write("Value can't be null or negative! ");
+                }
             }
-            while (result <= 0);
+            while (string.IsNullOrEmpty(s) | !int.TryParse(s, out result) || result <= 0);
             return result;
         }
 
         static void Main(string[] args)
         {
-            PrintTrigon(Input());
+            PrintTrigon();
         }
     }
 }

@@ -12,26 +12,29 @@ namespace Task1
         {
             int result;
             string s;
-
             do
             {
-                do
+                Console.Write($"Input {arg} value: ");
+                s = Console.ReadLine();
+                if (string.IsNullOrEmpty(s))
                 {
-                    Console.Write($"Input {arg} value: ");
-                    s = Console.ReadLine();
+                    Console.Write("Value is null or empty! ");
                 }
-                while (string.IsNullOrEmpty(s));
-                result = int.Parse(s);
+                else if (!int.TryParse(s, out result))
+                {
+                    Console.Write("Incorrect parse! ");
+                }
+                else if (result <= 0)
+                {
+                    Console.Write("Value can't be null or negative! ");
+                }
             }
-            while (result <= 0);
+            while (string.IsNullOrEmpty(s) | !int.TryParse(s, out result) || result <= 0);
             return result;
         }
         static void Sqr()
         {
-
-            int argA = InputArg("A");
-            int argB = InputArg("B");
-            int sqr = argA * argB;
+            int sqr = InputArg("A") * InputArg("B");
             Console.WriteLine($"Square = {sqr}");
             Console.Write("Press any key...");
             Console.ReadKey();
@@ -39,9 +42,7 @@ namespace Task1
 
         static void Main(string[] args)
         {
-
             Sqr();
-
         }
     }
 }
