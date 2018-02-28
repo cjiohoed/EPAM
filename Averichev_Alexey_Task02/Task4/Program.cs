@@ -21,9 +21,9 @@ namespace Task4
             {
                 int stars = 2 * s - 1;
                 int spaces = value - s;
-                PrintMeth(spaces, "+");
+                PrintMeth(spaces, " ");
                 PrintMeth(stars, "*");
-                PrintMeth(spaces, "+");
+                PrintMeth(spaces, " ");
                 Console.WriteLine();
             }
             Console.Write("Press any key...");
