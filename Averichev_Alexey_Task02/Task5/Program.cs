@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Task4
+namespace Task5
 {
     class Program
     {
@@ -15,19 +15,17 @@ namespace Task4
                 Console.Write(symb);
             }
         }
-        static void PrintTrigon(int value)
+        static void PrintTrigon(int value, int levels)
         {
             for (int s = 1; s <= value; s++)
             {
                 int stars = 2 * s - 1;
-                int spaces = value - s;
+                int spaces = levels - s;
                 PrintMeth(spaces, " ");
                 PrintMeth(stars, "*");
                 PrintMeth(spaces, " ");
                 Console.WriteLine();
             }
-            Console.Write("Press any key...");
-            Console.ReadKey();
         }
         static int Input()
         {
@@ -38,7 +36,7 @@ namespace Task4
             {
                 do
                 {
-                    Console.Write("Input height of the pyramid in rows: ");
+                    Console.Write("Enter the number of levels: ");
                     s = Console.ReadLine();
                 }
                 while (string.IsNullOrEmpty(s));
@@ -47,10 +45,20 @@ namespace Task4
             while (result <= 0);
             return result;
         }
-
+        static void FirTree(int levels)
+        {
+            for (int i = 1; i <= levels; i++)
+            {
+                PrintTrigon(i, levels);
+            }
+        }
         static void Main(string[] args)
         {
-            PrintTrigon(Input());
+
+            FirTree(Input());
+
+            Console.Write("Press any key...");
+            Console.ReadKey();
         }
     }
 }
