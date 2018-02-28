@@ -10,11 +10,6 @@ namespace Task1
     {
         static int InputArg(string arg)
         {
-            Console.Write($"Input {arg} value: ");
-            return int.Parse(Console.ReadLine());
-        }
-        static int InputArg2(string arg)
-        {
             int result;
             string s;
 
@@ -34,8 +29,8 @@ namespace Task1
         static void Sqr()
         {
 
-            int argA = InputArg2("A");
-            int argB = InputArg2("B");
+            int argA = InputArg("A");
+            int argB = InputArg("B");
             int sqr = argA * argB;
             Console.WriteLine($"Square = {sqr}");
             Console.Write("Press any key...");
