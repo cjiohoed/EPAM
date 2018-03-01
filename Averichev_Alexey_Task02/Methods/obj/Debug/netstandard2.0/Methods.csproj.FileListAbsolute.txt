@@ -1,0 +1,9 @@
+D:\C#\repos\Averichev_Alexey_Task02\Methods\bin\Debug\netstandard2.0\Methods.deps.json
+D:\C#\repos\Averichev_Alexey_Task02\Methods\bin\Debug\netstandard2.0\Methods.dll
+D:\C#\repos\Averichev_Alexey_Task02\Methods\bin\Debug\netstandard2.0\Methods.pdb
+D:\C#\repos\Averichev_Alexey_Task02\Methods\obj\Debug\netstandard2.0\Methods.csprojResolveAssemblyReference.cache
+D:\C#\repos\Averichev_Alexey_Task02\Methods\obj\Debug\netstandard2.0\Methods.csproj.CoreCompileInputs.cache
+D:\C#\repos\Averichev_Alexey_Task02\Methods\obj\Debug\netstandard2.0\Methods.AssemblyInfoInputs.cache
+D:\C#\repos\Averichev_Alexey_Task02\Methods\obj\Debug\netstandard2.0\Methods.AssemblyInfo.cs
+D:\C#\repos\Averichev_Alexey_Task02\Methods\obj\Debug\netstandard2.0\Methods.dll
+D:\C#\repos\Averichev_Alexey_Task02\Methods\obj\Debug\netstandard2.0\Methods.pdb

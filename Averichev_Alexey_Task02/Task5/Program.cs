@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Methods;
+using System;
 
 namespace Task5
 {
@@ -26,30 +27,6 @@ namespace Task5
             }
             return str;
         }
-        static int InputArg(string arg)
-        {
-            int result;
-            string s;
-            do
-            {
-                Console.Write($"Input {arg}: ");
-                s = Console.ReadLine();
-                if (string.IsNullOrEmpty(s))
-                {
-                    Console.Write("Value is null or empty! ");
-                }
-                else if (!int.TryParse(s, out result))
-                {
-                    Console.Write("Incorrect parse! ");
-                }
-                else if (result <= 0)
-                {
-                    Console.Write("Value can't be null or negative! ");
-                }
-            }
-            while (string.IsNullOrEmpty(s) || !int.TryParse(s, out result) || result <= 0);
-            return result;
-        }
         static string ChristmasTree(int levels)
         {
             string str = String.Empty;
@@ -66,7 +43,8 @@ namespace Task5
         }
         static void Main(string[] args)
         {
-            int levels = InputArg("levels of Christmas Tree");
+            // Эксперимент с библиотекой
+            int levels = MyMethods.InputArg("levels of Christmas Tree");
             string str = ChristmasTree(levels);
             Console.WriteLine(str);
             Goodbye();
