@@ -1,38 +1,30 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task2
 {
     class Program
     {
-        static void StarLine(int value)
+        static string ConstructLine(char symb, int value)
         {
-            for (int i = 0; i < value; i++)
-            {
-                Console.Write("*");
-            }
-            Console.WriteLine();
+            string s = new String(symb, value);
+            return s;
         }
-        static void StarLines()
+        static string StarLines(int value)
         {
-            int value = Input();
+            string s = String.Empty;
             for (int i = 1; i <= value; i++)
             {
-                StarLine(i);
+                s += ConstructLine('*', i) + "\n";
             }
-            Console.Write("Press any key...");
-            Console.ReadKey();
+            return s;
         }
-        static int Input()
+        static int InputArg(string arg)
         {
             int result;
             string s;
             do
             {
-                Console.Write("Input value of rows: ");
+                Console.Write($"Input {arg}: ");
                 s = Console.ReadLine();
                 if (string.IsNullOrEmpty(s))
                 {
@@ -47,12 +39,21 @@ namespace Task2
                     Console.Write("Value can't be null or negative! ");
                 }
             }
-            while (string.IsNullOrEmpty(s) | !int.TryParse(s, out result) || result <= 0);
+            while (string.IsNullOrEmpty(s) || !int.TryParse(s, out result) || result <= 0);
             return result;
         }
-        static void Main(string[] args)
+        static void Goodbye()
         {
-            StarLines();
+            Console.Write("Press any key...");
+            Console.ReadKey();
+        }
+
+        static void Main()
+        {
+            int numberOfRows = InputArg("number of rows");
+            string str = StarLines(numberOfRows);
+            Console.WriteLine(str);
+            Goodbye();
         }
     }
 }

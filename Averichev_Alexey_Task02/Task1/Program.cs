@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task1
 {
@@ -14,7 +10,7 @@ namespace Task1
             string s;
             do
             {
-                Console.Write($"Input {arg} value: ");
+                Console.Write($"Input {arg}: ");
                 s = Console.ReadLine();
                 if (string.IsNullOrEmpty(s))
                 {
@@ -29,20 +25,23 @@ namespace Task1
                     Console.Write("Value can't be null or negative! ");
                 }
             }
-            while (string.IsNullOrEmpty(s) | !int.TryParse(s, out result) || result <= 0);
+            while (string.IsNullOrEmpty(s) || !int.TryParse(s, out result) || result <= 0);
             return result;
         }
-        static void Sqr()
+        static void RectangleArea()
         {
-            int sqr = InputArg("A") * InputArg("B");
-            Console.WriteLine($"Square = {sqr}");
+            int sqr = InputArg("width") * InputArg("height");
+            Console.WriteLine($"Area of rectangle: {sqr}");
+        }
+        static void Goodbye()
+        {
             Console.Write("Press any key...");
             Console.ReadKey();
         }
-
-        static void Main(string[] args)
+        static void Main()
         {
-            Sqr();
+            RectangleArea();
+            Goodbye();
         }
     }
 }

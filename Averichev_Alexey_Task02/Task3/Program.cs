@@ -8,7 +8,7 @@ namespace Task3
 {
     class Program
     {
-        static bool Div(int n, int d)
+        static bool Divider(int n, int d)
         {
             if (d != 0 && (n % d) == 0)
             {
@@ -16,24 +16,30 @@ namespace Task3
             }
             return false;
         }
-        static void Sum (int maxValue)
+        static int Sum (int maxValue)
         {
             int sum = 0;
             for (int i = 1; i < maxValue; i++)
             {
-                if (Div(i, 3) || Div(i, 5))
+                if (Divider(i, 3) || Divider(i, 5))
                 {
                     sum = sum + i;
                 }
             }
-            Console.WriteLine($"Sum of numbers 1-{maxValue} dividing by 3 and 5: {sum}");
+            return sum;
+        }
+        static void Goodbye()
+        {
             Console.Write("Press any key...");
             Console.ReadKey();
         }
+
         static void Main(string[] args)
         {
-            Sum(1000);
-            
+            int maxValue = 1000;
+            int sum = Sum(maxValue);
+            Console.WriteLine($"Sum of numbers 1-{maxValue} dividing by 3 and 5: {sum}");
+            Goodbye();
         }
     }
 }
