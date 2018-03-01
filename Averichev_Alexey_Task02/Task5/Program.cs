@@ -10,11 +10,6 @@ namespace Task5
             string s = new String(symb, value);
             return s;
         }
-        static string ConstructSubLine(int value, char symb)
-        {
-            return new String(symb, value);
-        }
-
         static string PrintTrigon(int value, int levels)
         {
             string str = String.Empty;
@@ -22,8 +17,8 @@ namespace Task5
             {
                 int stars = 2 * s - 1;
                 int spaces = levels - s;
-                str += ConstructSubLine(spaces, ' ');
-                str += ConstructSubLine(stars, '*') + "\n";
+                str += ConstructSubLine(' ', spaces);
+                str += ConstructSubLine('*', stars) + "\n";
             }
             return str;
         }
