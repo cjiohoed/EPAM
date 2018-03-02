@@ -58,13 +58,32 @@ namespace Lib
     }
     public class Arr
     {
-        public static void CreateRandom(int[] arr, int min, int max)
+        public static int[] CreateRandom(int[] arr, int min, int max)
         {
             Random r = new Random();
             for (int i = 0; i < arr.Length; i++)
             {
                 arr[i] = r.Next(min, max);
             }
+            return arr;
+        }
+
+        public static int[,,] CreateRandomThreeD(int[,,] arr, int min, int max)
+        {
+            Random r = new Random();
+            for (int z = 0; z < arr.GetLength(2); z++)
+            {
+                for (int y = 0; y < arr.GetLength(1); y++)
+                {
+                    for (int x = 0; x < arr.GetLength(0); x++)
+                    {
+                        arr[x,y,z] = r.Next(min, max);
+                    }
+
+                }
+
+            }
+            return arr;
         }
 
         public static void Display(int[] arr)
@@ -118,6 +137,39 @@ namespace Lib
                 }
             }
             return max;
+        }
+
+        public static int[,,] PositiveToZero(int[,,] arr)
+        {
+            for (int z = 0; z < arr.GetLength(2); z++)
+            {
+                for (int y = 0; y < arr.GetLength(1); y++)
+                {
+                    for (int x = 0; x < arr.GetLength(0); x++)
+                    {
+                        if (arr[x, y, z] > 0)
+                        {
+                            arr[x, y, z] = 0;
+                        }
+                    }
+
+                }
+
+            }
+            return arr;
+        }
+
+        public static int GetPositiveSum(int[] arr)
+        {
+            int sum = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] > 0)
+                {
+                    sum += arr[i];
+                }
+            }
+            return sum;
         }
     }
 }
