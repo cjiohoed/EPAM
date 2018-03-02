@@ -22,7 +22,7 @@ namespace Task5
             }
             return str;
         }
-        static string ChristmasTree(int levels)
+        static string GetChristmasTree(int levels)
         {
             string str = String.Empty;
             for (int i = 1; i <= levels; i++)
@@ -40,9 +40,9 @@ namespace Task5
         {
             // Эксперимент с библиотекой
             int levels = MyMethods.InputArg("levels of Christmas Tree");
-            string str = ChristmasTree(levels);
+            string str = GetChristmasTree(levels);
             Console.WriteLine(str);
-            Goodbye();
+            MyMethods.Goodbye();
         }
     }
 }

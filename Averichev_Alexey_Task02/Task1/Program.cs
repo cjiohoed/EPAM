@@ -46,8 +46,8 @@ namespace Task1
         }
         static void Main()
         {
-
-            var are = GetArea(INput)
+            var area = GetArea(InputArg("width"), InputArg("height"));
+            Console.WriteLine($"Area of rectangle: {area}");
             Goodbye();
         }
     }

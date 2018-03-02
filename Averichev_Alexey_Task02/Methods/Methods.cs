@@ -28,6 +28,11 @@ namespace Methods
             while (string.IsNullOrEmpty(s) || !int.TryParse(s, out result) || result <= 0);
             return result;
         }
+        public static void Goodbye()
+        {
+            Console.Write("Press any key...");
+            Console.ReadKey();
+        }
 
     }
 }
