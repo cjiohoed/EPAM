@@ -7,9 +7,12 @@ namespace Task3
     {
         static void Main(string[] args)
         {
+            My.Title("03.3");
+
             var arrayOfNumbers = new int[My.InputArg("elements of array")];
             Arr.CreateRandom(arrayOfNumbers, My.InputArgSimple("min element"), My.InputArgSimple("max element"));
             Console.WriteLine($"Summ of positive elements: {Arr.GetPositiveSum(arrayOfNumbers)}");
+
             My.Goodbye();
         }
     }

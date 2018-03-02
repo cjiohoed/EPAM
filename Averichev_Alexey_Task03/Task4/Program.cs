@@ -7,9 +7,12 @@ namespace Task4
     {
         static void Main(string[] args)
         {
+            My.Title("03.4");
+
             var arrayOfNumbers = new int[My.InputArg("elements along the X axis"), My.InputArg("elements along the Y axis")];
-            Arr.CreateRandomTwoD(arrayOfNumbers, My.InputArgSimple("min element"), My.InputArgSimple("max element"));
+            Arr.CreateRandom(arrayOfNumbers, My.InputArgSimple("min element"), My.InputArgSimple("max element"));
             Console.WriteLine($"Summ of even positions: {Arr.GetSumOfEvenPositions(arrayOfNumbers)}");
+
             My.Goodbye();
         }
     }
