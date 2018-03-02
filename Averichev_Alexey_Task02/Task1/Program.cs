@@ -33,6 +33,12 @@ namespace Task1
             int sqr = InputArg("width") * InputArg("height");
             Console.WriteLine($"Area of rectangle: {sqr}");
         }
+
+        static int GetArea(int width, int height)
+        {
+            return width * height;
+        }
+
         static void Goodbye()
         {
             Console.Write("Press any key...");
@@ -40,7 +46,8 @@ namespace Task1
         }
         static void Main()
         {
-            RectangleArea();
+
+            var are = GetArea(INput)
             Goodbye();
         }
     }

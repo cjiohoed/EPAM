@@ -6,11 +6,7 @@ namespace Task3
     {
         static bool Divider(int n, int d)
         {
-            if (d != 0 && (n % d) == 0)
-            {
-                return true;
-            }
-            return false;
+            return (n % d) == 0;
         }
         static int Sum (int maxValue)
         {

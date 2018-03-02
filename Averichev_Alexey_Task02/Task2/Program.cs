@@ -6,10 +6,9 @@ namespace Task2
     {
         static string ConstructLine(char symb, int value)
         {
-            string s = new String(symb, value);
-            return s;
+            return new String(symb, value);
         }
-        static string StarLines(int value)
+        static string GetStarLines(int value)
         {
             string s = String.Empty;
             for (int i = 1; i <= value; i++)
@@ -51,7 +50,7 @@ namespace Task2
         static void Main()
         {
             int numberOfRows = InputArg("number of rows");
-            string str = StarLines(numberOfRows);
+            string str = GetStarLines(numberOfRows);
             Console.WriteLine(str);
             Goodbye();
         }
