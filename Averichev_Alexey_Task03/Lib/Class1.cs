@@ -68,6 +68,21 @@ namespace Lib
             return arr;
         }
 
+        public static int[,] CreateRandomTwoD(int[,] arr, int min, int max)
+        {
+            Random r = new Random();
+            for (int y = 0; y < arr.GetLength(1); y++)
+            {
+                for (int x = 0; x < arr.GetLength(0); x++)
+                {
+                    arr[x, y] = r.Next(min, max);
+                }
+
+            }
+
+            return arr;
+        }
+
         public static int[,,] CreateRandomThreeD(int[,,] arr, int min, int max)
         {
             Random r = new Random();
@@ -77,7 +92,7 @@ namespace Lib
                 {
                     for (int x = 0; x < arr.GetLength(0); x++)
                     {
-                        arr[x,y,z] = r.Next(min, max);
+                        arr[x, y, z] = r.Next(min, max);
                     }
 
                 }
@@ -167,6 +182,22 @@ namespace Lib
                 if (arr[i] > 0)
                 {
                     sum += arr[i];
+                }
+            }
+            return sum;
+        }
+
+        public static int GetSumOfEvenPositions(int[,] arr)
+        {
+            int sum = 0;
+            for (int y = 0; y < arr.GetLength(1); y++)
+            {
+                for (int x = 0; x < arr.GetLength(0); x++)
+                {
+                    if ((x + y) % 2 == 0)
+                    {
+                        sum += arr[x, y];
+                    }
                 }
             }
             return sum;
