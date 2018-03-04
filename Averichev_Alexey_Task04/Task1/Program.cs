@@ -1,15 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Lib;
+using System;
 
 namespace Task1
 {
+
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+            var str = General.Input("string");
+            var words = General.GetArrayOfWords(str);
+            Console.WriteLine($"Average num of chars :{General.GetAverageChars(words)}");
+            Console.ReadKey();
+
         }
     }
 }
