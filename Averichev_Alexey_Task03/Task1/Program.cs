@@ -8,16 +8,15 @@ namespace Task1
 
         static void Main(string[] args)
         {
-            My.Title("03.1");
+            General.Title("03.1");
 
-            var arrayOfNumbers = new int[My.InputArg("elements of array")];
-            Arr.CreateRandom(arrayOfNumbers, My.InputArgSimple("min element"), My.InputArgSimple("max element"));
-            Arr.BubbleSort(arrayOfNumbers);
-            Arr.Display(arrayOfNumbers);
-            Console.WriteLine($"Min value of array: {Arr.MinValue(arrayOfNumbers)}");
-            Console.WriteLine($"Max value of array: {Arr.MaxValue(arrayOfNumbers)}");
+            var arrOfNum = new Arr(General.InputArg("elements of array"), General.InputArgSimple("min element"), General.InputArgSimple("max element"));
+            arrOfNum.BubbleSort();
+            arrOfNum.Display();
+            Console.WriteLine($"Min value of array: {arrOfNum.GetMinValue()}");
+            Console.WriteLine($"Max value of array: {arrOfNum.GetMaxValue()}");
 
-            My.Goodbye();
+            General.Goodbye();
         }
     }
 }

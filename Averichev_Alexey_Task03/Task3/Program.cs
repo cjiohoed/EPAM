@@ -7,13 +7,12 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            My.Title("03.3");
+            General.Title("03.3");
 
-            var arrayOfNumbers = new int[My.InputArg("elements of array")];
-            Arr.CreateRandom(arrayOfNumbers, My.InputArgSimple("min element"), My.InputArgSimple("max element"));
-            Console.WriteLine($"Summ of positive elements: {Arr.GetPositiveSum(arrayOfNumbers)}");
+            var arrOfNum = new Arr(General.InputArg("elements of array"), General.InputArgSimple("min element"), General.InputArgSimple("max element"));
+            Console.WriteLine($"Summ of positive elements: {arrOfNum.GetPositiveSum()}");
 
-            My.Goodbye();
+            General.Goodbye();
         }
     }
 }

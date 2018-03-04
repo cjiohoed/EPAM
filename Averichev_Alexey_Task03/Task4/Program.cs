@@ -7,13 +7,12 @@ namespace Task4
     {
         static void Main(string[] args)
         {
-            My.Title("03.4");
+            General.Title("03.4");
 
-            var arrayOfNumbers = new int[My.InputArg("elements along the X axis"), My.InputArg("elements along the Y axis")];
-            Arr.CreateRandom(arrayOfNumbers, My.InputArgSimple("min element"), My.InputArgSimple("max element"));
-            Console.WriteLine($"Summ of even positions: {Arr.GetSumOfEvenPositions(arrayOfNumbers)}");
+            var arrOfNum = new Arr2D(General.InputArg("elements along the X axis"), General.InputArg("elements along the Y axis"), General.InputArgSimple("min element"), General.InputArgSimple("max element"));
+            Console.WriteLine($"Summ of even positions: {arrOfNum.GetSumOfEvenPositions()}");
 
-            My.Goodbye();
+            General.Goodbye();
         }
     }
 }

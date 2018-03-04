@@ -7,13 +7,12 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            My.Title("03.2");
+            General.Title("03.2");
 
-            var arrayOfNumbers = new int[My.InputArg("elements along the X axis"), My.InputArg("elements along the Y axis"), My.InputArg("elements along the Z axis")];
-            Arr.CreateRandom(arrayOfNumbers, My.InputArgSimple("min element"), My.InputArgSimple("max element"));
-            Arr.PositiveToZero(arrayOfNumbers);
+            var arrOfNum = new Arr3D(General.InputArg("elements along the X axis"), General.InputArg("elements along the Y axis"), General.InputArg("elements along the Z axis"), General.InputArgSimple("min element"), General.InputArgSimple("max element"));
+            arrOfNum.PositiveToZero();
 
-            My.Goodbye();
+            General.Goodbye();
         }
     }
 }
