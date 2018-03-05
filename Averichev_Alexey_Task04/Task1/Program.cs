@@ -8,11 +8,14 @@ namespace Task1
     {
         static void Main()
         {
-            var str = General.Input("string");
-            var words = General.GetArrayOfWords(str);
-            Console.WriteLine($"Average num of chars :{General.GetAverageChars(words)}");
-            Console.ReadKey();
+            General.Title("04.1");
 
+            //var str = General.Input("string");
+            var str = "Клара у Карла украла кораллы. Карл у Клары украл кларнет.";
+            var words = StrExt.GetArrayOfWords(str);
+            Console.WriteLine($"Average num of chars :{StrExt.GetAverageChars(words)}");
+
+            General.Goodbye();
         }
     }
 }

@@ -1,26 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Linq;
 
 namespace Lib
 {
-    public class General
+    public class StrExt
     {
-        public static string Input(string arg)
-        {
-            string str;
-            do
-            {
-                Console.Write($"Input {arg}: ");
-                str = Console.ReadLine();
-
-                if (string.IsNullOrEmpty(str))
-                {
-                    Console.Write("ERROR! Empty string!");
-                }
-            }
-            while (string.IsNullOrEmpty(str));
-            return str;
-        }
-
         public static string[] GetArrayOfWords(string str)
         {
             string[] separators = { ",", ".", "!", "?", ";", ":", " ", "(", ")", "{", "}", "\'", "\"", "<", ">", "\\", "[", "]", "=", "/", "*", "@" };
@@ -39,6 +25,26 @@ namespace Lib
                 sumChars += word.Length;
             }
             return (int)(sumChars / wordsNum);
+        }
+
+        public static string GetDuplicateMatching(string str1, string str2)
+        {
+            // Deleting duplicates
+            str2 = new string(str2.Distinct().ToArray());
+
+            var str3 = new StringBuilder();
+            char[] chars1 = str1.ToCharArray();
+
+            for (int chr1 = 0; chr1 < chars1.Length; chr1++)
+            {
+                str3.Append(chars1[chr1]);
+                if (str2.Contains(chars1[chr1]))
+                {
+                    str3.Append(chars1[chr1]);
+                }
+            }
+
+            return str3.ToString();
         }
     }
 }
