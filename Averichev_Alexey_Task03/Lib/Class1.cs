@@ -171,9 +171,10 @@ namespace Lib
         private int lengthX;
         private int lengthY;
 
+        static Random r = new Random();
+
         public Arr2D(int countX, int countY, int min, int max)
         {
-            Random r = new Random();
             lengthX = countX;
             lengthY = countY;
             arr = new int[countX, countY];
@@ -192,13 +193,13 @@ namespace Lib
         public int GetSumOfEvenPositions()
         {
             int sum = 0;
-            for (int y = 0; y < this.arr.GetLength(1); y++)
+            for (int y = 0; y < arr.GetLength(1); y++)
             {
-                for (int x = 0; x < this.arr.GetLength(0); x++)
+                for (int x = 0; x < arr.GetLength(0); x++)
                 {
                     if ((x + y) % 2 == 0)
                     {
-                        sum += this.arr[x, y];
+                        sum += arr[x, y];
                     }
                 }
             }
