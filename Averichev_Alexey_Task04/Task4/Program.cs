@@ -8,45 +8,71 @@ using Lib;
 
 namespace Task4
 {
+    public class ConcAndBuildCompare
+    {
+        private int n;
+        public ConcAndBuildCompare(int load)
+        {
+            n = load;
+        }
+
+        public string ConcResult()
+        {
+            var concTimer = new Stopwatch();
+            concTimer.Start();
+            ConcLoad(n);
+            concTimer.Stop();
+            TimeSpan concTS = concTimer.Elapsed;
+
+            string elapsedTimeConc = String.Format($"{concTS.Hours:00}:{concTS.Minutes:00}:" +
+                $"{concTS.Seconds:00}.{concTS.Milliseconds:000}");
+
+            return elapsedTimeConc;
+        }
+
+        public string BuildResult()
+        {
+            var buildTimer = new Stopwatch();
+            buildTimer.Start();
+            BuildLoad(n);
+            buildTimer.Stop();
+            TimeSpan buildTS = buildTimer.Elapsed;
+
+            string elapsedTimeBuild = String.Format($"{buildTS.Hours:00}:{buildTS.Minutes:00}:" +
+                $"{buildTS.Seconds:00}.{buildTS.Milliseconds:000}");
+
+            return elapsedTimeBuild;
+        }
+
+        private void ConcLoad(int n)
+        {
+            var str = string.Empty;
+            for (int i = 0; i < n; i++)
+            {
+                str += "*";
+            }
+        }
+
+        private void BuildLoad(int n)
+        {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < n; i++)
+            {
+                sb.Append("*");
+            }
+
+        }
+    }
+
     class Program
     {
         static void Main()
         {
             General.Title("04.4");
 
-            string str = "";
-            StringBuilder sb = new StringBuilder();
-            int N = 100000;
-
-            var concTimer = new Stopwatch();
-            var buildTimer = new Stopwatch();
-
-            concTimer.Start();
-            for (int i = 0; i < N; i++)
-            {
-                str += "*";
-            }
-            concTimer.Stop();
-            TimeSpan concTS = concTimer.Elapsed;
-
-            buildTimer.Start();
-            for (int i = 0; i < N; i++)
-            {
-                sb.Append("*");
-            }
-            buildTimer.Stop();
-            TimeSpan buildTS = buildTimer.Elapsed;
-
-            string elapsedTimeConc = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-            concTS.Hours, concTS.Minutes, concTS.Seconds,
-            concTS.Milliseconds / 10);
-
-            string elapsedTimeBuild = String.Format("{0:00}:{1:00}:{2:00}.{3:00}",
-            buildTS.Hours, buildTS.Minutes, buildTS.Seconds,
-            buildTS.Milliseconds / 10);
-
-            Console.WriteLine($"Concatenation runtime: {elapsedTimeConc}");
-            Console.WriteLine($"StringBuilder runtime: {elapsedTimeBuild}");
+            var calc = new ConcAndBuildCompare(10000);
+            Console.WriteLine($"Concatenation runtime: {calc.ConcResult()}");
+            Console.WriteLine($"StringBuilder runtime: {calc.BuildResult()}");
 
             General.Goodbye();
         }
