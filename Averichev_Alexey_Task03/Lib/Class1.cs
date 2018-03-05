@@ -79,10 +79,11 @@ namespace Lib
         public int minValue;
         public int maxValue;
 
+        static Random r = new Random();
+
         // Constructor 1D array
         public Arr(int count, int min, int max)
         {
-            Random r = new Random();
             length = count;
             arr = new int[count];
 
@@ -171,9 +172,10 @@ namespace Lib
         private int lengthX;
         private int lengthY;
 
+        static Random r = new Random();
+
         public Arr2D(int countX, int countY, int min, int max)
         {
-            Random r = new Random();
             lengthX = countX;
             lengthY = countY;
             arr = new int[countX, countY];
@@ -215,10 +217,11 @@ namespace Lib
         private int lengthY;
         private int lengthZ;
 
+        static Random r = new Random();
+
         // Constructor 3D array
         public Arr3D(int countX, int countY, int countZ, int min, int max)
         {
-            Random r = new Random();
             lengthX = countX;
             lengthY = countY;
             lengthZ = countZ;
