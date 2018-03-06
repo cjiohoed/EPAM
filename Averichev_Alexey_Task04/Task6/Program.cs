@@ -10,35 +10,47 @@ namespace Task6
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             General.Title("04.6");
 
-            //var str = Console.ReadLine();
-
-            Console.WriteLine(IsNormalNum("6g348"));
+            Console.Write("Input number: ");
+            var str = Console.ReadLine();
+            Console.WriteLine(WhatIsNumber(str));
 
             General.Goodbye();
         }
 
-        static string IsNormalNum(string str)
+        static string WhatIsNumber(string str)
         {
-            //var pattern = @"[-]*\d+";
-            //var pattern = @"\d{1,}\.?\d{1,}";
-            var pattern = @"[-]*\d{1,}\.?\d{1,}";
-            var rgx = new Regex(pattern);
-
-            if (rgx.IsMatch(str))
+            if(IsNormalNum(str))
             {
-                return "true";
+                return "This number is in the usual notation";
             }
-            return "false";
+            else if (IsSciNum(str))
+            {
+                return "This number is in scientific notation";
+            }
+            else
+            {
+                return "This is not a number";
+            }
+        }
+
+        static bool IsNormalNum(string str)
+        {
+            var pattern = @"^-?\d+(\.\d+)?$";
+
+            if (Regex.IsMatch(str, pattern, RegexOptions.IgnoreCase))
+            {
+                return true;
+            }
+            return false;
         }
 
         static bool IsSciNum(string str)
         {
-            var pattern = @"\d{1,}\.?\d{1,}";
-            //var rgx = new Regex(pattern);
+            var pattern = @"^-?\d+(\.\d+)?[eE][+-]\d+$";
 
             if (Regex.IsMatch(str, pattern, RegexOptions.IgnoreCase))
             {
