@@ -1,9 +1,7 @@
 ﻿using Lib;
 using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Task2
 {
@@ -12,9 +10,6 @@ namespace Task2
         static void Main()
         {
             General.Title("04.2");
-
-            // var str1 = General.Input("1st string");
-            // var str2 = General.Input("2nd string");
 
             var str1 = "написать программу, которая";
             var str2 = "описание";
@@ -25,4 +20,28 @@ namespace Task2
             General.Goodbye();
         }
     }
+
+    public class StrExt
+    {
+        public static string GetDuplicateMatching(string str1, string str2)
+        {
+            // Deleting duplicates
+            str2 = new string(str2.Distinct().ToArray());
+
+            var str3 = new StringBuilder();
+            char[] chars1 = str1.ToCharArray();
+
+            for (int chr1 = 0; chr1 < chars1.Length; chr1++)
+            {
+                str3.Append(chars1[chr1]);
+                if (str2.Contains(chars1[chr1]))
+                {
+                    str3.Append(chars1[chr1]);
+                }
+            }
+
+            return str3.ToString();
+        }
+    }
+
 }

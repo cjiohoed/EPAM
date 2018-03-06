@@ -1,13 +1,24 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics;
 using Lib;
 
 namespace Task4
 {
+    class Program
+    {
+        static void Main()
+        {
+            General.Title("04.4");
+
+            var str = new ConcAndBuildCompare(100000);
+            Console.WriteLine($"Concatenation runtime: {str.ConcResult()}");
+            Console.WriteLine($"StringBuilder runtime: {str.BuildResult()}");
+
+            General.Goodbye();
+        }
+    }
+
     public class ConcAndBuildCompare
     {
         private int n;
@@ -61,20 +72,6 @@ namespace Task4
                 sb.Append("*");
             }
 
-        }
-    }
-
-    class Program
-    {
-        static void Main()
-        {
-            General.Title("04.4");
-
-            var calc = new ConcAndBuildCompare(10000);
-            Console.WriteLine($"Concatenation runtime: {calc.ConcResult()}");
-            Console.WriteLine($"StringBuilder runtime: {calc.BuildResult()}");
-
-            General.Goodbye();
         }
     }
 }

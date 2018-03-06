@@ -1,9 +1,5 @@
 ﻿using Lib;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 
 namespace Task6
@@ -23,7 +19,7 @@ namespace Task6
 
         static string WhatIsNumber(string str)
         {
-            if(IsNormalNum(str))
+            if (IsNormalNum(str))
             {
                 return "This number is in the usual notation";
             }
@@ -60,3 +56,4 @@ namespace Task6
         }
     }
 }
+

@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Text.RegularExpressions;
 using Lib;
 
@@ -14,7 +10,7 @@ namespace Task5
         {
             General.Title("04.5");
 
-            var str = "<b>Это</b> текст <i>с</i> <font color=”red”>HTML</font>";
+            var str = @"<b>Это</b> текст <i>с</i> <font color=”red”>HTML</font>";
             var target = "_";
             var result = GetWithoutTags(str, target);
             Console.WriteLine($"Result: {result}");

@@ -1,9 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Threading;
 using System.Globalization;
 using Lib;
 
@@ -36,7 +31,7 @@ namespace Task3
             Console.WriteLine($"{dt.ToString("d", c1)}\t\t{dt.ToString("d", c2)}");
             Console.WriteLine($"{dt.ToString("t", c1)}\t\t\t{dt.ToString("t", c2)}");
             Console.WriteLine($"{value.ToString("C", c1)}\t\t{value.ToString("C", c2)}\n");
-            
+
         }
     }
 }
