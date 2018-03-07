@@ -11,17 +11,17 @@ namespace Task2
         {
             General.Title("04.2");
 
-            var str1 = "написать программу, которая";
-            var str2 = "описание";
-            var str3 = StrExt.GetDuplicateMatching(str1, str2);
+            var source = "написать программу, которая";
+            var pattern = "описание";
+            var result = StringDouble.GetDuplicateMatching(source, pattern);
 
-            Console.WriteLine($"3rd string: {str3}");
+            Console.WriteLine($"3rd string: {result}");
 
             General.Goodbye();
         }
     }
 
-    public class StrExt
+    public class StringDouble
     {
         public static string GetDuplicateMatching(string source, string pattern)
         {
@@ -31,14 +31,15 @@ namespace Task2
             var result = new StringBuilder();
             char[] sourceChars = source.ToCharArray();
 
-            for (int i = 0; i < sourceChars.Length; i++)
-            {
-                result.Append(sourceChars[i]);
-                if (pattern.Contains(sourceChars[i]))
-                {
-                    result.Append(sourceChars[i]);
-                }
-            }
+            //for (int i = 0; i < sourceChars.Length; i++)
+            //{
+            //    result.Append(sourceChars[i]);
+            //    if (pattern.Contains(sourceChars[i]))
+            //    {
+            //        result.Append(sourceChars[i]);
+            //    }
+            //}
+
             for(var i = 0; i < pattern.Length; i++)
             {
                 string c = pattern[i].ToString();

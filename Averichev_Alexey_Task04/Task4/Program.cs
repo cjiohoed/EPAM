@@ -11,9 +11,21 @@ namespace Task4
         {
             General.Title("04.4");
 
-            var str = new ConcAndBuildCompare(10);
-            Console.WriteLine($"Concatenation runtime: {str.ConcResult()}");
-            Console.WriteLine($"StringBuilder runtime: {str.BuildResult()}");
+            var test1 = new ConcAndBuildCompare(1000, "*");
+            Console.WriteLine($"Concatenation runtime: {test1.ConcResult()}");
+            Console.WriteLine($"StringBuilder runtime: {test1.BuildResult()}\n");
+
+            //var test2 = new ConcAndBuildCompare(1000, "*=*");
+            //Console.WriteLine($"Concatenation runtime: {test2.ConcResult()}");
+            //Console.WriteLine($"StringBuilder runtime: {test2.BuildResult()}\n");
+
+            var test3 = new ConcAndBuildCompare(500, "*-54bb7e=+");
+            Console.WriteLine($"Concatenation runtime: {test3.ConcResult()}");
+            Console.WriteLine($"StringBuilder runtime: {test3.BuildResult()}\n");
+
+            var test4 = new ConcAndBuildCompare(500, "Concatenation must win!!! 76476746767647657673676767373");
+            Console.WriteLine($"Concatenation runtime: {test4.ConcResult()}");
+            Console.WriteLine($"StringBuilder runtime: {test4.BuildResult()}\n");
 
             General.Goodbye();
         }
@@ -22,21 +34,24 @@ namespace Task4
     public class ConcAndBuildCompare
     {
         private int n;
-        public ConcAndBuildCompare(int load)
+        private string str;
+
+        public ConcAndBuildCompare(int load, string str)
         {
             n = load;
+            this.str = str;
         }
 
         public string ConcResult()
         {
             var concTimer = new Stopwatch();
             concTimer.Start();
-            ConcLoad(n);
+            ConcLoad();
             concTimer.Stop();
             TimeSpan concTS = concTimer.Elapsed;
 
             string elapsedTimeConc = String.Format($"{concTS.Hours:00}:{concTS.Minutes:00}:" +
-                $"{concTS.Seconds:00}.{concTS.Milliseconds:000}");
+                $"{concTS.Seconds:00}.{concTS.Milliseconds*10:000}");
 
             return elapsedTimeConc;
         }
@@ -45,31 +60,31 @@ namespace Task4
         {
             var buildTimer = new Stopwatch();
             buildTimer.Start();
-            BuildLoad(n);
+            BuildLoad();
             buildTimer.Stop();
             TimeSpan buildTS = buildTimer.Elapsed;
 
             string elapsedTimeBuild = String.Format($"{buildTS.Hours:00}:{buildTS.Minutes:00}:" +
-                $"{buildTS.Seconds:00}.{buildTS.Milliseconds:000}");
+                $"{buildTS.Seconds:00}.{buildTS.Milliseconds*10:000}");
 
             return elapsedTimeBuild;
         }
 
-        private void ConcLoad(int n)
+        private void ConcLoad()
         {
-            var str = string.Empty;
+            var s = string.Empty;
             for (int i = 0; i < n; i++)
             {
-                str += "*";
+                s += str;
             }
         }
 
-        private void BuildLoad(int n)
+        private void BuildLoad()
         {
             StringBuilder sb = new StringBuilder();
             for (int i = 0; i < n; i++)
             {
-                sb.Append("*");
+                sb.Append(str);
             }
 
         }
