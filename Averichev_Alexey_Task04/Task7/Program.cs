@@ -28,7 +28,7 @@ namespace Task7
 
         // private string pattern = @"(?<= )([0-1][0-9]|[2][0-3]|\d)[:.-][0-5]\d(?= )";
 
-        private string pattern = @"(?<=\D)([0-1][0-9]|[2][0-3]|\d)[:.-][0-5]\d(?=\D)";
+        private string pattern = @"(^|\s)([0-1][0-9]|[2][0-3]|\d)[:.-][0-5]\d\b";
 
         public TimeRegEx(string str)
         {

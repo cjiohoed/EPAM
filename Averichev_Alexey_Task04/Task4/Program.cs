@@ -11,7 +11,7 @@ namespace Task4
         {
             General.Title("04.4");
 
-            var str = new ConcAndBuildCompare(100000);
+            var str = new ConcAndBuildCompare(10);
             Console.WriteLine($"Concatenation runtime: {str.ConcResult()}");
             Console.WriteLine($"StringBuilder runtime: {str.BuildResult()}");
 

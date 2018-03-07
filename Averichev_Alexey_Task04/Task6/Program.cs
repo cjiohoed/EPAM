@@ -46,7 +46,7 @@ namespace Task6
 
         static bool IsSciNum(string str)
         {
-            var pattern = @"^-?\d+(\.\d+)?[eE][+-]\d+$";
+            var pattern = @"^-?\d\.\d+[eE][+-]\d+$";
 
             if (Regex.IsMatch(str, pattern, RegexOptions.IgnoreCase))
             {

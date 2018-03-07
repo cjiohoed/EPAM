@@ -1,5 +1,6 @@
 ﻿using Lib;
 using System;
+using System.Collections.Generic;
 
 namespace Task1
 {
@@ -30,8 +31,15 @@ namespace Task1
 
         private string[] GetArrayOfWords()
         {
-            string[] separators = { ",", ".", "!", "?", ";", ":", " ", "(", ")", "{", "}", "\'", "\"", "<", ">", "\\", "[", "]", "=", "/", "*", "@" };
-            string[] arrOfWords = str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            var separators = new List<char>();
+            foreach(var c in str)
+            {
+                if (!Char.IsLetter(c))
+                {
+                    separators.Add(c);
+                }
+            }
+           string[] arrOfWords = str.Split(separators.ToArray(), StringSplitOptions.RemoveEmptyEntries);
             return arrOfWords;
         }
 

@@ -23,24 +23,29 @@ namespace Task2
 
     public class StrExt
     {
-        public static string GetDuplicateMatching(string str1, string str2)
+        public static string GetDuplicateMatching(string source, string pattern)
         {
             // Deleting duplicates
-            str2 = new string(str2.Distinct().ToArray());
+            pattern = new string(pattern.Distinct().ToArray());
 
-            var str3 = new StringBuilder();
-            char[] chars1 = str1.ToCharArray();
+            var result = new StringBuilder();
+            char[] sourceChars = source.ToCharArray();
 
-            for (int chr1 = 0; chr1 < chars1.Length; chr1++)
+            for (int i = 0; i < sourceChars.Length; i++)
             {
-                str3.Append(chars1[chr1]);
-                if (str2.Contains(chars1[chr1]))
+                result.Append(sourceChars[i]);
+                if (pattern.Contains(sourceChars[i]))
                 {
-                    str3.Append(chars1[chr1]);
+                    result.Append(sourceChars[i]);
                 }
             }
+            for(var i = 0; i < pattern.Length; i++)
+            {
+                string c = pattern[i].ToString();
+                source = source.Replace(c, new string(pattern[i], 2));
+            }
 
-            return str3.ToString();
+            return result.ToString();
         }
     }
 
