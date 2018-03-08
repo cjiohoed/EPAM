@@ -11,26 +11,19 @@ namespace Task1
     {
         static void Main()
         {
-            var user = new User();
+            var user1 = new User();
+            user1.FirstName = "Ivan";
+            user1.Patronymic = "Ivanovich";
+            user1.LastName = "Ivanov";
+            user1.Gender = true;
+            user1.YearOfBirth = 1978;
+            user1.MonthOfBirth = 3;
+            user1.DayOfBirth = 27;
 
-            user.FirstName = "Alexey";
-            user.Patronymic = "Alexandrovich";
-            user.LastName = "Averichev";
-            user.Gender = true;
-            user.YearOfBirth = 1983;
-            user.MonthOfBirth = 5;
-            user.DayOfBirth = 25;
+            var user2 = new User("Petr", "Petrivich", "Petrov", true, 23, 12, 1946);
 
-            Console.WriteLine($"UserInfo:\n{user.ToString()}");
-
-            if (user.Pensioner)
-            {
-                Console.WriteLine("Pensioner");
-            }
-            else
-            {
-                Console.WriteLine("Not pensioner");
-            }
+            Console.WriteLine($"UserInfo: {user1.ToString()}");
+            Console.WriteLine($"UserInfo: {user2.ToString()}");
 
             Console.ReadKey();
         }
@@ -48,6 +41,23 @@ namespace Task1
         private int yearOfBirth = 0;
         private int monthOfBirth = 0;
         private int dayOfBirth = 0;
+
+        public User(string firstName, string patronymic, string lastName, 
+            bool gender, int dayOfBirth, int monthOfBirth, int yearOfBirth)
+        {
+            FirstName = firstName;
+            Patronymic = patronymic;
+            LastName = lastName;
+            Gender = gender;
+            DayOfBirth = dayOfBirth;
+            MonthOfBirth = monthOfBirth;
+            YearOfBirth = yearOfBirth;
+        }
+
+        public User()
+        {
+
+        }
 
         public string FirstName
         {
@@ -82,7 +92,7 @@ namespace Task1
                 }
                 else
                 {
-                    throw new Exception("Surname error");
+                    throw new Exception("Lastname error");
                 }
             }
         }
@@ -164,7 +174,7 @@ namespace Task1
             }
             set
             {
-                if (value >= 1 & value <= 31)
+                if (value > 0 & value < 32)
                 {
                     dayOfBirth = value;
                 }
@@ -183,31 +193,20 @@ namespace Task1
             }
         }
 
-        public bool Pensioner
-        {
-            get
-            {
-                if ((gender & age >= 63) | (!gender & age >= 58))
-                {
-                    return true;
-                }
-                return false;
-            }
-        }
-
         public override string ToString()
         {
             string gndr = string.Empty;
-            if (gender)
+            switch (gender)
             {
-                gndr = "Male";
-            }
-            else
-            {
-                gndr = "Female";
+                case true:
+                    gndr = "male";
+                    break;
+                case false:
+                    gndr = "female";
+                    break;
             }
 
-            return $"FirstName: {firstName}, Patronymic: {patronymic} LastName: {lastName}, Gender: {gndr}, BirthDate: {dayOfBirth}.{monthOfBirth}.{yearOfBirth}, Age: {Age}";
+            return $"{firstName} {patronymic} {lastName}, {gndr}, {dayOfBirth}.{monthOfBirth}.{yearOfBirth}, {Age}";
         }
 
         private static bool IsName(string str)
