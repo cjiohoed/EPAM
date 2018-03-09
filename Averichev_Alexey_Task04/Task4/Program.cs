@@ -11,7 +11,7 @@ namespace Task4
         {
             General.Title("04.4");
 
-            var test1 = new ConcAndBuildCompare(1000, "*");
+            var test1 = new ConcAndBuildCompare(4, "*");
             Console.WriteLine($"Concatenation runtime: {test1.ConcResult()}");
             Console.WriteLine($"StringBuilder runtime: {test1.BuildResult()}\n");
 
@@ -19,11 +19,11 @@ namespace Task4
             //Console.WriteLine($"Concatenation runtime: {test2.ConcResult()}");
             //Console.WriteLine($"StringBuilder runtime: {test2.BuildResult()}\n");
 
-            var test3 = new ConcAndBuildCompare(500, "*-54bb7e=+");
+            var test3 = new ConcAndBuildCompare(5, "*-54bb7e=+");
             Console.WriteLine($"Concatenation runtime: {test3.ConcResult()}");
             Console.WriteLine($"StringBuilder runtime: {test3.BuildResult()}\n");
 
-            var test4 = new ConcAndBuildCompare(500, "Concatenation must win!!! 76476746767647657673676767373");
+            var test4 = new ConcAndBuildCompare(5, "Concatenation must win!!! 76476746767647657673676767373");
             Console.WriteLine($"Concatenation runtime: {test4.ConcResult()}");
             Console.WriteLine($"StringBuilder runtime: {test4.BuildResult()}\n");
 
@@ -50,8 +50,7 @@ namespace Task4
             concTimer.Stop();
             TimeSpan concTS = concTimer.Elapsed;
 
-            string elapsedTimeConc = String.Format($"{concTS.Hours:00}:{concTS.Minutes:00}:" +
-                $"{concTS.Seconds:00}.{concTS.Milliseconds*10:000}");
+            string elapsedTimeConc = String.Format($"{concTS.TotalMilliseconds:00000} - {concTS.Ticks:00000}");
 
             return elapsedTimeConc;
         }
@@ -64,8 +63,7 @@ namespace Task4
             buildTimer.Stop();
             TimeSpan buildTS = buildTimer.Elapsed;
 
-            string elapsedTimeBuild = String.Format($"{buildTS.Hours:00}:{buildTS.Minutes:00}:" +
-                $"{buildTS.Seconds:00}.{buildTS.Milliseconds*10:000}");
+            string elapsedTimeBuild = String.Format($"{buildTS.TotalMilliseconds:00000} - {buildTS.Ticks:00000}");
 
             return elapsedTimeBuild;
         }
