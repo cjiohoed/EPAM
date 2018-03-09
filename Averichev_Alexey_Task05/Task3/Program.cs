@@ -49,7 +49,7 @@ namespace Task3
 
                 set
                 {
-                    if(a < b + c)
+                    if(A < B + C)
                     {
                         a = value;
                     }
@@ -69,7 +69,7 @@ namespace Task3
 
                 set
                 {
-                    if (b < a + c)
+                    if (B < A + C)
                     {
                         b = value;
                     }
@@ -89,7 +89,7 @@ namespace Task3
 
                 set
                 {
-                    if (c < a + b)
+                    if (C < A + B)
                     {
                         c = value;
                     }
