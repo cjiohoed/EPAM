@@ -31,15 +31,6 @@ namespace Task2
             var result = new StringBuilder();
             char[] sourceChars = source.ToCharArray();
 
-            //for (int i = 0; i < sourceChars.Length; i++)
-            //{
-            //    result.Append(sourceChars[i]);
-            //    if (pattern.Contains(sourceChars[i]))
-            //    {
-            //        result.Append(sourceChars[i]);
-            //    }
-            //}
-
             for(var i = 0; i < pattern.Length; i++)
             {
                 string c = pattern[i].ToString();
