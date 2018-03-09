@@ -1,8 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task4
 {
@@ -77,10 +74,6 @@ namespace Task4
 
         public static MyString operator -(MyString source1, MyString source2)
         {
-            // Not used!
-            //var result = new MyString();
-            //result.charArray = source1.charArray.Except<char>(source2.charArray).ToArray<char>();
-            //return result;
 
             if (source1.charArray.Length < source2.charArray.Length)
             {
@@ -146,6 +139,11 @@ namespace Task4
             }
 
             return result;
+
+            // Not used!
+            //var result = new MyString();
+            //result.charArray = source1.charArray.Except<char>(source2.charArray).ToArray<char>();
+            //return result;
 
         }
 

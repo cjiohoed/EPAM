@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task3
 {
@@ -10,9 +6,15 @@ namespace Task3
     {
         static void Main()
         {
-            var trigon = new Triangle(10, 10, 10);
+            var t = new Triangle(10, 10, 10);
 
-            Console.WriteLine($"Perimeter: {trigon.Perimeter}\nArea: {trigon.Area}");
+            Console.WriteLine($"Perimeter: {t.Perimeter}\nArea: {t.Area: .00}");
+
+            t.A = 50;
+            t.B = 45;
+            t.C = 40;
+
+            Console.WriteLine($"Perimeter: {t.Perimeter}\nArea: {t.Area : .00}");
             Console.ReadKey();
         }
 
@@ -38,14 +40,6 @@ namespace Task3
 
             }
 
-            /*
-            public Triangle()
-            {
-
-            }
-            */
-
-            /*
             public double A
             {
                 get
@@ -55,19 +49,14 @@ namespace Task3
 
                 set
                 {
-                    if(A < B + C)
-                    {
-                        a = value;
-                    }
-                    else
+                    if(A > b + c)
                     {
                         throw new Exception("A must be less than the sum of B and C");
                     }
+                    a = value;
                 }
             }
-            */
 
-            /*
             public double B
             {
                 get
@@ -77,19 +66,14 @@ namespace Task3
 
                 set
                 {
-                    if (B < A + C)
-                    {
-                        b = value;
-                    }
-                    else
+                    if (B > a + c)
                     {
                         throw new Exception("B must be less than the sum of A and C");
                     }
+                    b = value;
                 }
             }
-            */
 
-            /*
             public double C
             {
                 get
@@ -99,17 +83,13 @@ namespace Task3
 
                 set
                 {
-                    if (C < A + B)
-                    {
-                        c = value;
-                    }
-                    else
+                    if (C > a + b)
                     {
                         throw new Exception("B must be less than the sum of A and C");
                     }
+                    c = value;
                 }
             }
-            */
 
             public double Perimeter
             {
