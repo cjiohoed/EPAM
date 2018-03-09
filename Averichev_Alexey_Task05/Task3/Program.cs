@@ -11,9 +11,6 @@ namespace Task3
         static void Main()
         {
             var trigon = new Triangle(10, 10, 10);
-            //trigon.A = 10;
-            //trigon.B = 10;
-            //trigon.C = 10;
 
             Console.WriteLine($"Perimeter: {trigon.Perimeter}\nArea: {trigon.Area}");
             Console.ReadKey();
@@ -30,16 +27,25 @@ namespace Task3
 
             public Triangle(double a, double b, double c)
             {
-                A = a;
-                B = b;
-                C = c;
+                if (a > b + c && b > a + c && c > a + b)
+                {
+                    throw new Exception("Incorrect arguments!");
+                }
+
+                this.a = a;
+                this.b = b;
+                this.c = c;
+
             }
 
+            /*
             public Triangle()
             {
 
             }
+            */
 
+            /*
             public double A
             {
                 get
@@ -59,7 +65,9 @@ namespace Task3
                     }
                 }
             }
+            */
 
+            /*
             public double B
             {
                 get
@@ -79,7 +87,9 @@ namespace Task3
                     }
                 }
             }
+            */
 
+            /*
             public double C
             {
                 get
@@ -99,6 +109,7 @@ namespace Task3
                     }
                 }
             }
+            */
 
             public double Perimeter
             {
