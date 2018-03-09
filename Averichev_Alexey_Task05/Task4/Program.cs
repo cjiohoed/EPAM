@@ -11,22 +11,16 @@ namespace Task4
         static void Main()
         {
 
-            var obj1 = new MyString("Мама мыла раму ");
-            var obj2 = new MyString("Клара у Карла украла кораллы");
-            //var obj2 = new MyString("Мама мыла раму ");
-
-            //var obj1 = new MyString();
-            //var obj2 = new MyString();
-            //obj1.Str = "Мама мыла раму ";
-            //obj2.Str = "Клара у Карла украла кораллы";
+            var obj1 = new MyString("xyz");
+            var obj2 = new MyString("WxyzORD WOxyzRD WORxyzD xyzWORD WORDxyzxyz : WxOyRzD WxyOyzRzxD WxxxyzOyyRxyzzzD");
 
             var plus = obj1 + obj2;
             Console.WriteLine(plus.ToString());
-            Console.WriteLine(plus.Str);
+            //Console.WriteLine(plus.Str);
 
             var minus = obj2 - obj1;
             Console.WriteLine(minus.ToString());
-            Console.WriteLine(minus.Str);
+            //Console.WriteLine(minus.Str);
 
             if (obj1 == obj2)
             {
@@ -36,7 +30,6 @@ namespace Task4
             {
                 Console.WriteLine("Dismatch! :(");
             }
-
 
             Console.ReadKey();
         }
@@ -84,13 +77,85 @@ namespace Task4
 
         public static MyString operator -(MyString source1, MyString source2)
         {
+            // Not used!
+            //var result = new MyString();
+            //result.charArray = source1.charArray.Except<char>(source2.charArray).ToArray<char>();
+            //return result;
+
+            if (source1.charArray.Length < source2.charArray.Length)
+            {
+                return source1;
+            }
+
+            var arr = new char?[source1.charArray.Length];
+            bool flag;
+            for (int i = 0; i < source1.charArray.Length; i++)
+            {
+                flag = false;
+                if (source1.charArray[i] == source2.charArray[0])
+                {
+                    int matches = 0;
+                    for (int j = 0; j < source2.charArray.Length; j++)
+                    {
+                        if (source1.charArray[i + j] == source2.charArray[j])
+                        {
+                            matches++;
+                        }
+                    }
+
+                    if (matches == source2.charArray.Length)
+                    {
+                        for (int j = i; j < source2.charArray.Length; j++)
+                        {
+                            arr[j] = null;
+                        }
+                        i = i + source2.charArray.Length - 1;
+                        flag = true;
+                    }
+
+                }
+
+                if (!flag)
+                {
+                    arr[i] = source1.charArray[i];
+                }
+                
+            }
+
+            int resultArrayLength = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+                if (arr[i] != null)
+                {
+                    resultArrayLength++;
+                }
+            }
+
             var result = new MyString();
-            result.charArray = source1.charArray.Except<char>(source2.charArray).ToArray<char>();
+            result.charArray = new char[resultArrayLength];
+
+            var count = 0;
+            for (int i = 0; i < arr.Length; i++)
+            {
+
+                if (arr[i] != null)
+                {
+                    result.charArray[count] = arr[i].GetValueOrDefault();
+                    count++;
+                }
+            }
+
             return result;
+
         }
 
         public static bool operator ==(MyString source1, MyString source2)
         {
+
+            if (source1.charArray.Length != source2.charArray.Length)
+            {
+                return false;
+            }
 
             int matches = 0;
             for (int i = 0; i < source1.charArray.Length; i++)
@@ -114,6 +179,11 @@ namespace Task4
 
         public static bool operator !=(MyString source1, MyString source2)
         {
+            if (source1.charArray.Length != source2.charArray.Length)
+            {
+                return true;
+            }
+
             int matches = 0;
             for (int i = 0; i < source1.charArray.Length; i++)
             {
