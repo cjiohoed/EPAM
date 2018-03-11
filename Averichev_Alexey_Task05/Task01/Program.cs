@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using System.Globalization;
 
 namespace Task1
 {
@@ -11,15 +12,14 @@ namespace Task1
             user1.FirstName = "Ivan";
             user1.Patronymic = "Ivanovich";
             user1.LastName = "Ivanov";
-            user1.Gender = true;
-            user1.YearOfBirth = 1978;
-            user1.MonthOfBirth = 3;
-            user1.DayOfBirth = 27;
+            user1.GenderWord = "male";
+            user1.DateOfBirth = "27.02.1978";
 
-            var user2 = new User("Petr", "Petrivich", "Petrov", true, 23, 12, 1946);
+            var user2 = new User("Petr", "Petrivich", "Petrov", "male", "23.12.1946");
 
-            Console.WriteLine($"UserInfo: {user1.ToString()}");
-            Console.WriteLine($"UserInfo: {user2.ToString()}");
+            Console.WriteLine($"{user1.ToString()}");
+            Console.WriteLine($"{user2.ToString()}");
+            Console.WriteLine($"");
 
             Console.ReadKey();
         }
@@ -30,24 +30,23 @@ namespace Task1
         private string firstName = "N/A";
         private string lastName = "N/A";
         private string patronymic = "N/A";
-        private bool gender = false;
-        private int age = 0;
-        private int maxAge = 150;
-        private int currentYear = Convert.ToInt32(DateTime.Now.Year.ToString());
-        private int yearOfBirth = 0;
-        private int monthOfBirth = 0;
-        private int dayOfBirth = 0;
 
-        public User(string firstName, string patronymic, string lastName, 
-            bool gender, int dayOfBirth, int monthOfBirth, int yearOfBirth)
+        private bool gender;
+        private string genderWord = "N/A";
+        private string genderMale = "male";
+        private string genderFemale = "female";
+
+        private DateTime dateBirthDay = DateTime.Today;
+        private int age = 0;
+
+        public User(string firstName, string patronymic, string lastName,
+            string genderword, string dateOfBirth)
         {
             FirstName = firstName;
             Patronymic = patronymic;
             LastName = lastName;
-            Gender = gender;
-            DayOfBirth = dayOfBirth;
-            MonthOfBirth = monthOfBirth;
-            YearOfBirth = yearOfBirth;
+            GenderWord = genderword;
+            DateOfBirth = dateOfBirth;
         }
 
         public User()
@@ -118,65 +117,45 @@ namespace Task1
             {
                 return gender;
             }
-            set
-            {
-                gender = value;
-            }
         }
 
-        public int YearOfBirth
+        public string GenderWord
         {
             get
             {
-                return yearOfBirth;
+                return genderWord;
             }
             set
             {
-                if(value < currentYear & currentYear - value < maxAge)
+                if (IsGender(value))
                 {
-                    yearOfBirth = value;
+                    genderWord = value;
+                    SetBoolGender(value);
                 }
                 else
                 {
-                    throw new Exception("Incorrect year");
+                    throw new Exception("Incorrect gender");
                 }
+
             }
         }
 
-        public int MonthOfBirth
+        public string DateOfBirth
         {
             get
             {
-                return monthOfBirth;
+                return dateBirthDay.ToString("dd.MM.yyyy");
             }
             set
             {
-                if(value >= 1 & value <= 12)
+                if (IsDate(value))
                 {
-                    monthOfBirth = value;
+                    dateBirthDay = DateTime.ParseExact(value, "dd.MM.yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None);
+                    SetAge();
                 }
                 else
                 {
-                    throw new Exception("Incorrect month");
-                }
-            }
-        }
-
-        public int DayOfBirth
-        {
-            get
-            {
-                return dayOfBirth;
-            }
-            set
-            {
-                if (value > 0 & value < 32)
-                {
-                    dayOfBirth = value;
-                }
-                else
-                {
-                    throw new Exception("Incorrect day");
+                    throw new Exception("Date incorrect");
                 }
             }
         }
@@ -185,24 +164,13 @@ namespace Task1
         {
             get
             {
-                return currentYear - yearOfBirth;
+                return age;
             }
         }
 
         public override string ToString()
         {
-            string gndr = string.Empty;
-            switch (gender)
-            {
-                case true:
-                    gndr = "male";
-                    break;
-                case false:
-                    gndr = "female";
-                    break;
-            }
-
-            return $"{firstName} {patronymic} {lastName}, {gndr}, {dayOfBirth}.{monthOfBirth}.{yearOfBirth}, {Age}";
+            return $"{firstName} {patronymic} {lastName}, {genderWord}, {DateOfBirth}, {Age} years old";
         }
 
         private static bool IsName(string str)
@@ -214,5 +182,51 @@ namespace Task1
             }
             return false;
         }
+
+        private static bool IsDate(string str)
+        {
+
+            string datePattern = @"^(0[1-9]|[12]\d|3[01])\.(0[1-9]|1[0-2])\.((19|20)\d\d)$";
+            if (Regex.IsMatch(str, datePattern))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private static bool IsGender(string str)
+        {
+            string genderPattern = @"^(|fe)male$";
+            if (Regex.IsMatch(str, genderPattern))
+            {
+                return true;
+            }
+            return false;
+        }
+
+        private void SetBoolGender(string str)
+        {
+            if(str == genderMale)
+            {
+                gender = true;
+            }
+            else if(str == genderFemale)
+            {
+                gender = false;
+            }
+        }
+
+        private void SetAge()
+        {
+            DateTime dateNow = DateTime.Today;
+            int age = dateNow.Year - dateBirthDay.Year;
+            if (dateNow.Month < dateBirthDay.Month || dateNow.Month == dateBirthDay.Month & dateNow.Day < dateBirthDay.Day)
+            {
+                age--;
+            }
+
+            this.age = age;
+        }
+
     }
 }
