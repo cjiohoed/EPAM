@@ -29,7 +29,7 @@ namespace Task3
 
             public Triangle(double a, double b, double c)
             {
-                if (a > b + c && b > a + c && c > a + b)
+                if (a > b + c & b > a + c & c > a + b)
                 {
                     throw new Exception("Incorrect arguments!");
                 }
