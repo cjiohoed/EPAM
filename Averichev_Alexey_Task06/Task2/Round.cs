@@ -55,7 +55,7 @@ namespace Task2
             }
         }
 
-        public double Area
+        public double CircleArea
         {
             get
             {

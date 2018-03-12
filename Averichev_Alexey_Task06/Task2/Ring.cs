@@ -9,11 +9,13 @@ namespace Task2
         private double innerLenght = 0;
         private double sumLenghts = 0;
 
-        public Ring(double x, double y, double innerRadius, double outerRadius)
+        public Ring(
+            double x,
+            double y,
+            double innerRadius,
+            double outerRadius)
+            : base(x, y, outerRadius)
         {
-            X = x;
-            Y = y;
-            Radius = outerRadius;
             InnerRadius = innerRadius;
         }
 
@@ -25,7 +27,7 @@ namespace Task2
             }
             set
             {
-                if(value > 0 & value < Radius)
+                if (value > 0 & value < Radius)
                 {
                     innerRadius = value;
                 }
@@ -36,7 +38,7 @@ namespace Task2
             }
         }
 
-        public double Area
+        public double RingArea
         {
             get
             {

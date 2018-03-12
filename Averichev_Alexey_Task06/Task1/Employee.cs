@@ -17,14 +17,14 @@ namespace Task1
             GenderList gender,
             DateTime dateOfBirth,
             int experience,
-            string position
-            )
+            string position)
+            : base(
+                  firstName,
+                  patronymic,
+                  lastName,
+                  gender,
+                  dateOfBirth)
         {
-            FirstName = firstName;
-            Patronymic = patronymic;
-            LastName = lastName;
-            Gender = gender;
-            dateBirthDay = dateOfBirth;
             Experience = experience;
             Position = position;
         }
@@ -37,7 +37,7 @@ namespace Task1
             }
             set
             {
-                if(value < age)
+                if (value < age)
                 {
                     experience = value;
                 }
@@ -56,7 +56,7 @@ namespace Task1
             }
             set
             {
-                if(!String.IsNullOrEmpty(value))
+                if (!String.IsNullOrEmpty(value))
                 {
                     position = value;
                 }

@@ -29,11 +29,6 @@ namespace Task1
             dateBirthDay = dateOfBirth;
         }
 
-        public User()
-        {
-
-        }
-
         public string FirstName
         {
             get

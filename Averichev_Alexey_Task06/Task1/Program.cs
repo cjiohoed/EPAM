@@ -37,7 +37,6 @@ namespace Task1
                 "cashier");
             Console.WriteLine(c.ToString());
 
-
             Console.ReadKey();
 
         }
