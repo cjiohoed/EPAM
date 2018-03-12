@@ -11,24 +11,25 @@ namespace Task4
             var obj1 = new MyString("xyz");
             var obj2 = new MyString("WxyzORD WOxyzRD WORxyzD xyzWORD WORDxyzxyz : WxOyRzD WxyOyzRzxD WxxxyzOyyRxyzzzD");
 
-            var plus = obj1 + obj2;
-            Console.WriteLine(plus.ToString());
-            //Console.WriteLine(plus.Str);
+            var r = obj1 != obj2;
+            //var plus = obj1 + obj2;
+            //Console.WriteLine(plus.ToString());
+            ////Console.WriteLine(plus.Str);
 
-            var minus = obj2 - obj1;
-            Console.WriteLine(minus.ToString());
-            //Console.WriteLine(minus.Str);
+            //var minus = obj2 - obj1;
+            //Console.WriteLine(minus.ToString());
+            ////Console.WriteLine(minus.Str);
 
-            if (obj1 == obj2)
-            {
-                Console.WriteLine("Match! :)");
-            }
-            else
-            {
-                Console.WriteLine("Dismatch! :(");
-            }
+            //if (obj1 == obj2)
+            //{
+            //    Console.WriteLine("Match! :)");
+            //}
+            //else
+            //{
+            //    Console.WriteLine("Dismatch! :(");
+            //}
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
     }
 
@@ -79,7 +80,7 @@ namespace Task4
             {
                 return source1;
             }
-
+// asd  asdf
             var arr = new char?[source1.charArray.Length];
             bool flag;
             for (int i = 0; i < source1.charArray.Length; i++)
@@ -131,9 +132,9 @@ namespace Task4
             for (int i = 0; i < arr.Length; i++)
             {
 
-                if (arr[i] != null)
+                if (arr[i].HasValue)
                 {
-                    result.charArray[count] = arr[i].GetValueOrDefault();
+                    result.charArray[count] = arr[i].Value;
                     count++;
                 }
             }
@@ -155,50 +156,21 @@ namespace Task4
                 return false;
             }
 
-            int matches = 0;
             for (int i = 0; i < source1.charArray.Length; i++)
             {
-                if (source1.charArray[i] == source2.charArray[i])
+                if (source1.charArray[i] != source2.charArray[i])
                 {
-                    matches++;
+                    return false;
                 }
             }
 
-            if (matches == source1.charArray.Length)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return true;
 
         }
 
         public static bool operator !=(MyString source1, MyString source2)
         {
-            if (source1.charArray.Length != source2.charArray.Length)
-            {
-                return true;
-            }
-
-            int matches = 0;
-            for (int i = 0; i < source1.charArray.Length; i++)
-            {
-                if (source1.charArray[i] == source2.charArray[i])
-                {
-                    matches++;
-                }
-            }
-
-            if (matches == source1.charArray.Length)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            return !(source1 == source2);
         }
 
         public override string ToString()
