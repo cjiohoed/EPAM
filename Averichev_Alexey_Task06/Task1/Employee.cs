@@ -5,9 +5,6 @@ namespace Task1
     {
         private int experience = 0;
 
-        //public enum Positions { chief, advocate, cashier, junior }
-        //private Positions position;
-
         private string position = String.Empty;
 
         public Employee(
