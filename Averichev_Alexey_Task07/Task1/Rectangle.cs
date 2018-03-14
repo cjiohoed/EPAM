@@ -4,30 +4,38 @@ namespace Task1
 {
     public class Rectangle : Figure
     {
+        public override Figures Type
+        {
+            get
+            {
+                return Figures.Rectangle;
+            }
+        }
+
         protected double _x;
         protected double _y;
         protected double _width = 0;
         protected double _height = 0;
 
-        public double X
+        public override double X
         {
             get
             {
                 return _x;
             }
-            protected set
+            set
             {
                 _x = value;
             }
         }
 
-        public double Y
+        public override double Y
         {
             get
             {
                 return _y;
             }
-            protected set
+            set
             {
                 _y = value;
             }
@@ -73,8 +81,10 @@ namespace Task1
             }
         }
 
-        public Rectangle(double width, double height)
+        public Rectangle(double x, double y, double width, double height)
         {
+            X = x;
+            Y = y;
             Width = width;
             Height = height;
         }
@@ -82,11 +92,6 @@ namespace Task1
         public override double Area()
         {
             return _width * _height;
-        }
-
-        public override void Draw()
-        {
-            Console.WriteLine($"Это прямоугольник со сторонами {_width} x {_height} и площадью {Area()}");
         }
 
     }

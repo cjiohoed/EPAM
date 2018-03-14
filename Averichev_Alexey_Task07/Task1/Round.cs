@@ -4,6 +4,14 @@ namespace Task1
 {
     public class Round : Figure
     {
+        public override Figures Type
+        {
+            get
+            {
+                return Figures.Round;
+            }
+        }
+
         protected double _x;
         protected double _y;
         protected double _radius;
@@ -16,25 +24,25 @@ namespace Task1
 
         }
 
-        public double X
+        public override double X
         {
             get
             {
                 return _x;
             }
-            protected set
+            set
             {
                 _x = value;
             }
         }
 
-        public double Y
+        public override double Y
         {
             get
             {
                 return _y;
             }
-            protected set
+            set
             {
                 _y = value;
             }
@@ -48,7 +56,7 @@ namespace Task1
             }
             protected set
             {
-                if(value > 0)
+                if (value > 0)
                 {
                     _radius = value;
                 }
@@ -62,11 +70,6 @@ namespace Task1
         public override double Area()
         {
             return Math.PI * _radius * _radius;
-        }
-
-        public override void Draw()
-        {
-
         }
     }
 }

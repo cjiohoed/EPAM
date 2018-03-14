@@ -4,11 +4,43 @@ namespace Task1
 {
     public class Ring : Round
     {
+        public override Figures Type
+        {
+            get
+            {
+                return Figures.Ring;
+            }
+        }
+
         private double _innerRadius;
 
-        public Ring(double x, double y, double innerRadius, double outerRadius) : base (x, y, outerRadius)
+        public Ring(double x, double y, double innerRadius, double outerRadius) : base(x, y, outerRadius)
         {
             InnerRadius = innerRadius;
+        }
+
+        public override double X
+        {
+            get
+            {
+                return _x;
+            }
+            set
+            {
+                _x = value;
+            }
+        }
+
+        public override double Y
+        {
+            get
+            {
+                return _y;
+            }
+            set
+            {
+                _y = value;
+            }
         }
 
         public double InnerRadius
@@ -19,7 +51,7 @@ namespace Task1
             }
             set
             {
-                if(value > 0 && value < Radius)
+                if (value > 0 && value < Radius)
                 {
                     _innerRadius = value;
                 }
