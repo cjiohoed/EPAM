@@ -1,6 +1,6 @@
 ﻿namespace Task1
 {
-    public abstract class Figure
+    public abstract class Figure : ICanvas
     {
         public virtual Figures Type
         {
@@ -10,13 +10,18 @@
             }
         }
 
-        public virtual double X { get; set; }
+        public virtual double X { get; protected set; }
 
-        public virtual double Y { get; set; }
+        public virtual double Y { get; protected set; }
 
         public virtual double Area()
         {
             return 0;
+        }
+
+        public virtual void Draw()
+        {
+
         }
     }
 }

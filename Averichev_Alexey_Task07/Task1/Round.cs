@@ -2,7 +2,7 @@
 
 namespace Task1
 {
-    public class Round : Figure
+    public class Round : Figure, ICanvas
     {
         public override Figures Type
         {
@@ -30,7 +30,7 @@ namespace Task1
             {
                 return _x;
             }
-            set
+            protected set
             {
                 _x = value;
             }
@@ -42,7 +42,7 @@ namespace Task1
             {
                 return _y;
             }
-            set
+            protected set
             {
                 _y = value;
             }
@@ -70,6 +70,11 @@ namespace Task1
         public override double Area()
         {
             return Math.PI * _radius * _radius;
+        }
+
+        public override void Draw()
+        {
+            ConsoleApp.DrawRound(X, Y, Radius);
         }
     }
 }

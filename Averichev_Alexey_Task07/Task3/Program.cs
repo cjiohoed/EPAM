@@ -17,6 +17,8 @@ namespace Task3
             ISeries list = new List(new double[] { 5, 8, 6, 3, 1 });
             Console.WriteLine("List:");
             PrintSeries(list);
+
+            IIndexable[] prog = new ArithmeticalProgression[10];
         }
 
         static void PrintSeries(ISeries series)

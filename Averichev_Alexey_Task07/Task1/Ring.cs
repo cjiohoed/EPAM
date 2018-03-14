@@ -2,7 +2,7 @@
 
 namespace Task1
 {
-    public class Ring : Round
+    public class Ring : Round, ICanvas
     {
         public override Figures Type
         {
@@ -25,7 +25,7 @@ namespace Task1
             {
                 return _x;
             }
-            set
+            protected set
             {
                 _x = value;
             }
@@ -37,7 +37,7 @@ namespace Task1
             {
                 return _y;
             }
-            set
+            protected set
             {
                 _y = value;
             }
@@ -65,6 +65,11 @@ namespace Task1
         public override double Area()
         {
             return base.Area() - Math.PI * _innerRadius * _innerRadius;
+        }
+
+        public override void Draw()
+        {
+            ConsoleApp.DrawRing(X, Y, InnerRadius, Radius);
         }
     }
 }

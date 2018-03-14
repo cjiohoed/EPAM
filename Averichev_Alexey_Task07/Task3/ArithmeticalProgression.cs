@@ -1,6 +1,6 @@
 ﻿namespace Task3
 {
-    public class ArithmeticalProgression : ISeries
+    public class ArithmeticalProgression : ISeries, IIndexable
     {
         private double _start, _step;
         private int _currentIndex;
@@ -28,12 +28,12 @@
             _currentIndex = 1;
         }
 
-        /*public double this[int index]
+        public double this[int index]
 		{
 			get
 			{
-				return start + step * index;
+				return _start + _step * index;
 			}
-		}*/
+		}
     }
 }

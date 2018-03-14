@@ -2,7 +2,7 @@
 
 namespace Task1
 {
-    public class Rectangle : Figure
+    public class Rectangle : Figure, ICanvas
     {
         public override Figures Type
         {
@@ -23,7 +23,7 @@ namespace Task1
             {
                 return _x;
             }
-            set
+            protected set
             {
                 _x = value;
             }
@@ -35,7 +35,7 @@ namespace Task1
             {
                 return _y;
             }
-            set
+            protected set
             {
                 _y = value;
             }
@@ -48,7 +48,7 @@ namespace Task1
                 return _width;
             }
 
-            set
+            protected set
             {
                 if (value > 0)
                 {
@@ -68,7 +68,7 @@ namespace Task1
                 return _height;
             }
 
-            set
+            protected set
             {
                 if (value > 0)
                 {
@@ -94,5 +94,10 @@ namespace Task1
             return _width * _height;
         }
 
+        public override void Draw()
+        {
+            ConsoleApp.DrawRectangle(X, Y, Width, Height);
+
+        }
     }
 }
