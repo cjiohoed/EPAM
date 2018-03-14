@@ -42,11 +42,11 @@ namespace Task2
         {
             get
             {
-                return pi * (radius * radius - innerRadius * innerRadius);
+                return Math.PI * (radius * radius - innerRadius * innerRadius);
             }
         }
 
-        public double SumLenghts
+        public double TotalLenghts
         {
             get
             {

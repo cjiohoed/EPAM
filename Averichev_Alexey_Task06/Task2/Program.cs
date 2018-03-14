@@ -17,7 +17,7 @@ namespace Task2
             Console.WriteLine("=\t\t=");
 
             var c = new Ring(0, 0, 5, 6);
-            Console.WriteLine($"{c.RingArea}\t\t{c.SumLenghts}");
+            Console.WriteLine($"{c.RingArea}\t\t{c.TotalLenghts}");
 
             Console.ReadKey();
         }

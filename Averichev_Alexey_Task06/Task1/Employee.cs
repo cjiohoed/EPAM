@@ -4,6 +4,7 @@ namespace Task1
     public class Employee : User
     {
         private int experience = 0;
+        private DateTime experienceBeginning;
 
         private string position = String.Empty;
 
@@ -13,7 +14,7 @@ namespace Task1
             string lastName,
             GenderList gender,
             DateTime dateOfBirth,
-            int experience,
+            DateTime expBeginning,
             string position)
             : base(
                   firstName,
@@ -22,7 +23,7 @@ namespace Task1
                   gender,
                   dateOfBirth)
         {
-            Experience = experience;
+            experienceBeginning = expBeginning;
             Position = position;
         }
 
@@ -30,18 +31,7 @@ namespace Task1
         {
             get
             {
-                return experience;
-            }
-            set
-            {
-                if (value < age)
-                {
-                    experience = value;
-                }
-                else
-                {
-                    throw new Exception("Incorrect experience");
-                }
+                return DateTimeExtensions.GetFullYears(experienceBeginning);
             }
         }
 
@@ -53,7 +43,7 @@ namespace Task1
             }
             set
             {
-                if (!String.IsNullOrEmpty(value))
+                if (!String.IsNullOrWhiteSpace(value))
                 {
                     position = value;
                 }

@@ -4,12 +4,17 @@ using System.Globalization;
 
 namespace Task1
 {
+    public enum GenderList
+    {
+        Female,
+        Male
+    }
+
     public class User
     {
         protected string firstName = "N/A";
         protected string lastName = "N/A";
         protected string patronymic = "N/A";
-        public enum GenderList { female, male };
         protected GenderList gender;
         protected DateTime dateBirthDay = DateTime.Today;
         protected int age = 0;
@@ -93,8 +98,7 @@ namespace Task1
             get
 
             {
-                SetAge();
-                return age;
+                return DateTimeExtensions.GetFullYears(dateBirthDay);
             }
         }
 
@@ -112,18 +116,5 @@ namespace Task1
             }
             return false;
         }
-
-        private void SetAge()
-        {
-            DateTime dateNow = DateTime.Today;
-            int age = dateNow.Year - dateBirthDay.Year;
-            if (dateNow.Month < dateBirthDay.Month || dateNow.Month == dateBirthDay.Month & dateNow.Day < dateBirthDay.Day)
-            {
-                age--;
-            }
-
-            this.age = age;
-        }
-
     }
 }

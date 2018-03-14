@@ -21,7 +21,7 @@ namespace Task1
                 "Kolesnikova",
                 User.GenderList.female,
                 new DateTime(1956, 03, 23));
-            Console.WriteLine(b.ToString());
+            Console.WriteLine(b);
 
             var c = new Employee(
                 "Petr",
