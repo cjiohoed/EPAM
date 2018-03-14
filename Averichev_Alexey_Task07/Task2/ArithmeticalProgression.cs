@@ -28,13 +28,13 @@
             _currentIndex = 1;
         }
 
-        /*public double this[int index]
-		{
-			get
-			{
-				return start + step * index;
-			}
-		}*/
+        public double this[int index]
+        {
+            get
+            {
+                return _start + _step * index;
+            }
+        }
     }
 
 }

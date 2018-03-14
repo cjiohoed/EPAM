@@ -27,10 +27,10 @@
             currentIndex = 0;
         }
 
-        /*public double this[int index]
-		{
-			get { return series[index]; }
-		}*/
+        public double this[int index]
+        {
+            get { return _series[index]; }
+        }
     }
 
 }

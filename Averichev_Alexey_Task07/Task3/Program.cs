@@ -10,15 +10,21 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            ISeries progression = new ArithmeticalProgression(2, 2);
-            Console.WriteLine("Progression:");
-            PrintSeries(progression);
+            //ISeries progression = new ArithmeticalProgression(2, 2);
+            //Console.WriteLine("Progression:");
+            //PrintSeries(progression);
 
-            ISeries list = new List(new double[] { 5, 8, 6, 3, 1 });
-            Console.WriteLine("List:");
-            PrintSeries(list);
+            //ISeries list = new List(new double[] { 5, 8, 6, 3, 1 });
+            //Console.WriteLine("List:");
+            //PrintSeries(list);
 
-            IIndexable[] prog = new ArithmeticalProgression[10];
+            IIndexable progr = new ArithmeticalProgression(2, 2);
+            Console.WriteLine(progr[2]);
+
+            IIndexable list = new List(new double[] { 3, 7, 12, 6, 2, 104, 72, 1 });
+            Console.WriteLine(list[5]);
+
+            Console.ReadKey();
         }
 
         static void PrintSeries(ISeries series)

@@ -1,6 +1,6 @@
 ﻿namespace Task3
 {
-    public class List : ISeries
+    public class List : ISeries, IIndexable
     {
         private double[] _series;
         private int currentIndex;
@@ -27,9 +27,9 @@
             currentIndex = 0;
         }
 
-        /*public double this[int index]
-		{
-			get { return series[index]; }
-		}*/
+        public double this[int index]
+        {
+            get { return _series[index]; }
+        }
     }
 }

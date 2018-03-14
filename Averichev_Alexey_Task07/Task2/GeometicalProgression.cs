@@ -33,12 +33,12 @@
         }
 
         public double this[int index]
-		{
-			get
-			{
+        {
+            get
+            {
                 _currentResult += _start * _step * _currentIndex;
                 return _currentResult;
-			}
-		}
+            }
+        }
     }
 }

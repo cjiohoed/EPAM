@@ -22,23 +22,10 @@ namespace Task2
             Console.WriteLine("Progression:");
             PrintSeries(gProgression);
 
-            ISeries[] newProgression = new GeometicalProgression[5];
-
             Console.ReadKey();
         }
 
         static void PrintSeries(ISeries series)
-        {
-            series.Reset();
-
-            for (int i = 0; i < 10; i++)
-            {
-                Console.WriteLine(series.GetCurrent());
-                series.MoveNext();
-            }
-        }
-
-        static void PrintNew(ISeries series)
         {
             series.Reset();
 

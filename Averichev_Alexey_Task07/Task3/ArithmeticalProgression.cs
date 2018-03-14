@@ -29,11 +29,11 @@
         }
 
         public double this[int index]
-		{
-			get
-			{
-				return _start + _step * index;
-			}
-		}
+        {
+            get
+            {
+                return _start + _step * index;
+            }
+        }
     }
 }
