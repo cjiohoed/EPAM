@@ -1,6 +1,6 @@
 ﻿namespace Task1
 {
-    public abstract class Figure : ICanvas
+    public abstract class Figure
     {
         public virtual Figures Type
         {

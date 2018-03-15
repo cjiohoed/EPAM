@@ -10,30 +10,19 @@ namespace Task4
     {
         static void Main()
         {
-            var p1 = new Player();
-            p1.Move(Direction.Right);
+            var player1 = new Player("John", 0, 0);
+            
 
-            do
-            {
-                Console.Clear();
+            Status(player1);
+            player1.Move(Direction.Down);
+            Status(player1);
 
-
-                Console.Write("Press any key to continue...");
-                var key = Console.ReadKey();
-            }
-            while (true);
-
+            Console.ReadKey();
         }
-    }
 
-    public class Obj
-    {
-
-    }
-
-    public interface IObject
-    {
-        int X { get; }
-        int Y { get; }
+        static void Status(Obj obj)
+        {
+            Console.WriteLine($"Name: {obj.Name}\tPosition: ({obj.X},{obj.X})");
+        }
     }
 }

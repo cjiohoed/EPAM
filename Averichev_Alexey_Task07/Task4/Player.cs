@@ -1,24 +1,12 @@
 ﻿namespace Task4
 {
-    public class Player : IMoveable, IObject
+    public class Player : Obj, IMoveable, IObject
     {
-        int _x = 0;
-        int _y = 0;
-
-        public int X
+        public Player(string name, uint x, uint y) : base (x, y)
         {
-            get
-            {
-                return _x;
-            }
-        }
-
-        public int Y
-        {
-            get
-            {
-                return _y;
-            }
+            _name = name;
+            _x = x;
+            _y = y;
         }
 
         public void Start()

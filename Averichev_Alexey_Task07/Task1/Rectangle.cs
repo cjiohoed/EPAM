@@ -2,7 +2,7 @@
 
 namespace Task1
 {
-    public class Rectangle : Figure, ICanvas
+    public class Rectangle : Figure
     {
         public override Figures Type
         {

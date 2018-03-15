@@ -2,7 +2,7 @@
 
 namespace Task1
 {
-    public class Line : Figure, ICanvas
+    public class Line : Figure
     {
         public override Figures Type
         {

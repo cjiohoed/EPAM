@@ -4,9 +4,9 @@ namespace Task1
 {
     class ConsoleApp
     {
-        public static ICanvas[] CreateRandomCollection(int value)
+        public static Figure[] CreateRandomCollection(int value)
         {
-            ICanvas[] array = new ICanvas[value];
+            Figure[] array = new Figure[value];
             var rndType = new Random();
             var rndArgs = new Random();
 
@@ -46,7 +46,7 @@ namespace Task1
             return array;
         }
 
-        public static void DrawCollection(ICanvas[] pack)
+        public static void DrawCollection(Figure[] pack)
         {
             for (int i = 0; i < pack.Length; i++)
             {

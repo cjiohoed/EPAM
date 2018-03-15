@@ -2,7 +2,7 @@
 
 namespace Task1
 {
-    public class Ring : Round, ICanvas
+    public class Ring : Round
     {
         public override Figures Type
         {

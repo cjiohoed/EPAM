@@ -45,7 +45,10 @@
     <Compile Include="Direction.cs" />
     <Compile Include="IEateable.cs" />
     <Compile Include="IMoveable.cs" />
+    <Compile Include="IObject.cs" />
     <Compile Include="Monster.cs" />
+    <Compile Include="Obj.cs" />
+    <Compile Include="Obstruction.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
