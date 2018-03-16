@@ -2,7 +2,7 @@
 {
     public interface IObject
     {
-        string Name { get; }
+        string Name { get; set; }
 
         uint X { get; }
         uint Y { get; }

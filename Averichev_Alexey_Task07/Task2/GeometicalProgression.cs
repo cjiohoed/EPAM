@@ -36,7 +36,8 @@
         {
             get
             {
-                return _start * _step * index;
+                _currentResult += _start * _step * _currentIndex;
+                return _currentResult;
             }
         }
     }
