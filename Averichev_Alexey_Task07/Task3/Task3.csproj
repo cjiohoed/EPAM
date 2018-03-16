@@ -43,9 +43,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArithmeticalProgression.cs" />
-    <Compile Include="IIndexable.cs" />
-    <Compile Include="IIndexableSeries.cs" />
-    <Compile Include="ISeries.cs" />
+    <Compile Include="Interfaces\IIndexable.cs" />
+    <Compile Include="Interfaces\IIndexableSeries.cs" />
+    <Compile Include="Interfaces\ISeries.cs" />
     <Compile Include="List.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

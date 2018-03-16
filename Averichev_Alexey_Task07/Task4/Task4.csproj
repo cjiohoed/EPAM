@@ -43,13 +43,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
-    <Compile Include="IEateable.cs" />
-    <Compile Include="IMoveable.cs" />
-    <Compile Include="IObject.cs" />
-    <Compile Include="Monster.cs" />
-    <Compile Include="Obj.cs" />
-    <Compile Include="Obstruction.cs" />
-    <Compile Include="Player.cs" />
+    <Compile Include="Interfaces\IEateable.cs" />
+    <Compile Include="Interfaces\IMoveable.cs" />
+    <Compile Include="Interfaces\IObject.cs" />
+    <Compile Include="Objects\Monster.cs" />
+    <Compile Include="Objects\Obj.cs" />
+    <Compile Include="Objects\Obstruction.cs" />
+    <Compile Include="Objects\Player.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

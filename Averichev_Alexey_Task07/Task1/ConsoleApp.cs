@@ -4,7 +4,7 @@ namespace Task1
 {
     class ConsoleApp
     {
-        public static Figure[] CreateRandomCollection(int value)
+        public static ICanvas[] GetRandomCollection(int value)
         {
             Figure[] array = new Figure[value];
             var rndType = new Random();
@@ -46,32 +46,32 @@ namespace Task1
             return array;
         }
 
-        public static void DrawCollection(Figure[] pack)
+        public static void Draw(ICanvas[] canvas)
         {
-            for (int i = 0; i < pack.Length; i++)
+            for (int i = 0; i < canvas.Length; i++)
             {
-                pack[i].Draw();
+                canvas[i].Draw();
             }
-        }
-
-        public static void DrawRectangle(double x, double y, double w, double h)
-        {
-            Console.WriteLine($"Rectangle\t({x},{y})\t{w}x{h}");
-        }
-
-        public static void DrawRound(double x, double y, double r)
-        {
-            Console.WriteLine($"Round\t\t({x},{y})\t{r}");
-        }
-
-        public static void DrawRing(double x, double y, double ri, double ro)
-        {
-            Console.WriteLine($"Ring\t\t({x},{y})\t{ri}/{ro}");
         }
 
         public static void DrawLine(double x1, double y1, double x2, double y2)
         {
             Console.WriteLine($"Line\t\t({x1},{y1}) - ({x2},{y2})");
+        }
+
+        public static void DrawRectangle(double x, double y, double width, double height)
+        {
+            Console.WriteLine($"Rectangle\t({x},{y})\t{width}x{height}");
+        }
+
+        public static void DrawRound(double x, double y, double radius)
+        {
+            Console.WriteLine($"Round\t\t({x},{y})\t{radius}");
+        }
+
+        public static void DrawRing(double x, double y, double innerRadius, double outerRadius)
+        {
+            Console.WriteLine($"Ring\t\t({x},{y})\t{innerRadius}/{outerRadius}");
         }
     }
 

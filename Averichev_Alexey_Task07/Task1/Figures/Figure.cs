@@ -1,12 +1,12 @@
 ﻿namespace Task1
 {
-    public abstract class Figure
+    public abstract class Figure : ICanvas
     {
-        public virtual Figures Type
+        public virtual Types Type
         {
             get
             {
-                return Figures.Empty;
+                return Types.Empty;
             }
         }
 

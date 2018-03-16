@@ -5,8 +5,6 @@
         public Player(string name, uint x, uint y) : base (x, y)
         {
             _name = name;
-            _x = x;
-            _y = y;
         }
 
         public void Start()

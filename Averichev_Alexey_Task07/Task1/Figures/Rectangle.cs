@@ -2,13 +2,13 @@
 
 namespace Task1
 {
-    public class Rectangle : Figure
+    public class Rectangle : Figure, ICanvas
     {
-        public override Figures Type
+        public override Types Type
         {
             get
             {
-                return Figures.Rectangle;
+                return Types.Rectangle;
             }
         }
 
@@ -97,7 +97,7 @@ namespace Task1
         public override void Draw()
         {
             ConsoleApp.DrawRectangle(X, Y, Width, Height);
-
         }
+
     }
 }

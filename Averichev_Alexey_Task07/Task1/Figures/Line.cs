@@ -2,13 +2,13 @@
 
 namespace Task1
 {
-    public class Line : Figure
+    public class Line : Figure, ICanvas
     {
-        public override Figures Type
+        public override Types Type
         {
             get
             {
-                return Figures.Line;
+                return Types.Line;
             }
         }
 
@@ -87,5 +87,6 @@ namespace Task1
         {
             ConsoleApp.DrawLine(X1, Y1, X2, Y2);
         }
+
     }
 }

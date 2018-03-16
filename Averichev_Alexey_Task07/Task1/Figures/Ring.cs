@@ -2,26 +2,21 @@
 
 namespace Task1
 {
-    public class Round : Figure
+    public class Ring : Round, ICanvas
     {
-        public override Figures Type
+        public override Types Type
         {
             get
             {
-                return Figures.Round;
+                return Types.Ring;
             }
         }
 
-        protected double _x;
-        protected double _y;
-        protected double _radius;
+        private double _innerRadius;
 
-        public Round(double x, double y, double radius)
+        public Ring(double x, double y, double innerRadius, double outerRadius) : base(x, y, outerRadius)
         {
-            X = x;
-            Y = y;
-            Radius = radius;
-
+            InnerRadius = innerRadius;
         }
 
         public override double X
@@ -48,17 +43,17 @@ namespace Task1
             }
         }
 
-        public double Radius
+        public double InnerRadius
         {
             get
             {
-                return _radius;
+                return _innerRadius;
             }
-            protected set
+            set
             {
-                if (value > 0)
+                if (value > 0 && value < Radius)
                 {
-                    _radius = value;
+                    _innerRadius = value;
                 }
                 else
                 {
@@ -69,12 +64,13 @@ namespace Task1
 
         public override double Area()
         {
-            return Math.PI * _radius * _radius;
+            return base.Area() - Math.PI * _innerRadius * _innerRadius;
         }
 
         public override void Draw()
         {
-            ConsoleApp.DrawRound(X, Y, Radius);
+            ConsoleApp.DrawRing(X, Y, InnerRadius, Radius);
         }
+
     }
 }
