@@ -1,6 +1,6 @@
 ﻿namespace Task4
 {
-    public class Player : Obj, IMoveable, IObject
+    public class Player : GameObject, IMoveable, IObject
     {
         public Player(string name, uint x, uint y) : base (x, y)
         {

@@ -31,7 +31,7 @@ namespace Task4
             Console.ReadKey();
         }
 
-        static void Status(Obj obj)
+        static void Status(GameObject obj)
         {
             Console.WriteLine($"Name: {obj.Name}\tPosition: ({obj.X},{obj.Y})");
         }

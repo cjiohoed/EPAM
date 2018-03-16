@@ -47,7 +47,7 @@
     <Compile Include="Interfaces\IMoveable.cs" />
     <Compile Include="Interfaces\IObject.cs" />
     <Compile Include="Objects\Monster.cs" />
-    <Compile Include="Objects\Obj.cs" />
+    <Compile Include="Objects\GameObject.cs" />
     <Compile Include="Objects\Obstruction.cs" />
     <Compile Include="Objects\Player.cs" />
     <Compile Include="Program.cs" />

@@ -1,6 +1,6 @@
 ﻿namespace Task4
 {
-    public abstract class Obj : IObject
+    public abstract class GameObject : IObject
     {
         protected string _name = string.Empty;
         protected uint _x;
@@ -23,7 +23,7 @@
             }
         }
 
-        protected Obj(uint x, uint y)
+        protected GameObject(uint x, uint y)
         {
             _x = x;
             _y = y;
