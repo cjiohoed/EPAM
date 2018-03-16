@@ -17,7 +17,7 @@ namespace Task3
             IIndexable progr = new ArithmeticalProgression(2, 2);
             Console.WriteLine(progr[2]);
 
-            IIndexable list = new List(new double[] { 3, 7, 12, 6, 2, 104, 72, 1 });
+            IIndexable list = new List(new double[] { 3, 7, 12});
             Console.WriteLine(list[5]);
 
             Console.ReadKey();

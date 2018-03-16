@@ -3,28 +3,36 @@
     public class List : ISeries, IIndexable
     {
         private double[] _series;
-        private int currentIndex;
+        private int _currentIndex;
 
         public List(double[] series)
         {
             _series = series;
-            currentIndex = 0;
+            _currentIndex = 0;
         }
 
         public double GetCurrent()
         {
-            return _series[currentIndex];
+            return _series[_currentIndex];
         }
 
         public bool MoveNext()
         {
-            currentIndex = currentIndex < _series.Length - 1 ? currentIndex + 1 : 0;
-            return true;
+            //_currentIndex = _currentIndex < _series.Length - 1 ? _currentIndex + 1 : 0;
+            //return true;
+            if (_currentIndex >= _series.Length)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
         }
 
         public void Reset()
         {
-            currentIndex = 0;
+            _currentIndex = 0;
         }
 
         public double this[int index]

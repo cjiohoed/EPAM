@@ -1,9 +1,8 @@
 ﻿namespace Task4
 {
-    public class Obstruction
+    public class Obstruction : IObject
     {
-        string _name = string.Empty;
-        uint _x = 0;
+.        uint _x = 0;
         uint _y = 0;
 
         public string Name { get; set; }

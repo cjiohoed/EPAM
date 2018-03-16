@@ -43,11 +43,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Direction.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Interfaces\IEateable.cs" />
     <Compile Include="Interfaces\IMoveable.cs" />
     <Compile Include="Interfaces\IObject.cs" />
     <Compile Include="Objects\Monster.cs" />
-    <Compile Include="Objects\Obj.cs" />
+    <Compile Include="Objects\GameItem.cs" />
     <Compile Include="Objects\Obstruction.cs" />
     <Compile Include="Objects\Player.cs" />
     <Compile Include="Program.cs" />
