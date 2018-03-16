@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{7B48484B-BBC4-4656-9DD4-54A7A568E72B}</ProjectGuid>
+    <ProjectGuid>{127E18D8-358C-4DFF-8534-26BEFC370350}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <RootNamespace>Task1</RootNamespace>
     <AssemblyName>Task1</AssemblyName>
@@ -42,10 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ConsoleApp.cs" />
-    <Compile Include="Figures\Figure.cs" />
-    <Compile Include="Types.cs" />
+    <Compile Include="ConsoleCanvas.cs" />
     <Compile Include="Interfaces\ICanvas.cs" />
+    <Compile Include="Interfaces\IFigure.cs" />
     <Compile Include="Figures\Line.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

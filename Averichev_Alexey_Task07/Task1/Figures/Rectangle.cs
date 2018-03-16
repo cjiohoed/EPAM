@@ -2,40 +2,42 @@
 
 namespace Task1
 {
-    public class Rectangle : Figure, ICanvas
+    public class Rectangle : IFigure
     {
-        public override Types Type
-        {
-            get
-            {
-                return Types.Rectangle;
-            }
-        }
 
         protected double _x;
         protected double _y;
         protected double _width = 0;
         protected double _height = 0;
+        public string Name => "Rectangle";
 
-        public override double X
+        //public string Name
+        //{
+        //	get
+        //	{
+        //		return "Rectangle";
+        //	}
+        //}
+
+        public double X
         {
             get
             {
                 return _x;
             }
-            protected set
+            set
             {
                 _x = value;
             }
         }
 
-        public override double Y
+        public double Y
         {
             get
             {
                 return _y;
             }
-            protected set
+            set
             {
                 _y = value;
             }
@@ -89,15 +91,17 @@ namespace Task1
             Height = height;
         }
 
-        public override double Area()
+        public double Area()
         {
             return _width * _height;
         }
 
-        public override void Draw()
+        public void Draw(ICanvas canvas)
         {
-            ConsoleApp.DrawRectangle(X, Y, Width, Height);
+            canvas.DrawLine(X, Y, X + Width, Y);
+            canvas.DrawLine(X + Width, Y, X + Width, Y + Height);
+            canvas.DrawLine(X + Width, Y + Height, X, Y + Height);
+            canvas.DrawLine(X, Y + Height, X, Y);
         }
-
     }
 }

@@ -2,19 +2,13 @@
 
 namespace Task1
 {
-    public class Round : Figure, ICanvas
+    class Round : IFigure
     {
-        public override Types Type
-        {
-            get
-            {
-                return Types.Round;
-            }
-        }
 
         protected double _x;
         protected double _y;
         protected double _radius;
+        public string Name => "Round";
 
         public Round(double x, double y, double radius)
         {
@@ -24,25 +18,25 @@ namespace Task1
 
         }
 
-        public override double X
+        public double X
         {
             get
             {
                 return _x;
             }
-            protected set
+            set
             {
                 _x = value;
             }
         }
 
-        public override double Y
+        public double Y
         {
             get
             {
                 return _y;
             }
-            protected set
+            set
             {
                 _y = value;
             }
@@ -67,15 +61,14 @@ namespace Task1
             }
         }
 
-        public override double Area()
+        public double Area()
         {
             return Math.PI * _radius * _radius;
         }
 
-        public override void Draw()
+        public void Draw(ICanvas canvas)
         {
-            ConsoleApp.DrawRound(X, Y, Radius);
+            canvas.DrawRound(X, Y, Radius);
         }
-
     }
 }

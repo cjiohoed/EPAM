@@ -2,15 +2,8 @@
 
 namespace Task1
 {
-    public class Ring : Round, ICanvas
+    class Ring : Round
     {
-        public override Types Type
-        {
-            get
-            {
-                return Types.Ring;
-            }
-        }
 
         private double _innerRadius;
 
@@ -19,7 +12,9 @@ namespace Task1
             InnerRadius = innerRadius;
         }
 
-        public override double X
+        public string Name => "Ring";
+
+        public double X
         {
             get
             {
@@ -31,7 +26,7 @@ namespace Task1
             }
         }
 
-        public override double Y
+        public double Y
         {
             get
             {
@@ -62,15 +57,15 @@ namespace Task1
             }
         }
 
-        public override double Area()
+        public double Area()
         {
             return base.Area() - Math.PI * _innerRadius * _innerRadius;
         }
 
-        public override void Draw()
+        public void Draw(ICanvas canvas)
         {
-            ConsoleApp.DrawRing(X, Y, InnerRadius, Radius);
+            canvas.DrawRound(X, Y, InnerRadius);
+            canvas.DrawRound(X, Y, Radius);
         }
-
     }
 }
