@@ -1,32 +1,35 @@
 ﻿namespace Task4
 {
-    public abstract class GameObject : IObject
+    public class GameObject : IGameObject, IMoveable
     {
-        protected string _name = string.Empty;
-        protected uint _x;
-        protected uint _y;
+        public ObjectType Type { get; protected set; }
+        public string Name { get; protected set; }
+        public int X { get; protected set; }
+        public int Y { get; protected set; }
 
-        public string Name { get; set; }
-
-        public uint X
+        public void MoveTo(Direction direction)
         {
-            get
+            switch (direction)
             {
-                return _x;
+                case Direction.Up:
+                    Y--;
+                    break;
+                case Direction.Right:
+                    X++;
+                    break;
+                case Direction.Down:
+                    Y++;
+                    break;
+                case Direction.Left:
+                    X--;
+                    break;
             }
         }
-        public uint Y
-        {
-            get
-            {
-                return _y;
-            }
-        }
 
-        protected GameObject(uint x, uint y)
+        public virtual void Draw(IGameField gameField)
+        //public virtual void Draw(GameObject gameField)
         {
-            _x = x;
-            _y = y;
+            
         }
     }
 }

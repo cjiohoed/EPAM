@@ -1,40 +1,19 @@
 ﻿namespace Task4
 {
-    public class Monster : GameObject, IMoveable, IObject
+    public class Monster : GameObject, IMoveable, IGameObject
     {
-        public Monster(string name, uint x, uint y) : base(x, y)
+        public Monster(string name, int x, int y)
         {
+            Type = ObjectType.Enemy;
             Name = name;
+            X = x;
+            Y = y;
         }
 
-        public void Start()
+        public override void Draw(IGameField gameField)
         {
-            Reset();
+            gameField.Draw(Name, X, Y);
         }
 
-        public void Reset()
-        {
-            _x = 0;
-            _y = 0;
-        }
-
-        public void Move(Direction to)
-        {
-            switch (to)
-            {
-                case Direction.Up:
-                    _y--;
-                    break;
-                case Direction.Right:
-                    _x++;
-                    break;
-                case Direction.Down:
-                    _y++;
-                    break;
-                case Direction.Left:
-                    _x--;
-                    break;
-            }
-        }
     }
 }
