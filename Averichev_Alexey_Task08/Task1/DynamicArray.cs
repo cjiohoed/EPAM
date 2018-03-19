@@ -1,41 +1,20 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task1
 {
     public class DynamicArray<T>
     {
-        T[] arr;
+        private T[] arr;
 
-        // Свойство Length – получение длины заполненной части массива.
-        public int Length
-        {
-            get
-            {
-                return arr.Length;
-            }
-        }
+        public int Length { get; private set; }
 
-        // Свойство Capacity – получение реальной ёмкости массива.
-        public int Capacity
-        {
-            get
-            {
-                return arr.Length;
-            }
-        }
+        public int Capacity { get; private set; }
 
-        // Индексатор, позволяющий работать с элементом с указанным номером.
-        // При выходе за границу массива должно генерироваться
-        // исключение ArgumentOutOfRangeException. 
         public T this[int index]
         {
             get
             {
-                if(index >= 0 & index < arr.Length)
+                if (index >= 0 & index < Length)
                 {
                     return arr[index];
                 }
@@ -46,58 +25,112 @@ namespace Task1
             }
         }
 
-        // * Конструктор без параметров (создается массив емкостью 8 элементов).
         public DynamicArray()
         {
             arr = new T[8];
+            Length = 0;
+            Capacity = 8;
         }
 
-        // * Конструктор с 1 целочисленным параметром (создается массив заданной емкости). 
         public DynamicArray(int capacity)
         {
             arr = new T[capacity];
+            Length = 0;
+            Capacity = capacity;
         }
 
-        // Конструктор, который в качестве параметра принимает массив.
         public DynamicArray(T[] arr)
         {
-
+            this.arr = arr;
+            Length = arr.Length;
+            Capacity = arr.Length;
         }
 
-        // Метод Add, добавляющий в конец массива один элемент.
-        // При нехватке места для добавления элемента
-        // емкость массива должна расширяться в 2 раза.
-        public void Add()
+        public void Add(T item)
         {
 
+            if (Length + 1 >= Capacity)
+            {
+                T[] tempArr;
+                Capacity *= 2;
+                tempArr = new T[Capacity];
+                //Array.Copy(arr, tempArr, 0);
+                arr.CopyTo(tempArr, 0);
+                tempArr[Length] = item;
+                arr = tempArr;
+            }
+            else
+            {
+                arr[Length] = item;
+            }
+
+            Length++;
+
         }
 
-        // Метод AddRange, добавляющий в конец массива содержимое переданного массива.
-        // Обратите внимание, метод должен корректно учитывать число элементов в коллекции с тем,
-        // чтобы при необходимости расширения массива делать это только один раз
-        //вне зависимости от числа элементов в добавляемой коллекции.
-        public void AddRange()
+        public void AddRange(T[] arr)
         {
+            if (Length + arr.Length > Capacity)
+            {
+                T[] tempArr;
+                do
+                {
+                    Capacity *= 2;
+                }
+                while (Length + arr.Length >= Capacity);
 
+                tempArr = new T[Capacity];
+                //Array.Copy(this.arr, tempArr, 0);
+                this.arr.CopyTo(tempArr, 0);
+                //Array.Copy(arr, tempArr, Length);
+                arr.CopyTo(tempArr, Length);
+                Length += arr.Length;
+                this.arr = tempArr;
+            }
+            else
+            {
+                Array.Copy(arr, this.arr, arr.Length);
+                Length += arr.Length;
+            }
         }
 
-        // Метод Remove, удаляющий из коллекции указанный элемент.
-        // Метод должен возвращать true, если удаление прошло успешно и false в противном случае.
-        //При удалении элементов реальная емкость массива не должна уменьшаться.
-        public bool Remove()
+        public bool Remove(int index)
         {
-            return false;
+            if (index >= 0 & index < arr.Length)
+            {
+                T[] tempArr;
+                tempArr = new T[Capacity];
+                Array.Copy(arr, 0, tempArr, 0, index);
+                Array.Copy(arr, index + 1, tempArr, index, arr.Length - index - 1);
+                arr = tempArr;
+                Length--;
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
-        // Метод Insert, позволяющий добавить элемент в произвольную позицию массива
-        // (обратите внимание, может потребоваться расширить массив).
-        // При выходе за границу массива должно генерироваться
-        // исключение ArgumentOutOfRangeException.
-        public void Insert()
+        public void Insert(T item, int index)
         {
-
+            if (index < 0 && index > Length)
+            {
+                throw new ArgumentOutOfRangeException();
+            }
+            else
+            {
+                arr[index] = item;
+            }
         }
 
-
+        public void Show()
+        {
+            for (int i = 0; i < Length; i++)
+            {
+                Console.Write($"{arr[i]} ");
+            }
+            Console.WriteLine("\n");
+        }
     }
 }
