@@ -2,13 +2,19 @@
 
 namespace Task1
 {
-    public class DynamicArray<T>
+    public class DynamicArray<T> where T: IComparable<T>
     {
         private T[] arr;
 
         public int Length { get; private set; }
 
-        public int Capacity { get; private set; }
+        public int Capacity
+        {
+            get
+            {
+                return arr.Length;
+            }
+        }
 
         public T this[int index]
         {
@@ -29,21 +35,18 @@ namespace Task1
         {
             arr = new T[8];
             Length = 0;
-            Capacity = 8;
         }
 
         public DynamicArray(int capacity)
         {
             arr = new T[capacity];
             Length = 0;
-            Capacity = capacity;
         }
 
         public DynamicArray(T[] arr)
         {
             this.arr = arr;
             Length = arr.Length;
-            Capacity = arr.Length;
         }
 
         public void Add(T item)
@@ -51,13 +54,8 @@ namespace Task1
 
             if (Length + 1 >= Capacity)
             {
-                T[] tempArr;
-                Capacity *= 2;
-                tempArr = new T[Capacity];
-                //Array.Copy(arr, tempArr, 0);
-                arr.CopyTo(tempArr, 0);
-                tempArr[Length] = item;
-                arr = tempArr;
+                ChangeCapacity(Capacity * 2);
+                arr[Length] = item;
             }
             else
             {
@@ -72,20 +70,14 @@ namespace Task1
         {
             if (Length + arr.Length > Capacity)
             {
-                T[] tempArr;
                 do
                 {
-                    Capacity *= 2;
+                    ChangeCapacity(Capacity * 2);
                 }
                 while (Length + arr.Length >= Capacity);
 
-                tempArr = new T[Capacity];
-                //Array.Copy(this.arr, tempArr, 0);
-                this.arr.CopyTo(tempArr, 0);
-                //Array.Copy(arr, tempArr, Length);
-                arr.CopyTo(tempArr, Length);
+                arr.CopyTo(this.arr, Length);
                 Length += arr.Length;
-                this.arr = tempArr;
             }
             else
             {
@@ -94,21 +86,27 @@ namespace Task1
             }
         }
 
-        public bool Remove(int index)
+        public void RemoveAt(int index)
         {
-            if (index >= 0 & index < arr.Length)
+            T[] tempArr;
+            tempArr = new T[Capacity];
+            Array.Copy(arr, 0, tempArr, 0, index);
+            Array.Copy(arr, index + 1, tempArr, index, arr.Length - index - 1);
+            arr = tempArr;
+            Length--;
+        }
+
+        public bool Remove(T item)
+        {
+            int index = Array.IndexOf(arr, item);
+            if (index == -1)
             {
-                T[] tempArr;
-                tempArr = new T[Capacity];
-                Array.Copy(arr, 0, tempArr, 0, index);
-                Array.Copy(arr, index + 1, tempArr, index, arr.Length - index - 1);
-                arr = tempArr;
-                Length--;
-                return true;
+                return false;
             }
             else
             {
-                return false;
+                RemoveAt(index);
+                return true;
             }
         }
 
@@ -121,6 +119,32 @@ namespace Task1
             else
             {
                 arr[index] = item;
+            }
+        }
+
+        private void ChangeCapacity(int newCapacity)
+        {
+            T[] tempArr;
+            tempArr = new T[newCapacity];
+            arr.CopyTo(tempArr, 0);
+            arr = tempArr;
+        }
+
+        public void Sort()
+        {
+            T temp;
+            for (int i = 0; i < Length; i++)
+            {
+                for (int j = i + 1; j < Length; j++)
+                {
+                    if // (arr[i] >arr[j])
+                    (arr[i].CompareTo(arr[j]) > 0)
+                    {
+                        temp = arr[i];
+                        arr[i] = arr[j];
+                        arr[j] = temp;
+                    }
+                }
             }
         }
 

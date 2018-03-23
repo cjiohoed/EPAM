@@ -12,12 +12,17 @@ namespace Task1
             var c = 1;
 
             a.AddRange(d);
-            a.Remove(c);
+            // a.RemoveAt(c);
             a.Add(123);
             a.Show();
             Console.WriteLine($"Length: {a.Length}");
             Console.WriteLine($"Capacity: {a.Capacity}");
             Console.WriteLine($"Element 1: {a[c]}");
+
+            foreach(var item in a)
+            {
+                Console.WriteLine(item);
+            }
 
             Console.ReadKey();
         }
