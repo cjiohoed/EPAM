@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections;
 
 namespace Task1
 {
-    public class DynamicArray<T> where T: IComparable<T>
+    public class DynamicArray<T> where T : IComparable<T>
     {
         private T[] arr;
 
@@ -137,8 +138,7 @@ namespace Task1
             {
                 for (int j = i + 1; j < Length; j++)
                 {
-                    if // (arr[i] >arr[j])
-                    (arr[i].CompareTo(arr[j]) > 0)
+                    if (arr[i].CompareTo(arr[j]) > 0)
                     {
                         temp = arr[i];
                         arr[i] = arr[j];
