@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 
 namespace Task1
 {
@@ -11,8 +12,8 @@ namespace Task1
             var a = new DynamicArray<int>();
             var c = 1;
 
-            a.AddRange(d);
-            a.Remove(c);
+            a.AddRange(b);
+            a.RemoveAt(c);
             a.Add(123);
             a.Show();
             Console.WriteLine($"Length: {a.Length}");
@@ -21,8 +22,5 @@ namespace Task1
 
             Console.ReadKey();
         }
-
     }
-
-    
 }
