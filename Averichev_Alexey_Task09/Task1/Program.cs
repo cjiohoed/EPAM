@@ -11,25 +11,68 @@ namespace Task1
     {
         static void Main()
         {
+            var numbers = CreateNumbers(100);
 
-            //var names = new[] { "Вова", "Вася", "Маша", "Сережа", "Жора", "Света", "Марина" };
-            var names = CreateNames(100);
-            var list1 = new List<string>(names);
-            var list2 = new LinkedList<string>(names);
+            var list = new List<int>(numbers);
+            RemoveEachSecondItem(list);
+            Display(list);
 
+            var linkedList = new LinkedList<int>(numbers);
+            RemoveEachSecondItem(linkedList);
+            Display(linkedList);
+
+            Console.ReadKey();
 
         }
 
-        static string[] CreateNames(int count)
+        public static int[] CreateNumbers(int count)
         {
-            var arr = new string[count];
+            var arr = new int[count];
+
             for (int i = 0; i < count; i++)
             {
-                arr[i] = (i + 1).ToString();
+                arr[i] = i + 1;
             }
             return arr;
         }
 
+        public static void Display<T>(ICollection<T> list)
+        {
+            foreach (T item in list)
+            {
+                Console.Write($"{item} ");
+            }
+            Console.WriteLine("\n");
+        }
+
+        static public void RemoveEachSecondItem<T>(ICollection<T> list)
+        {
+            var temp = new List<T>();
+            var flag = false;
+
+            while (list.Count > 1)
+            {
+                foreach (T item in list)
+                {
+                    if (flag)
+                    {
+                        temp.Add(item);
+                        flag = false;
+                    }
+                    else
+                    {
+                        flag = true;
+                    }
+                }
+
+                foreach (T item in temp)
+                {
+                    list.Remove(item);
+                }
+
+                temp.Clear();
+            }
+        }
     }
 
 
