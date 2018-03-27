@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Task1
 {
@@ -45,7 +42,7 @@ namespace Task1
             Console.WriteLine("\n");
         }
 
-        static public void RemoveEachSecondItem<T>(ICollection<T> list)
+        public static void RemoveEachSecondItem<T>(ICollection<T> list)
         {
             var temp = new List<T>();
             var flag = false;
