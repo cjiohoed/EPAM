@@ -17,7 +17,9 @@ namespace Task3
 
             var dict = new WordsCounter(text);
 
-            foreach (var item in dict.Dictionary)
+            var col = dict.GetWords();
+
+            foreach (var item in col)
             {
                 Console.WriteLine(item);
             }

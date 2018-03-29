@@ -5,53 +5,43 @@ namespace Task3
 {
     public class WordsCounter
     {
-        public string Text { get; }
-        public Dictionary<string, int> Dictionary
-        {
-            get
-            {
-                CreateDictionary(words);
-                CountWords(words);
-                return dict;
-            }
-        }
+        public string Text { get; } 
 
-        private Dictionary<string, int> dict = new Dictionary<string, int>();
-        private string[] words;
+        private Dictionary<string, int> dict;
 
         public WordsCounter(string text)
         {
             Text = text;
-            words = SplitWords(Text);
         }
 
-        public string[] SplitWords(string text)
+        public Dictionary<string, int> GetWords()
+        {
+            var words = SplitWords(Text);
+            return CreateDictionary(words);
+        }
+
+        private string[] SplitWords(string text)
         {
             const string pattern = @"\W+";
             return Regex.Split(text, pattern, RegexOptions.IgnoreCase);
         }
 
-        private void CountWords(string[] words)
+        private Dictionary<string, int> CreateDictionary(string[] words)
         {
+            Dictionary<string, int> dict = new Dictionary<string, int>();
             for (var i = 0; i < words.Length; i++)
             {
                 if (dict.ContainsKey(words[i]))
                 {
                     dict[words[i]]++;
                 }
-            }
-        }
-
-        private void CreateDictionary(string[] words)
-        {
-            for (var i = 0; i < words.Length; i++)
-            {
-                if (dict.ContainsKey(words[i]))
+                else
                 {
-                    continue;
+                    dict.Add(words[i], 1);
                 }
-                dict.Add(words[i], 0);
             }
+
+            return dict;
         }
     }
 }

@@ -54,12 +54,8 @@ namespace Task1
                     if (flag)
                     {
                         temp.Add(item);
-                        flag = false;
                     }
-                    else
-                    {
-                        flag = true;
-                    }
+                    flag = !flag;
                 }
 
                 foreach (T item in temp)

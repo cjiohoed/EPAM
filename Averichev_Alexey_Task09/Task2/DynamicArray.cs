@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Task2
 {
@@ -53,30 +54,8 @@ namespace Task2
 
         public DynamicArray(IEnumerable<T> collection)
         {
-            int count = 0;
-            foreach (var item in collection)
-            {
-                count++;
-            }
-
-            if (Length + count > Capacity)
-            {
-                do
-                {
-                    ChangeCapacity(Capacity * 2);
-                }
-                while (Length + count >= Capacity);
-            }
-
-            int i = 0;
-            foreach (var item in collection)
-            {
-                arr[Length + i] = item;
-                i++;
-            }
-
-            Length += count;
-
+            arr = collection.ToArray();
+            Length = arr.Length;
         }
 
         public void Add(T item)
@@ -200,12 +179,7 @@ namespace Task2
 
         IEnumerator IEnumerable.GetEnumerator()
         {
-            //return ((IEnumerable<T>)arr).GetEnumerator();
-
-            for (var i = 0; i < Length; i++)
-            {
-                yield return arr[i];
-            }
+            return this.GetEnumerator();
         }
 
     }
