@@ -8,40 +8,63 @@ namespace Task2
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
+
+            var alex = new Person("Алекс");
+            var john = new Person("Джон");
+            var bill = new Person("Билл");
+
+            alex.Came += PersonCame;
+            john.Came += PersonCame;
+            bill.Came += PersonCame;
+
+            alex.Leave += PersonLeft;
+            john.Leave += PersonLeft;
+            bill.Leave += PersonLeft;
+
+            alex.OnCame();
+            bill.OnCame();
+            bill.OnLeave();
+            john.OnCame();
+            alex.OnLeave();
+
+            Console.ReadKey();
+
         }
-    }
 
-    public class Person
-    {
-        public string Name { get; }
+        public delegate void HelloMsg(Person person, DateTime time);
+        public static HelloMsg greetByUs;
+        public delegate void ByeMsg(Person person);
+        public static ByeMsg goodbyeByUs;
 
-        public Person(string name)
+        static void PersonCame(object sender, EventArgs e)
         {
-            Name = name;
-        }
+            var person = sender as Person;
 
-        public void Hello(Person person, DateTime time)
-        {
-            string message;
-            if (time.Hour < 12)
+            if (person != null && !person.IsCame)
             {
-                message = "Доброе утро";
-            }
-            if (time.Hour >= 12 & time.Hour < 17)
-            {
-                message = "Добрый день";
-            }
-            if (time.Hour >= 17)
-            {
-                message = "Добрый вечер";
+                Console.WriteLine($"[ {person.Name} пришел на работу ]");
+                person.IsCame = true;
+                greetByUs?.Invoke(person, DateTime.Now);
+                greetByUs += person.Hello;
+                goodbyeByUs += person.Bye;
             }
         }
 
-        public void Bye(Person person)
+        static void PersonLeft(object sender, EventArgs e)
         {
+            var person = sender as Person;
 
+            if (person != null && person.IsCame)
+            {
+                greetByUs -= person.Hello;
+                goodbyeByUs -= person.Bye;
+                Console.WriteLine($"[ {person.Name} ушел домой ]");
+                person.IsCame = false;
+                goodbyeByUs?.Invoke(person);
+            }
         }
+
     }
 }
