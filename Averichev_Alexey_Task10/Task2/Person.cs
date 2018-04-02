@@ -2,14 +2,16 @@
 
 namespace Task2
 {
+    public delegate void PersonCame(Person sender, DateTime dateTime);
+    public delegate void PersonLeave(Person sender);
     public class Person
     {
         public string Name { get; set; }
         public bool IsCame { get; set; } = false;
         private int time;
 
-        public event EventHandler Came;
-        public event EventHandler Leave;
+        public event PersonCame Came;
+        public event PersonLeave Leave;
 
         public Person(string name)
         {
@@ -48,12 +50,12 @@ namespace Task2
 
         public void OnCame()
         {
-            Came?.Invoke(this, EventArgs.Empty);
+            Came?.Invoke(this, DateTime.Now);
         }
 
         public void OnLeave()
         {
-            Leave?.Invoke(this, EventArgs.Empty);
+            Leave?.Invoke(this);
         }
     }
 }

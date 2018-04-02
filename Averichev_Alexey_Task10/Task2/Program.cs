@@ -24,10 +24,11 @@ namespace Task2
             bill.Leave += PersonLeft;
 
             alex.OnCame();
-            bill.OnCame();
-            bill.OnLeave();
             john.OnCame();
+            bill.OnCame();
             alex.OnLeave();
+            john.OnLeave();
+            bill.OnLeave();
 
             Console.ReadKey();
 
@@ -38,30 +39,24 @@ namespace Task2
         public delegate void ByeMsg(Person person);
         public static ByeMsg goodbyeByUs;
 
-        static void PersonCame(object sender, EventArgs e)
-        {
-            var person = sender as Person;
-
-            if (person != null && !person.IsCame)
+        static void PersonCame(Person person, DateTime e)
+        {                                       
+            if (person != null)
             {
                 Console.WriteLine($"[ {person.Name} пришел на работу ]");
-                person.IsCame = true;
-                greetByUs?.Invoke(person, DateTime.Now);
+                greetByUs?.Invoke(person, e);
                 greetByUs += person.Hello;
                 goodbyeByUs += person.Bye;
             }
         }
 
-        static void PersonLeft(object sender, EventArgs e)
-        {
-            var person = sender as Person;
-
-            if (person != null && person.IsCame)
+        static void PersonLeft(Person person)
+        {                                      
+            if (person != null)
             {
                 greetByUs -= person.Hello;
                 goodbyeByUs -= person.Bye;
                 Console.WriteLine($"[ {person.Name} ушел домой ]");
-                person.IsCame = false;
                 goodbyeByUs?.Invoke(person);
             }
         }
