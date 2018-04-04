@@ -10,7 +10,7 @@ namespace Task2
         Male
     }
 
-    public class User
+    public class User : IEquatable<User>
     {
         protected string firstName = "N/A";
         protected string lastName = "N/A";
@@ -115,6 +115,11 @@ namespace Task2
                 return true;
             }
             return false;
+        }
+
+        public bool Equals(User other)
+        {
+            throw new NotImplementedException();
         }
     }
 }

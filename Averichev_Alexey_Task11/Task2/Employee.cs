@@ -56,11 +56,7 @@ namespace Task2
 
         public bool Equals(Employee other)
         {
-            return (other.FirstName == FirstName) &&
-                (other.LastName == LastName) &&
-                (other.Patronymic == Patronymic) &&
-                (other.Gender == Gender) &&
-                (other.dateBirthDay == dateBirthDay) &&
+            return base.Equals(other) &&
                 (other.Experience == Experience) &&
                 (other.Position == Position);
         }
