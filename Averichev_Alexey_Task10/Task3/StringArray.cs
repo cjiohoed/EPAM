@@ -46,14 +46,17 @@ namespace Task3
                 }
             }
 
-            sortDone?.Invoke();
+            
 
         }
 
         public void SortInThread()
         {
 
-            ThreadStart sort = () => StringSort();
+            ThreadStart sort = () => {
+                StringSort();
+                sortDone?.Invoke();
+            };
 
             Thread thread = new Thread(sort);
             thread.Start();
