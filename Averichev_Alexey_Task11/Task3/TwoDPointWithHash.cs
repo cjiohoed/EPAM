@@ -31,8 +31,10 @@ namespace Task3
 
         public override int GetHashCode()
         {
+            // 6% / 10000 points
             //return unchecked(X.GetHashCode() ^ Y.GetHashCode());
 
+            // 98.53% / 10000 points
             unchecked
             {
                 int hashCode = 0;

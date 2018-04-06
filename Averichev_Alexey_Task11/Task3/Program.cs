@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System;
@@ -10,19 +9,16 @@ namespace Task3
     {
         static void Main(string[] args)
         {
-            var a = new TwoDPointWithHash(1, 1);
-            var b = new TwoDPointWithHash(10, 10);
+            Console.WriteLine("hashCode UNiqueness Test\n");
 
-            var c = new TwoDPointWithHash(1, 10);
-            var d = new TwoDPointWithHash(10, 1);
+            var test = new HashTest(300);
+            Console.WriteLine($"Uniqueness:\t{test.Uniqueness :.#}%");
+            Console.WriteLine($"Objects:\t{test.NumberOfObjects}");
+            Console.WriteLine($"Timer:\t\t{test.ElapsedTime}");
 
-            Console.WriteLine(a.GetHashCode());
-            Console.WriteLine(b.GetHashCode());
-
-            Console.WriteLine($"{c} =equals= {d}\t{c.Equals(d).ToString()}");
-            Console.WriteLine($"{c} =hash= {d}\t{(c.GetHashCode() == d.GetHashCode()).ToString()}");
-
+            Console.Write("\nPress any key...");
             Console.ReadKey();
         }
+
     }
 }
