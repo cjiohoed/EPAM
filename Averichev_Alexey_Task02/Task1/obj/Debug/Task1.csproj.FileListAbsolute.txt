@@ -1,7 +1,0 @@
-D:\C#\repos\Averichev_Alexey_Task02\Task1\bin\Debug\Task1.exe.config
-D:\C#\repos\Averichev_Alexey_Task02\Task1\bin\Debug\Task1.exe
-D:\C#\repos\Averichev_Alexey_Task02\Task1\bin\Debug\Task1.pdb
-D:\C#\repos\Averichev_Alexey_Task02\Task1\obj\Debug\Task1.csproj.CoreCompileInputs.cache
-D:\C#\repos\Averichev_Alexey_Task02\Task1\obj\Debug\Task1.exe
-D:\C#\repos\Averichev_Alexey_Task02\Task1\obj\Debug\Task1.pdb
-D:\C#\repos\Averichev_Alexey_Task02\Task1\obj\Debug\Task1.csprojResolveAssemblyReference.cache
