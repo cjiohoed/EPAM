@@ -13,17 +13,67 @@ namespace Task2
         static void Main(string[] args)
         {
             var dir = @"D:\C#\Tasks\Task12\dir";
-            var fileName = "disposable_task_file.txt";
+            //var dir = Directory.GetCurrentDirectory();
 
-            var prog = new Observer(dir, fileName);
 
+            var prog = new Observer(dir, SelectMode());
+            //prog.Start();
+            Console.WriteLine(prog.bkpDir);
+
+
+            Console.ReadKey();
+
+        }
+
+        public static Observer.Mode SelectMode()
+        {
+            var num = default(int);
+            Console.WriteLine("Выберите режим работы программы:\n(1) Наблюдение\n(2) Откат изменений");
+            do
+            {
+                int.TryParse(Console.ReadLine(), out num);
+                switch (num)
+                {
+                    case 1:
+                        return Observer.Mode.Watch;
+                    case 2:
+                        return Observer.Mode.Recovery;
+                    default:
+                        Console.Write("Введите еще раз: ");
+                        break;
+                }
+            }
+            while (true);
         }
     }
 
     public class Observer
     {
+        private Mode mode;
+
+        public enum Mode { Watch = 1, Recovery}
+
         private DirectoryInfo dir;
-        private FileInfo file;
+
+        public DirectoryInfo bkpDir;
+
+        public DirectoryInfo BackupDir
+        {
+            get
+            {
+                return bkpDir;
+            }
+
+            set
+            {
+                if (!value.Exists)
+                {
+                    value.Create();
+                }
+
+                bkpDir = value;
+            }
+        }
 
         public DirectoryInfo Directory
         {
@@ -43,42 +93,53 @@ namespace Task2
             }
         }
 
-        public FileInfo FileName
-        {
-            get
-            {
-                return file;
-            }
-
-            set
-            {
-                if (!value.Exists)
-                {
-                    throw new Exception("File not exists");
-                }
-
-                file = value;
-            }
-        }
-
-
-        static ThreadStart Observe = () =>
+        static ThreadStart Watch = () =>
         {
             //наблюдение
+            Console.Write("Наблюдение!");
+            //Console.ReadKey();
         };
 
-        Thread thread = new Thread(Observe);
+        static ThreadStart Recovery = () =>
+        {
+            //восстановление
+            Console.Write("Восстановление!");
+            //Console.ReadKey();
+        };
 
-        public Observer(string dir, string name)
+        Thread thread;
+
+        public Observer(string dir, Mode mode)
         {
             Directory = new DirectoryInfo(dir);
-            var path = Path.Combine(Directory.FullName, name);
-            FileName = new FileInfo(path);
+            bkpDir = new DirectoryInfo(dir + "\\bkp");
+            SetMode(mode);
+        }
+
+        public void SetMode(Mode mode)
+        {
+            this.mode = mode;
+            switch (mode)
+            {
+                case Mode.Watch:
+                    thread = new Thread(Watch);
+                    break;
+
+                case Mode.Recovery:
+                    thread = new Thread(Recovery);
+                    break;
+            }
         }
 
         public void Start()
         {
             thread.Start();
         }
+
+        public void Stop()
+        {
+
+        }
+
     }
 }
