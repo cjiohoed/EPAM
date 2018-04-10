@@ -12,20 +12,21 @@ namespace Task2
     {
         static void Main(string[] args)
         {
-            var dir = @"D:\C#\Tasks\Task12\dir";
-            //var dir = Directory.GetCurrentDirectory();
+            //var dir = @"D:\C#\Tasks\Task12\watcher\dir";
+            var dir = Directory.GetCurrentDirectory();
 
+            var prog = new DataKeeper(dir, DataKeeper.Mode.Watch);
+            //var prog = new Observer(dir, SelectMode());
+            prog.Start();
 
-            var prog = new Observer(dir, SelectMode());
-            //prog.Start();
-            Console.WriteLine(prog.bkpDir);
-
+            //Console.WriteLine(prog.Directory.FullName);
+            //Console.WriteLine(prog.BackupDir);
 
             Console.ReadKey();
 
         }
 
-        public static Observer.Mode SelectMode()
+        public static DataKeeper.Mode SelectMode()
         {
             var num = default(int);
             Console.WriteLine("Выберите режим работы программы:\n(1) Наблюдение\n(2) Откат изменений");
@@ -35,9 +36,9 @@ namespace Task2
                 switch (num)
                 {
                     case 1:
-                        return Observer.Mode.Watch;
+                        return DataKeeper.Mode.Watch;
                     case 2:
-                        return Observer.Mode.Recovery;
+                        return DataKeeper.Mode.Recovery;
                     default:
                         Console.Write("Введите еще раз: ");
                         break;
@@ -47,13 +48,16 @@ namespace Task2
         }
     }
 
-    public class Observer
+    public class DataKeeper
     {
         private Mode mode;
 
-        public enum Mode { Watch = 1, Recovery}
+        public delegate void Notification();
+        public event Notification Changed;
 
-        private DirectoryInfo dir;
+        public enum Mode { Watch = 1, Recovery = 2 }
+
+        private static DirectoryInfo dir;
 
         public DirectoryInfo bkpDir;
 
@@ -93,12 +97,7 @@ namespace Task2
             }
         }
 
-        static ThreadStart Watch = () =>
-        {
-            //наблюдение
-            Console.Write("Наблюдение!");
-            //Console.ReadKey();
-        };
+
 
         static ThreadStart Recovery = () =>
         {
@@ -109,10 +108,11 @@ namespace Task2
 
         Thread thread;
 
-        public Observer(string dir, Mode mode)
+        public DataKeeper(string dir, Mode mode)
         {
             Directory = new DirectoryInfo(dir);
-            bkpDir = new DirectoryInfo(dir + "\\bkp");
+            //BackupDir = new DirectoryInfo(Directory.Parent.ToString() + "\\bkp");
+            BackupDir = new DirectoryInfo(Path.Combine(Directory.Parent.FullName) + "\\.bkp");
             SetMode(mode);
         }
 
@@ -122,7 +122,7 @@ namespace Task2
             switch (mode)
             {
                 case Mode.Watch:
-                    thread = new Thread(Watch);
+                    Watcher();
                     break;
 
                 case Mode.Recovery:
@@ -139,6 +139,40 @@ namespace Task2
         public void Stop()
         {
 
+        }
+
+        public void Watcher()
+        {
+
+            ThreadStart watch = () =>
+            {
+                Console.WriteLine("Наблюдение!");
+
+                var watcher = new FileSystemWatcher
+                {
+                    Path = Directory.FullName.ToString(),
+                    NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+                               | NotifyFilters.FileName | NotifyFilters.DirectoryName,
+                    Filter = "*.txt",
+                    IncludeSubdirectories = true
+                };
+
+                watcher.Changed += new FileSystemEventHandler(OnChanged);
+
+                watcher.EnableRaisingEvents = true;
+
+                Console.WriteLine("Press \'q\' to quit.");
+                while (Console.Read() != 'q') ;
+            };
+
+            thread = new Thread(watch);
+
+            
+        }
+
+        public void OnChanged()
+        {
+            Console.WriteLine("Изменение!");
         }
 
     }

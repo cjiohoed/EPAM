@@ -74,7 +74,7 @@ namespace Task1
                 string fileContent;
                 int num;
 
-                for (var i = 0; i < count; i++)
+                for (var i = 0; i < file.Length; i++)
                 {
                     fileContent = sr.ReadLine();
 
@@ -102,10 +102,12 @@ namespace Task1
         private List<int> GetModifyData(List<int> source)
         {
             var list = new List<int>();
-            for (var i = 0; i < source.Count; i++)
+
+            foreach (var item in source)
             {
-                array[i] = func(array[i]);
+                list.Add(func(item));
             }
+
             return list;
         }
 
@@ -123,24 +125,6 @@ namespace Task1
             Thread thread = new Thread(ReplaceInThread);
 
             thread.Start();
-        }
-
-        public override string ToString()
-        {
-            if (array == null)
-            {
-                ReadFile();
-            }
-
-            var result = new StringBuilder();
-
-            for (var i = 0; i < count; i++)
-            {
-                result.Append(array[i]);
-                result.Append("\n");
-            }
-
-            return result.ToString();
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Security.Cryptography;
+using System.Collections.Generic;
 
 namespace Task3
 {
@@ -31,15 +33,13 @@ namespace Task3
 
         public override int GetHashCode()
         {
-            // 6% / 10000 points
-            //return unchecked(X.GetHashCode() ^ Y.GetHashCode());
-
             // 98.53% / 10000 points
             unchecked
             {
+                var num = 953;
                 int hashCode = 0;
-                hashCode = (hashCode * 397) ^ X.GetHashCode();
-                hashCode = (hashCode * 397) ^ Y.GetHashCode();
+                hashCode = (hashCode * num) ^ (int)X;
+                hashCode = (hashCode * num) ^ (int)Y;
                 return hashCode;
             }
         }

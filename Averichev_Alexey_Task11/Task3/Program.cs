@@ -11,7 +11,7 @@ namespace Task3
         {
             Console.WriteLine("hashCode UNiqueness Test\n");
 
-            var test = new HashTest(300);
+            var test = new HashTest(600);
             Console.WriteLine($"Uniqueness:\t{test.Uniqueness :.#}%");
             Console.WriteLine($"Objects:\t{test.NumberOfObjects}");
             Console.WriteLine($"Timer:\t\t{test.ElapsedTime}");
