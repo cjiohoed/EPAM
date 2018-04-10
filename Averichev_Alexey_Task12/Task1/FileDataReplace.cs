@@ -2,19 +2,17 @@
 using System.Text;
 using System.IO;
 using System.Threading;
+using System.Collections.Generic;
 
 namespace Task1
 {
     public class FileDataReplace
     {
         private DirectoryInfo dir;
-        private FileInfo file;
-
-        private int count;
-        private int[] array;
+        private FileInfo file;   
 
         public delegate int Func(int x);
-        private Func func;
+        public Func func;
 
         public delegate void Notification();
         public event Notification ReplaceDone;
@@ -66,10 +64,10 @@ namespace Task1
             func = modificator;
         }
 
-        private void ReadFile()
+        private List<int> GetNumbers()
         {
-            count = File.ReadAllLines(FileName.ToString()).Length;
-            array = new int[count];
+            var file = File.ReadAllLines(FileName.ToString());     
+            var list = new List<int>();
 
             using (StreamReader sr = FileName.OpenText())
             {
@@ -80,43 +78,44 @@ namespace Task1
                 {
                     fileContent = sr.ReadLine();
 
-                    if (!int.TryParse(fileContent, out num))
+                    if (int.TryParse(fileContent, out num))
                     {
-                        array[i] = 0;
-                        continue;
-                    }
-
-                    array[i] = num;
+                        list.Add(num);
+                    } 
                 }
             }
+
+            return list;
         }
 
-        private void WriteFile()
+        private void WriteFile(List<int> source)
         {
             using (StreamWriter sw = FileName.CreateText())
             {
-                for (var i = 0; i < count; i++)
+                for (var i = 0; i < source.Count; i++)
                 {
-                    sw.WriteLine(array[i]);
+                    sw.WriteLine(source[i]);
                 }
             }
         }
 
-        private void ModifyData()
+        private List<int> GetModifyData(List<int> source)
         {
-            for (var i = 0; i < count; i++)
+            var list = new List<int>();
+            for (var i = 0; i < source.Count; i++)
             {
                 array[i] = func(array[i]);
             }
+            return list;
         }
 
         public void Replace()
         {
             ThreadStart ReplaceInThread = () =>
             {
-                ReadFile();
-                ModifyData();
-                WriteFile();
+                var source = GetNumbers();
+                source = GetModifyData(source);
+                WriteFile(source);
 
                 ReplaceDone?.Invoke();
             };

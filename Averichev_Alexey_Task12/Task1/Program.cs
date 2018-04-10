@@ -11,7 +11,7 @@ namespace Task1
         {
             var dir = @"D:\C#\Tasks\Task12";
             var fileName = "disposable_task_file.txt";
-            int func(int x) => x * x;
+            //Func func = (x) => x * x;
 
             var test = new FileDataReplace(dir, fileName, func);
             test.ReplaceDone += () => Console.WriteLine("Done!");
