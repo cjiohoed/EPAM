@@ -15,9 +15,11 @@ namespace Task2
             //var dir = @"D:\C#\Tasks\Task12\watcher\dir";
             var dir = Directory.GetCurrentDirectory();
 
-            var prog = new DataKeeper(dir, DataKeeper.Mode.Watch);
-            //var prog = new Observer(dir, SelectMode());
+            var prog = new Watcher(dir, Watcher.Mode.Watch);
+            prog.Init();
             prog.Start();
+
+            //var prog = new Watcher(dir, SelectMode());
 
             //Console.WriteLine(prog.Directory.FullName);
             //Console.WriteLine(prog.BackupDir);
@@ -26,7 +28,7 @@ namespace Task2
 
         }
 
-        public static DataKeeper.Mode SelectMode()
+        public static Watcher.Mode SelectMode()
         {
             var num = default(int);
             Console.WriteLine("Выберите режим работы программы:\n(1) Наблюдение\n(2) Откат изменений");
@@ -36,9 +38,9 @@ namespace Task2
                 switch (num)
                 {
                     case 1:
-                        return DataKeeper.Mode.Watch;
+                        return Watcher.Mode.Watch;
                     case 2:
-                        return DataKeeper.Mode.Recovery;
+                        return Watcher.Mode.Recovery;
                     default:
                         Console.Write("Введите еще раз: ");
                         break;
@@ -46,14 +48,18 @@ namespace Task2
             }
             while (true);
         }
+
+
     }
 
-    public class DataKeeper
+    public class Watcher
     {
         private Mode mode;
 
-        public delegate void Notification();
-        public event Notification Changed;
+        private delegate void progMode();
+
+
+        FileSystemWatcher myWatcher;
 
         public enum Mode { Watch = 1, Recovery = 2 }
 
@@ -61,7 +67,7 @@ namespace Task2
 
         public DirectoryInfo bkpDir;
 
-        public DirectoryInfo BackupDir
+        public DirectoryInfo BkpDir
         {
             get
             {
@@ -79,7 +85,7 @@ namespace Task2
             }
         }
 
-        public DirectoryInfo Directory
+        public DirectoryInfo Dir
         {
             get
             {
@@ -97,82 +103,71 @@ namespace Task2
             }
         }
 
-
-
-        static ThreadStart Recovery = () =>
+        public Watcher(string dir, Mode mode)
         {
-            //восстановление
-            Console.Write("Восстановление!");
-            //Console.ReadKey();
-        };
-
-        Thread thread;
-
-        public DataKeeper(string dir, Mode mode)
-        {
-            Directory = new DirectoryInfo(dir);
+            Dir = new DirectoryInfo(dir);
             //BackupDir = new DirectoryInfo(Directory.Parent.ToString() + "\\bkp");
-            BackupDir = new DirectoryInfo(Path.Combine(Directory.Parent.FullName) + "\\.bkp");
-            SetMode(mode);
+            BkpDir = new DirectoryInfo(Path.Combine(Dir.Parent.FullName) + "\\.bkp");
+            this.mode = mode;
         }
 
-        public void SetMode(Mode mode)
+        public void Init()
         {
-            this.mode = mode;
-            switch (mode)
+            myWatcher = new FileSystemWatcher
             {
-                case Mode.Watch:
-                    Watcher();
-                    break;
+                IncludeSubdirectories = true,
+                Path = Dir.FullName.ToString(),
+                NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+                | NotifyFilters.FileName | NotifyFilters.DirectoryName,
+                Filter = "*.txt"
+            };
 
-                case Mode.Recovery:
-                    thread = new Thread(Recovery);
-                    break;
-            }
+            myWatcher.Changed += OnChanged;
+            myWatcher.Created += OnChanged;
+            myWatcher.Deleted += OnChanged;
+            myWatcher.Renamed += OnChanged;
         }
 
         public void Start()
         {
-            thread.Start();
+            switch (mode)
+            {
+                case Mode.Watch:
+                    myWatcher.EnableRaisingEvents = true;
+                    break;
+                case Mode.Recovery:
+                    break;
+            }
         }
 
         public void Stop()
         {
-
+            myWatcher.EnableRaisingEvents = false;
         }
 
-        public void Watcher()
+        private void OnChanged(object sender, FileSystemEventArgs e)
         {
+            string destinationPath = GetBackupPath(DateTime.Now.ToString("d_M_yyyy_hh_mm_ss"));
+            CopyAllTextFiles(Dir.FullName.ToString(), destinationPath);
 
-            ThreadStart watch = () =>
+            Console.WriteLine("ИЗМЕНЕНИЕ");
+        }
+
+        private string GetBackupPath(string date)
+        {
+            return Path.Combine(BkpDir.FullName.ToString(), date);
+        }
+
+        private void CopyAllTextFiles(string source, string destination)
+        {
+            foreach (string dir in Directory.GetDirectories(source, "*", SearchOption.AllDirectories))
             {
-                Console.WriteLine("Наблюдение!");
-
-                var watcher = new FileSystemWatcher
-                {
-                    Path = Directory.FullName.ToString(),
-                    NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
-                               | NotifyFilters.FileName | NotifyFilters.DirectoryName,
-                    Filter = "*.txt",
-                    IncludeSubdirectories = true
-                };
-
-                watcher.Changed += new FileSystemEventHandler(OnChanged);
-
-                watcher.EnableRaisingEvents = true;
-
-                Console.WriteLine("Press \'q\' to quit.");
-                while (Console.Read() != 'q') ;
-            };
-
-            thread = new Thread(watch);
-
-            
-        }
-
-        public void OnChanged()
-        {
-            Console.WriteLine("Изменение!");
+                Directory.CreateDirectory(dir.Replace(source, destination));
+            }
+            foreach (string path in Directory.GetFiles(source, "*.txt", SearchOption.AllDirectories))
+            {
+                File.Copy(path, path.Replace(source, destination), true);
+            }
         }
 
     }
