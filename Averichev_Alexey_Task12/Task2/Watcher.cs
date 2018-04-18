@@ -1,0 +1,128 @@
+﻿using System;
+using System.IO;
+
+namespace Task2
+{
+    public class Watcher
+    {
+        private string _format = "yyyyMMdd_hhmmss";
+        private string _fileMask = "*.txt";
+        private string _dirMask = "*";
+
+        private FileSystemWatcher myWatcher;
+        private static string _dir;
+        private static string _bkpDir;
+
+        public string BkpDir
+        {
+            get
+            {
+                return _bkpDir;
+            }
+
+            set
+            {
+                if (!Directory.Exists(value))
+                {
+                    Directory.CreateDirectory(value);
+                }
+
+                _bkpDir = value;
+            }
+        }
+
+        public string Dir
+        {
+            get
+            {
+                return _dir;
+            }
+
+            set
+            {
+                if (!Directory.Exists(value))
+                {
+                    throw new Exception("Directory not exists");
+                }
+
+                _dir = value;
+            }
+        }
+
+        public Watcher(string dir)
+        {
+            Dir = dir;
+            var parent = new DirectoryInfo(Dir).Parent.FullName;
+            BkpDir = Path.Combine(parent, ".bkp");
+
+        }
+
+        private void Init()
+        {
+            myWatcher = new FileSystemWatcher
+            {
+                IncludeSubdirectories = true,
+                Path = _dir,
+                NotifyFilter = NotifyFilters.LastAccess | NotifyFilters.LastWrite
+                | NotifyFilters.FileName | NotifyFilters.DirectoryName,
+                Filter = _fileMask
+            };
+
+            myWatcher.Changed += OnChanged;
+            myWatcher.Created += OnChanged;
+            myWatcher.Deleted += OnChanged;
+            myWatcher.Renamed += OnChanged;
+        }
+
+        public void Start()
+        {
+            Init();
+            myWatcher.EnableRaisingEvents = true;
+        }
+
+        private void OnChanged(object sender, FileSystemEventArgs e)
+        {
+            string destinationPath = GetBackupPath(DateTime.Now.ToString(_format));
+            CopyAllTextFiles(_dir, destinationPath);
+        }
+
+        private string GetBackupPath(string date)
+        {
+            return Path.Combine(_bkpDir, date);
+        }
+
+        private void CopyAllTextFiles(string source, string destination)
+        {
+            Directory.CreateDirectory(destination);
+
+            foreach (string dir in Directory.GetDirectories(source, _dirMask, SearchOption.AllDirectories))
+            {
+                Directory.CreateDirectory(dir.Replace(source, destination));
+            }
+
+            foreach (string path in Directory.GetFiles(source, _fileMask, SearchOption.AllDirectories))
+            {
+                File.Copy(path, path.Replace(source, destination), true);
+            }
+        }
+
+        public string[] GetBackups()
+        {
+            return Directory.GetDirectories(_bkpDir, "*", SearchOption.TopDirectoryOnly);
+        }
+
+        public void Restore(string selectBackup)
+        {
+            selectBackup = Path.Combine(_bkpDir, selectBackup);
+            if (Directory.Exists(selectBackup))
+            {
+                CopyAllTextFiles(selectBackup, _dir);
+            }
+            else
+            {
+                throw new ArgumentException("Incorrect backup name");
+            }
+        }
+
+    }
+}
