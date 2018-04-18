@@ -7,7 +7,7 @@ namespace Task2
         static void Main()
         {
             ConsoleUI.Watch();
-            //ConsoleUI.Backup();
+            ConsoleUI.Backup();
 
             Console.ReadKey();
         }
