@@ -9,6 +9,8 @@ namespace Task2
         private string _fileMask = "*.txt";
         private string _dirMask = "*";
 
+        private ILoggable logger;
+
         private FileSystemWatcher myWatcher;
         private static string _dir;
         private static string _bkpDir;
@@ -49,11 +51,12 @@ namespace Task2
             }
         }
 
-        public Watcher(string dir)
+        public Watcher(string dir, ILoggable logger)
         {
             Dir = dir;
             var parent = new DirectoryInfo(Dir).Parent.FullName;
             BkpDir = Path.Combine(parent, ".bkp");
+            this.logger = logger;
 
         }
 
@@ -69,9 +72,9 @@ namespace Task2
             };
 
             myWatcher.Changed += OnChanged;
-            myWatcher.Created += OnChanged;
-            myWatcher.Deleted += OnChanged;
-            myWatcher.Renamed += OnChanged;
+            myWatcher.Created += OnCreated;
+            myWatcher.Deleted += OnDeleted;
+            myWatcher.Renamed += OnRenamed;
         }
 
         public void Start()
@@ -82,8 +85,26 @@ namespace Task2
 
         private void OnChanged(object sender, FileSystemEventArgs e)
         {
-            string destinationPath = GetBackupPath(DateTime.Now.ToString(_format));
-            CopyAllTextFiles(_dir, destinationPath);
+            CopyAllTextFiles(_dir, GetBackupPath(DateTime.Now.ToString(_format)));
+            logger.LogMessage($"Файл {e.Name} изменен.");
+        }
+
+        private void OnCreated(object sender, FileSystemEventArgs e)
+        {
+            CopyAllTextFiles(_dir, GetBackupPath(DateTime.Now.ToString(_format)));
+            logger.LogMessage($"Файл {e.Name} создан.");
+        }
+
+        private void OnDeleted(object sender, FileSystemEventArgs e)
+        {
+            CopyAllTextFiles(_dir, GetBackupPath(DateTime.Now.ToString(_format)));
+            logger.LogMessage($"Файл {e.Name} удален.");
+        }
+
+        private void OnRenamed(object sender, FileSystemEventArgs e)
+        {
+            CopyAllTextFiles(_dir, GetBackupPath(DateTime.Now.ToString(_format)));
+            logger.LogMessage($"Файл {e.Name} переименован.");
         }
 
         private string GetBackupPath(string date)
@@ -106,6 +127,14 @@ namespace Task2
             }
         }
 
+        private void DeleteFiles(string path)
+        {
+            foreach (string file in Directory.GetFiles(path, _fileMask, SearchOption.AllDirectories))
+            {
+                File.Delete(file);
+            }
+        }
+
         public string[] GetBackups()
         {
             return Directory.GetDirectories(_bkpDir, "*", SearchOption.TopDirectoryOnly);
@@ -113,10 +142,13 @@ namespace Task2
 
         public void Restore(string selectBackup)
         {
+            DeleteFiles(_dir);
+
             selectBackup = Path.Combine(_bkpDir, selectBackup);
             if (Directory.Exists(selectBackup))
             {
                 CopyAllTextFiles(selectBackup, _dir);
+                logger.LogMessage($"Бэкап восстановлен.");
             }
             else
             {

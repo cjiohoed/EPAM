@@ -5,6 +5,30 @@ namespace Task2
 {
     public static class ConsoleUI
     {
+        public static string path = Path.Combine(
+            Directory.GetCurrentDirectory(),
+            "ControlFolder");
+
+        public static void Start()
+        {
+            Console.WriteLine(
+                "Выберите режим работы: \n" +
+                "1 - Наблюдение\n" +
+                "2 - Восстановление");
+            ConsoleKeyInfo key;
+            key = Console.ReadKey(true);
+            if (Char.ToLower(key.KeyChar) == '1')
+            {
+                Watch();
+            }
+            if (Char.ToLower(key.KeyChar) == '2')
+            {
+                Backup();
+            }
+
+            Console.ReadKey();
+        }
+
         public static void StopWatch()
         {
             Console.WriteLine("Для выхода из программы нажмите q");
@@ -13,13 +37,16 @@ namespace Task2
 
         public static void Watch()
         {
-            Watcher watch = new Watcher(Directory.GetCurrentDirectory());
+            ConsoleLogger logger = new ConsoleLogger();
+            Watcher watch = new Watcher(path, logger);
             watch.Start();
             StopWatch();
         }
+
         public static void Backup()
         {
-            Watcher watch = new Watcher(Directory.GetCurrentDirectory());
+            ConsoleLogger logger = new ConsoleLogger();
+            Watcher watch = new Watcher(path, logger);
             Console.WriteLine("Доступные для восстановления: ");
             Display(watch.GetBackups());
             Console.Write("Введите дату отката: ");

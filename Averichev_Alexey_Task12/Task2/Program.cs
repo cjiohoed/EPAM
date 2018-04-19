@@ -6,10 +6,7 @@ namespace Task2
     {
         static void Main()
         {
-            ConsoleUI.Watch();
-            ConsoleUI.Backup();
-
-            Console.ReadKey();
+            ConsoleUI.Start();
         }
     }
 }
