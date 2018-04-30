@@ -16,5 +16,8 @@ namespace UsersAndRewards.DAL
         Reward FindRewardById(int id);
         void EditReward(Reward reward);
         void DeleteReward(int id);
+        User FindUserById(int id);
+        void EditUser(User user);
+        void DeleteUser(int id);
     }
 }

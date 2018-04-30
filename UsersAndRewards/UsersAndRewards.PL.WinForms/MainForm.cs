@@ -32,6 +32,5 @@ namespace UsersAndRewards.PL.WinForms
         {
             Application.Exit();
         }
-
     }
 }

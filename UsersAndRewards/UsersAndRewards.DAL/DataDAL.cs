@@ -61,5 +61,25 @@ namespace UsersAndRewards.DAL
             var oldReward = FindRewardById(id);
             rewards.Remove(oldReward);
         }
+
+        public User FindUserById(int id)
+        {
+            return users.First(r => r.ID == id);
+        }
+
+        public void EditUser(User user)
+        {
+            var oldUser = FindUserById(user.ID);
+            oldUser.FirstName = user.FirstName;
+            oldUser.LastName = user.LastName;
+            oldUser.BirthDate = user.BirthDate;
+            oldUser.MyRewards = user.MyRewards;
+        }
+
+        public void DeleteUser(int id)
+        {
+            var oldUser = FindUserById(id);
+            users.Remove(oldUser);
+        }
     }
 }

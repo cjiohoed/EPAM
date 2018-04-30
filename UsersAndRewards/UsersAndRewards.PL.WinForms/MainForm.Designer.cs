@@ -43,28 +43,28 @@
             this.ctlTabPanel = new System.Windows.Forms.TabControl();
             this.ctlUsersTab = new System.Windows.Forms.TabPage();
             this.ctlUsersGrid = new System.Windows.Forms.DataGridView();
-            this.ctlUsersContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnAddUserContext = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEditUserContext = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDeleteUserContext = new System.Windows.Forms.ToolStripMenuItem();
-            this.ctlRewardsTab = new System.Windows.Forms.TabPage();
-            this.ctlRewardsGrid = new System.Windows.Forms.DataGridView();
-            this.ctlRewardsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.btnAddRewardContext = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnEditRewardContext = new System.Windows.Forms.ToolStripMenuItem();
-            this.btnDeleteRewardContext = new System.Windows.Forms.ToolStripMenuItem();
-            this.myRewardsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.birthDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.rewardsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctlUsersContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnAddUserContext = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEditUserContext = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeleteUserContext = new System.Windows.Forms.ToolStripMenuItem();
             this.userBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.ctlRewardsTab = new System.Windows.Forms.TabPage();
+            this.ctlRewardsGrid = new System.Windows.Forms.DataGridView();
             this.iDDataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.titleDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.descriptionDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ctlRewardsContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.btnAddRewardContext = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnEditRewardContext = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnDeleteRewardContext = new System.Windows.Forms.ToolStripMenuItem();
             this.rewardBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
+            this.myRewardsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.rewardBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.ctlMainMenu.SuspendLayout();
@@ -72,12 +72,12 @@
             this.ctlUsersTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctlUsersGrid)).BeginInit();
             this.ctlUsersContextMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             this.ctlRewardsTab.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ctlRewardsGrid)).BeginInit();
             this.ctlRewardsContextMenu.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.myRewardsBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rewardBindingSource1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myRewardsBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.rewardBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -105,7 +105,7 @@
             // btnExit
             // 
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(92, 22);
+            this.btnExit.Size = new System.Drawing.Size(180, 22);
             this.btnExit.Text = "Exit";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -122,21 +122,21 @@
             // btnAddUserMain
             // 
             this.btnAddUserMain.Name = "btnAddUserMain";
-            this.btnAddUserMain.Size = new System.Drawing.Size(116, 22);
+            this.btnAddUserMain.Size = new System.Drawing.Size(180, 22);
             this.btnAddUserMain.Text = "Add...";
             this.btnAddUserMain.Click += new System.EventHandler(this.btnAddUserMain_Click);
             // 
             // btnEditUserMain
             // 
             this.btnEditUserMain.Name = "btnEditUserMain";
-            this.btnEditUserMain.Size = new System.Drawing.Size(116, 22);
+            this.btnEditUserMain.Size = new System.Drawing.Size(180, 22);
             this.btnEditUserMain.Text = "Edit...";
             this.btnEditUserMain.Click += new System.EventHandler(this.btnEditUserMain_Click);
             // 
             // btnDeleteUserMain
             // 
             this.btnDeleteUserMain.Name = "btnDeleteUserMain";
-            this.btnDeleteUserMain.Size = new System.Drawing.Size(116, 22);
+            this.btnDeleteUserMain.Size = new System.Drawing.Size(180, 22);
             this.btnDeleteUserMain.Text = "Delete...";
             this.btnDeleteUserMain.Click += new System.EventHandler(this.btnDeleteUserMain_Click);
             // 
@@ -153,21 +153,21 @@
             // btnAddRewardMain
             // 
             this.btnAddRewardMain.Name = "btnAddRewardMain";
-            this.btnAddRewardMain.Size = new System.Drawing.Size(116, 22);
+            this.btnAddRewardMain.Size = new System.Drawing.Size(180, 22);
             this.btnAddRewardMain.Text = "Add...";
             this.btnAddRewardMain.Click += new System.EventHandler(this.btnAddRewardMain_Click);
             // 
             // btnEditRewardMain
             // 
             this.btnEditRewardMain.Name = "btnEditRewardMain";
-            this.btnEditRewardMain.Size = new System.Drawing.Size(116, 22);
+            this.btnEditRewardMain.Size = new System.Drawing.Size(180, 22);
             this.btnEditRewardMain.Text = "Edit...";
             this.btnEditRewardMain.Click += new System.EventHandler(this.btnEditRewardMain_Click);
             // 
             // btnDeleteRewardMain
             // 
             this.btnDeleteRewardMain.Name = "btnDeleteRewardMain";
-            this.btnDeleteRewardMain.Size = new System.Drawing.Size(116, 22);
+            this.btnDeleteRewardMain.Size = new System.Drawing.Size(180, 22);
             this.btnDeleteRewardMain.Text = "Delete...";
             this.btnDeleteRewardMain.Click += new System.EventHandler(this.btnDeleteRewardMain_Click);
             // 
@@ -214,101 +214,9 @@
             this.ctlUsersGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.ctlUsersGrid.Location = new System.Drawing.Point(3, 3);
             this.ctlUsersGrid.Name = "ctlUsersGrid";
+            this.ctlUsersGrid.RowHeadersVisible = false;
             this.ctlUsersGrid.Size = new System.Drawing.Size(786, 394);
             this.ctlUsersGrid.TabIndex = 0;
-            // 
-            // ctlUsersContextMenu
-            // 
-            this.ctlUsersContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAddUserContext,
-            this.btnEditUserContext,
-            this.btnDeleteUserContext});
-            this.ctlUsersContextMenu.Name = "ctlUsersContextMenu";
-            this.ctlUsersContextMenu.Size = new System.Drawing.Size(117, 70);
-            // 
-            // btnAddUserContext
-            // 
-            this.btnAddUserContext.Name = "btnAddUserContext";
-            this.btnAddUserContext.Size = new System.Drawing.Size(116, 22);
-            this.btnAddUserContext.Text = "Add...";
-            this.btnAddUserContext.Click += new System.EventHandler(this.btnAddUserContext_Click);
-            // 
-            // btnEditUserContext
-            // 
-            this.btnEditUserContext.Name = "btnEditUserContext";
-            this.btnEditUserContext.Size = new System.Drawing.Size(116, 22);
-            this.btnEditUserContext.Text = "Edit...";
-            this.btnEditUserContext.Click += new System.EventHandler(this.btnEditUserContext_Click);
-            // 
-            // btnDeleteUserContext
-            // 
-            this.btnDeleteUserContext.Name = "btnDeleteUserContext";
-            this.btnDeleteUserContext.Size = new System.Drawing.Size(116, 22);
-            this.btnDeleteUserContext.Text = "Delete...";
-            this.btnDeleteUserContext.Click += new System.EventHandler(this.btnDeleteUserContext_Click);
-            // 
-            // ctlRewardsTab
-            // 
-            this.ctlRewardsTab.Controls.Add(this.ctlRewardsGrid);
-            this.ctlRewardsTab.Location = new System.Drawing.Point(4, 22);
-            this.ctlRewardsTab.Name = "ctlRewardsTab";
-            this.ctlRewardsTab.Padding = new System.Windows.Forms.Padding(3);
-            this.ctlRewardsTab.Size = new System.Drawing.Size(792, 400);
-            this.ctlRewardsTab.TabIndex = 1;
-            this.ctlRewardsTab.Text = "Rewards";
-            this.ctlRewardsTab.UseVisualStyleBackColor = true;
-            // 
-            // ctlRewardsGrid
-            // 
-            this.ctlRewardsGrid.AutoGenerateColumns = false;
-            this.ctlRewardsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.ctlRewardsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.iDDataGridViewTextBoxColumn1,
-            this.titleDataGridViewTextBoxColumn,
-            this.descriptionDataGridViewTextBoxColumn});
-            this.ctlRewardsGrid.ContextMenuStrip = this.ctlRewardsContextMenu;
-            this.ctlRewardsGrid.DataSource = this.rewardBindingSource1;
-            this.ctlRewardsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ctlRewardsGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
-            this.ctlRewardsGrid.Location = new System.Drawing.Point(3, 3);
-            this.ctlRewardsGrid.Name = "ctlRewardsGrid";
-            this.ctlRewardsGrid.Size = new System.Drawing.Size(786, 394);
-            this.ctlRewardsGrid.TabIndex = 0;
-            // 
-            // ctlRewardsContextMenu
-            // 
-            this.ctlRewardsContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.btnAddRewardContext,
-            this.btnEditRewardContext,
-            this.btnDeleteRewardContext});
-            this.ctlRewardsContextMenu.Name = "ctlRewardsContextMenu";
-            this.ctlRewardsContextMenu.Size = new System.Drawing.Size(117, 70);
-            // 
-            // btnAddRewardContext
-            // 
-            this.btnAddRewardContext.Name = "btnAddRewardContext";
-            this.btnAddRewardContext.Size = new System.Drawing.Size(116, 22);
-            this.btnAddRewardContext.Text = "Add...";
-            this.btnAddRewardContext.Click += new System.EventHandler(this.btnAddRewardContext_Click);
-            // 
-            // btnEditRewardContext
-            // 
-            this.btnEditRewardContext.Name = "btnEditRewardContext";
-            this.btnEditRewardContext.Size = new System.Drawing.Size(116, 22);
-            this.btnEditRewardContext.Text = "Edit...";
-            this.btnEditRewardContext.Click += new System.EventHandler(this.btnEditRewardContext_Click);
-            // 
-            // btnDeleteRewardContext
-            // 
-            this.btnDeleteRewardContext.Name = "btnDeleteRewardContext";
-            this.btnDeleteRewardContext.Size = new System.Drawing.Size(116, 22);
-            this.btnDeleteRewardContext.Text = "Delete...";
-            this.btnDeleteRewardContext.Click += new System.EventHandler(this.btnDeleteRewardContext_Click);
-            // 
-            // myRewardsBindingSource
-            // 
-            this.myRewardsBindingSource.DataMember = "MyRewards";
-            this.myRewardsBindingSource.DataSource = this.userBindingSource;
             // 
             // iDDataGridViewTextBoxColumn
             // 
@@ -350,9 +258,72 @@
             this.rewardsDataGridViewTextBoxColumn.Name = "rewardsDataGridViewTextBoxColumn";
             this.rewardsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
+            // ctlUsersContextMenu
+            // 
+            this.ctlUsersContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAddUserContext,
+            this.btnEditUserContext,
+            this.btnDeleteUserContext});
+            this.ctlUsersContextMenu.Name = "ctlUsersContextMenu";
+            this.ctlUsersContextMenu.Size = new System.Drawing.Size(117, 70);
+            // 
+            // btnAddUserContext
+            // 
+            this.btnAddUserContext.Name = "btnAddUserContext";
+            this.btnAddUserContext.Size = new System.Drawing.Size(116, 22);
+            this.btnAddUserContext.Text = "Add...";
+            this.btnAddUserContext.Click += new System.EventHandler(this.btnAddUserContext_Click);
+            // 
+            // btnEditUserContext
+            // 
+            this.btnEditUserContext.Name = "btnEditUserContext";
+            this.btnEditUserContext.Size = new System.Drawing.Size(116, 22);
+            this.btnEditUserContext.Text = "Edit...";
+            this.btnEditUserContext.Click += new System.EventHandler(this.btnEditUserContext_Click);
+            // 
+            // btnDeleteUserContext
+            // 
+            this.btnDeleteUserContext.Name = "btnDeleteUserContext";
+            this.btnDeleteUserContext.Size = new System.Drawing.Size(116, 22);
+            this.btnDeleteUserContext.Text = "Delete...";
+            this.btnDeleteUserContext.Click += new System.EventHandler(this.btnDeleteUserContext_Click);
+            // 
             // userBindingSource
             // 
             this.userBindingSource.DataSource = typeof(Entities.User);
+            // 
+            // ctlRewardsTab
+            // 
+            this.ctlRewardsTab.Controls.Add(this.ctlRewardsGrid);
+            this.ctlRewardsTab.Location = new System.Drawing.Point(4, 22);
+            this.ctlRewardsTab.Name = "ctlRewardsTab";
+            this.ctlRewardsTab.Padding = new System.Windows.Forms.Padding(3);
+            this.ctlRewardsTab.Size = new System.Drawing.Size(792, 400);
+            this.ctlRewardsTab.TabIndex = 1;
+            this.ctlRewardsTab.Text = "Rewards";
+            this.ctlRewardsTab.UseVisualStyleBackColor = true;
+            // 
+            // ctlRewardsGrid
+            // 
+            this.ctlRewardsGrid.AllowUserToAddRows = false;
+            this.ctlRewardsGrid.AllowUserToDeleteRows = false;
+            this.ctlRewardsGrid.AllowUserToResizeColumns = false;
+            this.ctlRewardsGrid.AllowUserToResizeRows = false;
+            this.ctlRewardsGrid.AutoGenerateColumns = false;
+            this.ctlRewardsGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.ctlRewardsGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.iDDataGridViewTextBoxColumn1,
+            this.titleDataGridViewTextBoxColumn,
+            this.descriptionDataGridViewTextBoxColumn});
+            this.ctlRewardsGrid.ContextMenuStrip = this.ctlRewardsContextMenu;
+            this.ctlRewardsGrid.DataSource = this.rewardBindingSource1;
+            this.ctlRewardsGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ctlRewardsGrid.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
+            this.ctlRewardsGrid.Location = new System.Drawing.Point(3, 3);
+            this.ctlRewardsGrid.Name = "ctlRewardsGrid";
+            this.ctlRewardsGrid.RowHeadersVisible = false;
+            this.ctlRewardsGrid.Size = new System.Drawing.Size(786, 394);
+            this.ctlRewardsGrid.TabIndex = 0;
             // 
             // iDDataGridViewTextBoxColumn1
             // 
@@ -374,9 +345,44 @@
             this.descriptionDataGridViewTextBoxColumn.HeaderText = "Description";
             this.descriptionDataGridViewTextBoxColumn.Name = "descriptionDataGridViewTextBoxColumn";
             // 
+            // ctlRewardsContextMenu
+            // 
+            this.ctlRewardsContextMenu.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.btnAddRewardContext,
+            this.btnEditRewardContext,
+            this.btnDeleteRewardContext});
+            this.ctlRewardsContextMenu.Name = "ctlRewardsContextMenu";
+            this.ctlRewardsContextMenu.Size = new System.Drawing.Size(117, 70);
+            // 
+            // btnAddRewardContext
+            // 
+            this.btnAddRewardContext.Name = "btnAddRewardContext";
+            this.btnAddRewardContext.Size = new System.Drawing.Size(116, 22);
+            this.btnAddRewardContext.Text = "Add...";
+            this.btnAddRewardContext.Click += new System.EventHandler(this.btnAddRewardContext_Click);
+            // 
+            // btnEditRewardContext
+            // 
+            this.btnEditRewardContext.Name = "btnEditRewardContext";
+            this.btnEditRewardContext.Size = new System.Drawing.Size(116, 22);
+            this.btnEditRewardContext.Text = "Edit...";
+            this.btnEditRewardContext.Click += new System.EventHandler(this.btnEditRewardContext_Click);
+            // 
+            // btnDeleteRewardContext
+            // 
+            this.btnDeleteRewardContext.Name = "btnDeleteRewardContext";
+            this.btnDeleteRewardContext.Size = new System.Drawing.Size(116, 22);
+            this.btnDeleteRewardContext.Text = "Delete...";
+            this.btnDeleteRewardContext.Click += new System.EventHandler(this.btnDeleteRewardContext_Click);
+            // 
             // rewardBindingSource1
             // 
             this.rewardBindingSource1.DataSource = typeof(Entities.Reward);
+            // 
+            // myRewardsBindingSource
+            // 
+            this.myRewardsBindingSource.DataMember = "MyRewards";
+            this.myRewardsBindingSource.DataSource = this.userBindingSource;
             // 
             // userBindingSource1
             // 
@@ -403,12 +409,12 @@
             this.ctlUsersTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ctlUsersGrid)).EndInit();
             this.ctlUsersContextMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             this.ctlRewardsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ctlRewardsGrid)).EndInit();
             this.ctlRewardsContextMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.myRewardsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rewardBindingSource1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.myRewardsBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.rewardBindingSource)).EndInit();
             this.ResumeLayout(false);

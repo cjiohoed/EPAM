@@ -37,12 +37,12 @@ namespace UsersAndRewards.BLL
 
         public void DeleteUser(int id)
         {
-            throw new NotImplementedException();
+            dataDAL.DeleteUser(id);
         }
 
         public void EditUser(User user)
         {
-            throw new NotImplementedException();
+            dataDAL.EditUser(user);
         }
 
         public List<User> InitUsers()
@@ -80,6 +80,11 @@ namespace UsersAndRewards.BLL
         public Reward FindRewardById(int id)
         {
             return dataDAL.FindRewardById(id);
+        }
+
+        public User FindUserById(int id)
+        {
+            return dataDAL.FindUserById(id);
         }
 
         public void EditReward(Reward reward)

@@ -65,6 +65,12 @@
     <Compile Include="RewardForm.Designer.cs">
       <DependentUpon>RewardForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="UserForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserForm.Designer.cs">
+      <DependentUpon>UserForm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -79,6 +85,9 @@
     </Compile>
     <EmbeddedResource Include="RewardForm.resx">
       <DependentUpon>RewardForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserForm.resx">
+      <DependentUpon>UserForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\DataSources\Entities.Reward.datasource" />
     <None Include="Properties\DataSources\Entities.User.datasource" />

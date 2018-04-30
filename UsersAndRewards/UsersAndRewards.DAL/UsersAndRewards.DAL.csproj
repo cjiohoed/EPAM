@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataDAL.cs" />
+    <Compile Include="DataDALdb.cs" />
     <Compile Include="IDataDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

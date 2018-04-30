@@ -20,5 +20,6 @@ namespace UsersAndRewards.BLL
         Reward FindRewardById(int id);
         void EditReward(Reward reward);
         void DeleteReward(int id);
+        User FindUserById(int id);
     }
 }
