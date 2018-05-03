@@ -30,7 +30,14 @@ namespace Entities
 
         private int GetAge()
         {
-            return DateTime.Now.Year - BirthDate.Year;
+            DateTime now = DateTime.Now;
+            int age = now.Year - BirthDate.Year;
+            if (now.Month < BirthDate.Month ||
+                (now.Month == BirthDate.Month && now.Day < BirthDate.Day))
+            {
+                age--;
+            }
+            return age;
         }
 
         public User()
