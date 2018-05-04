@@ -72,6 +72,12 @@ namespace UsersAndRewards.BLL
             return dataDAL.GetUsersList();
         }
 
+        public List<UserViewModel> GetUsersViewModel()
+        {
+            var users = GetUsersList();
+            return users.Select(u => UserViewModel.GetModel(u)).ToList();
+        }
+
         public List<Reward> GetRewardsList()
         {
             return dataDAL.GetRewardsList();

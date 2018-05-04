@@ -100,9 +100,9 @@ namespace UsersAndRewards.PL.WinForms
                     {
                         foreach (User user in data.GetUsersList())
                         {
-                            if (user.MyRewards.Contains(r))
+                            if (user.Rewards.Contains(r))
                             {
-                                user.MyRewards.Remove(r);
+                                user.Rewards.Remove(r);
                             }
                         }
                         data.DeleteReward(r.ID);

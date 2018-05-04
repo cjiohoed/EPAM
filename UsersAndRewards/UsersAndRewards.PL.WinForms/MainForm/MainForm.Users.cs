@@ -70,7 +70,7 @@ namespace UsersAndRewards.PL.WinForms
                     user.LastName = form.LastName;
                     user.BirthDate = form.BirthDate;
 
-                    user.MyRewards = form.Rewards;
+                    user.Rewards = form.Rewards;
 
                     data.EditUser(user);
                 }
@@ -114,7 +114,7 @@ namespace UsersAndRewards.PL.WinForms
         private void RefreshUsersGrid()
         {
             ctlUsersGrid.DataSource = null;
-            ctlUsersGrid.DataSource = data.GetUsersList();
+            ctlUsersGrid.DataSource = data.GetUsersViewMode();
         }
 
     }

@@ -19,14 +19,7 @@ namespace Entities
                 return GetAge();
             }
         }
-        public string Rewards
-        {
-            get
-            {
-                return String.Join(", ", MyRewards?.Select(t => t.Title) ?? new List<string>());
-            }
-        }
-        public List<Reward> MyRewards { get; set; }
+        public List<Reward> Rewards { get; set; }
 
         private int GetAge()
         {
@@ -45,7 +38,7 @@ namespace Entities
             FirstName = String.Empty;
             LastName = String.Empty;
             BirthDate = DateTime.Now;
-            MyRewards = new List<Reward>();
+            Rewards = new List<Reward>();
         }
 
         public User(string firstname, string lastname, DateTime birthdate)
@@ -53,7 +46,7 @@ namespace Entities
             FirstName =firstname;
             LastName = lastname;
             BirthDate = birthdate;
-            MyRewards = new List<Reward>();
+            Rewards = new List<Reward>();
         }
 
         public User(string firstname, string lastname, DateTime birthdate, List<Reward> rewards)
@@ -61,7 +54,7 @@ namespace Entities
             FirstName = firstname;
             LastName = lastname;
             BirthDate = birthdate;
-            MyRewards = rewards;
+            Rewards = rewards;
         }
 
 

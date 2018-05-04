@@ -42,7 +42,7 @@ namespace UsersAndRewards.PL.WinForms
             BirthDate = user.BirthDate;
             foreach (var rew in AllRewards)
             {
-                ctlUserRewardsList.Items.Add(rew.Title, user.MyRewards.Exists(e => e.ID == rew.ID));
+                ctlUserRewardsList.Items.Add(rew.Title, user.Rewards.Exists(e => e.ID == rew.ID));
             }
 
         }

@@ -73,7 +73,7 @@ namespace UsersAndRewards.DAL
             oldUser.FirstName = user.FirstName;
             oldUser.LastName = user.LastName;
             oldUser.BirthDate = user.BirthDate;
-            oldUser.MyRewards = user.MyRewards;
+            oldUser.Rewards = user.Rewards;
         }
 
         public void DeleteUser(int id)
