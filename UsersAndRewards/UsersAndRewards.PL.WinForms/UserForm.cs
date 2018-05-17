@@ -93,7 +93,7 @@ namespace UsersAndRewards.PL.WinForms
 
         private void txtLastName_Validated(object sender, EventArgs e)
         {
-            LastName = txtFirstName.Text.Trim();
+            LastName = txtLastName.Text.Trim();
         }
 
         private void txtLastName_Validating(object sender, CancelEventArgs e)

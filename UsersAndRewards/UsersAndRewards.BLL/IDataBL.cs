@@ -13,13 +13,12 @@ namespace UsersAndRewards.BLL
         void AddReward(Reward reward);
         void EditUser(User user);
         void DeleteUser(int id);
-        List<User> InitUsers();
-        List<Reward> InitRewards();
         List<Reward> GetRewardsList();
         List<User> GetUsersList();
         Reward FindRewardById(int id);
         void EditReward(Reward reward);
         void DeleteReward(int id);
         User FindUserById(int id);
+        List<UserViewModel> GetUsersViewModel();
     }
 }

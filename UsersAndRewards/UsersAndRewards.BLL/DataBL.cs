@@ -14,7 +14,7 @@ namespace UsersAndRewards.BLL
 
         public DataBL()
         {
-            dataDAL = new DataDAL();
+            dataDAL = new DataDALdb();
         }
 
         public void AddUser(User user)
@@ -44,28 +44,6 @@ namespace UsersAndRewards.BLL
         {
             dataDAL.EditUser(user);
         }
-
-        public List<User> InitUsers()
-        {
-            AddUser(new User()
-            {
-                FirstName = "Алексей",
-                LastName = "Аверичев",
-                BirthDate = new DateTime(1983, 5, 25)
-            });
-            return GetUsersList();
-        }
-
-        public List<Reward> InitRewards()
-        {
-            AddReward(new Reward()
-            {
-                Title = "Shnobel Prize",
-                Description = "47 chromosome"
-            });
-            return GetRewardsList();
-        }
-
 
         public List<User> GetUsersList()
         {

@@ -10,11 +10,6 @@ namespace UsersAndRewards.PL.WinForms
 {
     public partial class MainForm : Form
     {
-        private void CreateRewards()
-        {
-            ctlRewardsGrid.DataSource = data.InitRewards();
-        }
-
         private void btnAddRewardMain_Click(object sender, EventArgs e)
         {
             AddReward();

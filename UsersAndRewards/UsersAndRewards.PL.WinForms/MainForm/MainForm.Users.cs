@@ -10,11 +10,6 @@ namespace UsersAndRewards.PL.WinForms
 {
     public partial class MainForm : Form
     {
-        private void CreateUsers()
-        {
-            ctlUsersGrid.DataSource = data.InitUsers();
-        }
-
         private void btnAddUserMain_Click(object sender, EventArgs e)
         {
             AddUser();
@@ -114,7 +109,7 @@ namespace UsersAndRewards.PL.WinForms
         private void RefreshUsersGrid()
         {
             ctlUsersGrid.DataSource = null;
-            ctlUsersGrid.DataSource = data.GetUsersViewMode();
+            ctlUsersGrid.DataSource = data.GetUsersViewModel();
         }
 
     }

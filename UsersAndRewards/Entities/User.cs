@@ -43,7 +43,7 @@ namespace Entities
 
         public User(string firstname, string lastname, DateTime birthdate)
         {
-            FirstName =firstname;
+            FirstName = firstname;
             LastName = lastname;
             BirthDate = birthdate;
             Rewards = new List<Reward>();

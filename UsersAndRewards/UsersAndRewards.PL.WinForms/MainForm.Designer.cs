@@ -43,12 +43,6 @@
             this.ctlTabPanel = new System.Windows.Forms.TabControl();
             this.ctlUsersTab = new System.Windows.Forms.TabPage();
             this.ctlUsersGrid = new System.Windows.Forms.DataGridView();
-            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.birthDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.rewardsDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctlUsersContextMenu = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.btnAddUserContext = new System.Windows.Forms.ToolStripMenuItem();
             this.btnEditUserContext = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,6 +61,12 @@
             this.myRewardsBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.userBindingSource1 = new System.Windows.Forms.BindingSource(this.components);
             this.rewardBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.iDDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.firstNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.lastNameDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.birthDateDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ageDataGridViewTextBoxColumn = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Rewards = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ctlMainMenu.SuspendLayout();
             this.ctlTabPanel.SuspendLayout();
             this.ctlUsersTab.SuspendLayout();
@@ -105,7 +105,7 @@
             // btnExit
             // 
             this.btnExit.Name = "btnExit";
-            this.btnExit.Size = new System.Drawing.Size(180, 22);
+            this.btnExit.Size = new System.Drawing.Size(92, 22);
             this.btnExit.Text = "Exit";
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
@@ -122,21 +122,21 @@
             // btnAddUserMain
             // 
             this.btnAddUserMain.Name = "btnAddUserMain";
-            this.btnAddUserMain.Size = new System.Drawing.Size(180, 22);
+            this.btnAddUserMain.Size = new System.Drawing.Size(116, 22);
             this.btnAddUserMain.Text = "Add...";
             this.btnAddUserMain.Click += new System.EventHandler(this.btnAddUserMain_Click);
             // 
             // btnEditUserMain
             // 
             this.btnEditUserMain.Name = "btnEditUserMain";
-            this.btnEditUserMain.Size = new System.Drawing.Size(180, 22);
+            this.btnEditUserMain.Size = new System.Drawing.Size(116, 22);
             this.btnEditUserMain.Text = "Edit...";
             this.btnEditUserMain.Click += new System.EventHandler(this.btnEditUserMain_Click);
             // 
             // btnDeleteUserMain
             // 
             this.btnDeleteUserMain.Name = "btnDeleteUserMain";
-            this.btnDeleteUserMain.Size = new System.Drawing.Size(180, 22);
+            this.btnDeleteUserMain.Size = new System.Drawing.Size(116, 22);
             this.btnDeleteUserMain.Text = "Delete...";
             this.btnDeleteUserMain.Click += new System.EventHandler(this.btnDeleteUserMain_Click);
             // 
@@ -153,21 +153,21 @@
             // btnAddRewardMain
             // 
             this.btnAddRewardMain.Name = "btnAddRewardMain";
-            this.btnAddRewardMain.Size = new System.Drawing.Size(180, 22);
+            this.btnAddRewardMain.Size = new System.Drawing.Size(116, 22);
             this.btnAddRewardMain.Text = "Add...";
             this.btnAddRewardMain.Click += new System.EventHandler(this.btnAddRewardMain_Click);
             // 
             // btnEditRewardMain
             // 
             this.btnEditRewardMain.Name = "btnEditRewardMain";
-            this.btnEditRewardMain.Size = new System.Drawing.Size(180, 22);
+            this.btnEditRewardMain.Size = new System.Drawing.Size(116, 22);
             this.btnEditRewardMain.Text = "Edit...";
             this.btnEditRewardMain.Click += new System.EventHandler(this.btnEditRewardMain_Click);
             // 
             // btnDeleteRewardMain
             // 
             this.btnDeleteRewardMain.Name = "btnDeleteRewardMain";
-            this.btnDeleteRewardMain.Size = new System.Drawing.Size(180, 22);
+            this.btnDeleteRewardMain.Size = new System.Drawing.Size(116, 22);
             this.btnDeleteRewardMain.Text = "Delete...";
             this.btnDeleteRewardMain.Click += new System.EventHandler(this.btnDeleteRewardMain_Click);
             // 
@@ -207,7 +207,7 @@
             this.lastNameDataGridViewTextBoxColumn,
             this.birthDateDataGridViewTextBoxColumn,
             this.ageDataGridViewTextBoxColumn,
-            this.rewardsDataGridViewTextBoxColumn});
+            this.Rewards});
             this.ctlUsersGrid.ContextMenuStrip = this.ctlUsersContextMenu;
             this.ctlUsersGrid.DataSource = this.userBindingSource;
             this.ctlUsersGrid.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -217,46 +217,6 @@
             this.ctlUsersGrid.RowHeadersVisible = false;
             this.ctlUsersGrid.Size = new System.Drawing.Size(786, 394);
             this.ctlUsersGrid.TabIndex = 0;
-            // 
-            // iDDataGridViewTextBoxColumn
-            // 
-            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
-            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
-            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
-            this.iDDataGridViewTextBoxColumn.Visible = false;
-            // 
-            // firstNameDataGridViewTextBoxColumn
-            // 
-            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.HeaderText = "FirstName";
-            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
-            // 
-            // lastNameDataGridViewTextBoxColumn
-            // 
-            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.HeaderText = "LastName";
-            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
-            // 
-            // birthDateDataGridViewTextBoxColumn
-            // 
-            this.birthDateDataGridViewTextBoxColumn.DataPropertyName = "BirthDate";
-            this.birthDateDataGridViewTextBoxColumn.HeaderText = "BirthDate";
-            this.birthDateDataGridViewTextBoxColumn.Name = "birthDateDataGridViewTextBoxColumn";
-            // 
-            // ageDataGridViewTextBoxColumn
-            // 
-            this.ageDataGridViewTextBoxColumn.DataPropertyName = "Age";
-            this.ageDataGridViewTextBoxColumn.HeaderText = "Age";
-            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
-            this.ageDataGridViewTextBoxColumn.ReadOnly = true;
-            // 
-            // rewardsDataGridViewTextBoxColumn
-            // 
-            this.rewardsDataGridViewTextBoxColumn.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.rewardsDataGridViewTextBoxColumn.DataPropertyName = "Rewards";
-            this.rewardsDataGridViewTextBoxColumn.HeaderText = "Rewards";
-            this.rewardsDataGridViewTextBoxColumn.Name = "rewardsDataGridViewTextBoxColumn";
-            this.rewardsDataGridViewTextBoxColumn.ReadOnly = true;
             // 
             // ctlUsersContextMenu
             // 
@@ -392,6 +352,45 @@
             // 
             this.rewardBindingSource.DataSource = typeof(Entities.Reward);
             // 
+            // iDDataGridViewTextBoxColumn
+            // 
+            this.iDDataGridViewTextBoxColumn.DataPropertyName = "ID";
+            this.iDDataGridViewTextBoxColumn.HeaderText = "ID";
+            this.iDDataGridViewTextBoxColumn.Name = "iDDataGridViewTextBoxColumn";
+            this.iDDataGridViewTextBoxColumn.Visible = false;
+            // 
+            // firstNameDataGridViewTextBoxColumn
+            // 
+            this.firstNameDataGridViewTextBoxColumn.DataPropertyName = "FirstName";
+            this.firstNameDataGridViewTextBoxColumn.HeaderText = "First Name";
+            this.firstNameDataGridViewTextBoxColumn.Name = "firstNameDataGridViewTextBoxColumn";
+            // 
+            // lastNameDataGridViewTextBoxColumn
+            // 
+            this.lastNameDataGridViewTextBoxColumn.DataPropertyName = "LastName";
+            this.lastNameDataGridViewTextBoxColumn.HeaderText = "Last Name";
+            this.lastNameDataGridViewTextBoxColumn.Name = "lastNameDataGridViewTextBoxColumn";
+            // 
+            // birthDateDataGridViewTextBoxColumn
+            // 
+            this.birthDateDataGridViewTextBoxColumn.DataPropertyName = "BirthDate";
+            this.birthDateDataGridViewTextBoxColumn.HeaderText = "Birth Date";
+            this.birthDateDataGridViewTextBoxColumn.Name = "birthDateDataGridViewTextBoxColumn";
+            // 
+            // ageDataGridViewTextBoxColumn
+            // 
+            this.ageDataGridViewTextBoxColumn.DataPropertyName = "Age";
+            this.ageDataGridViewTextBoxColumn.HeaderText = "Age";
+            this.ageDataGridViewTextBoxColumn.Name = "ageDataGridViewTextBoxColumn";
+            this.ageDataGridViewTextBoxColumn.ReadOnly = true;
+            // 
+            // Rewards
+            // 
+            this.Rewards.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Rewards.DataPropertyName = "Rewards";
+            this.Rewards.HeaderText = "Rewards";
+            this.Rewards.Name = "Rewards";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -413,10 +412,6 @@
             this.ctlRewardsTab.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.ctlRewardsGrid)).EndInit();
             this.ctlRewardsContextMenu.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.rewardBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.myRewardsBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.userBindingSource1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.rewardBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -452,16 +447,17 @@
         private System.Windows.Forms.BindingSource myRewardsBindingSource;
         private System.Windows.Forms.BindingSource userBindingSource1;
         private System.Windows.Forms.BindingSource rewardBindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn birthDateDataGridViewTextBoxColumn;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn rewardsDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn1;
         private System.Windows.Forms.DataGridViewTextBoxColumn titleDataGridViewTextBoxColumn;
         private System.Windows.Forms.DataGridViewTextBoxColumn descriptionDataGridViewTextBoxColumn;
         private System.Windows.Forms.BindingSource rewardBindingSource1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn iDDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn firstNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn lastNameDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn birthDateDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ageDataGridViewTextBoxColumn;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Rewards;
     }
 }
 

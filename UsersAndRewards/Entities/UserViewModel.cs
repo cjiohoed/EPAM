@@ -20,8 +20,11 @@ namespace Entities
             return new UserViewModel
             {
                 ID = user.ID,
-                //
-                Rewards = user.Rewards == null ? string.Empty : user.Rewards.Select(r => r.Title)
+                FirstName = user.FirstName,
+                LastName = user.LastName,
+                BirthDate = user.BirthDate,
+                Age = user.Age,
+                Rewards = user.Rewards == null ? string.Empty : String.Join(", ", user.Rewards.Select(r => r.Title))
             };
         }
     }

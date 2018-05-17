@@ -24,8 +24,8 @@ namespace UsersAndRewards.PL.WinForms
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            CreateUsers();
-            CreateRewards();
+            RefreshUsersGrid();
+            RefreshRewardsGrid();
         }
 
         private void btnExit_Click(object sender, EventArgs e)
