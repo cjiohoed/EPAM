@@ -28,7 +28,7 @@ namespace UsersAndRewards.DAL
                     ParameterName = "@Title",
                     Value = reward.Title
                 };
-                command.Parameters.AddWithValue("@Title", reward.Title);
+                command.Parameters.Add(titleParam);
                 SqlParameter DescriptionParam = new SqlParameter
                 {
                     ParameterName = "@Description",
