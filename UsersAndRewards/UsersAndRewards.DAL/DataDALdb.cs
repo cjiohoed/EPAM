@@ -75,6 +75,7 @@ namespace UsersAndRewards.DAL
                 id = (int)command.ExecuteScalar();
             }
 
+
             foreach (int rewardId in rewardIds)
             {
                 using (SqlConnection connection = new SqlConnection(connectionString))
@@ -82,12 +83,14 @@ namespace UsersAndRewards.DAL
                     connection.Open();
                     SqlCommand command = new SqlCommand(sqlExpression2, connection);
                     command.CommandType = CommandType.StoredProcedure;
+
                     SqlParameter usersIdParam = new SqlParameter
                     {
                         ParameterName = "@UsersId",
                         Value = id
                     };
                     command.Parameters.Add(usersIdParam);
+
                     SqlParameter rewardsIdParam = new SqlParameter
                     {
                         ParameterName = "@RewardsId",
@@ -102,41 +105,6 @@ namespace UsersAndRewards.DAL
         public void DeleteReward(int id)
         {
             string sqlExpression1 = "DeleteReward";
-            string sqlExpression2 = "DeleteUserReward";
-            Reward reward = FindRewardById(id);
-            List<int> userIds = new List<int>();
-            foreach (User user in GetUsersList())
-            {
-                foreach (Reward rew in user.Rewards)
-                {
-                    if (rew.ID == id)
-                    {
-                        userIds.Add(user.ID);
-                    }
-                }
-            }
-            foreach (int userId in userIds)
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression2, connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    SqlParameter usersIdParam = new SqlParameter
-                    {
-                        ParameterName = "@UsersId",
-                        Value = userId
-                    };
-                    command.Parameters.Add(usersIdParam);
-                    SqlParameter rewardsIdParam = new SqlParameter
-                    {
-                        ParameterName = "@RewardsId",
-                        Value = id
-                    };
-                    command.Parameters.Add(rewardsIdParam);
-                    command.ExecuteNonQuery();
-                }
-            }
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -155,35 +123,6 @@ namespace UsersAndRewards.DAL
         public void DeleteUser(int id)
         {
             string sqlExpression1 = "DeleteUser";
-            string sqlExpression2 = "DeleteUserReward";
-            User user = FindUserById(id);
-            List<int> rewardIds = new List<int>();
-            foreach (Reward reward in user.Rewards)
-            {
-                rewardIds.Add(reward.ID);
-            }
-            foreach (int rewardId in rewardIds)
-            {
-                using (SqlConnection connection = new SqlConnection(connectionString))
-                {
-                    connection.Open();
-                    SqlCommand command = new SqlCommand(sqlExpression2, connection);
-                    command.CommandType = CommandType.StoredProcedure;
-                    SqlParameter usersIdParam = new SqlParameter
-                    {
-                        ParameterName = "@UsersId",
-                        Value = id
-                    };
-                    command.Parameters.Add(usersIdParam);
-                    SqlParameter rewardsIdParam = new SqlParameter
-                    {
-                        ParameterName = "@RewardsId",
-                        Value = rewardId
-                    };
-                    command.Parameters.Add(rewardsIdParam);
-                    command.ExecuteNonQuery();
-                }
-            }
             using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 connection.Open();
@@ -331,12 +270,68 @@ namespace UsersAndRewards.DAL
 
         public Reward FindRewardById(int id)
         {
-            return GetRewardsList().First(r => r.ID == id);
+            //return GetRewardsList().First(r => r.ID == id);
+
+            string sqlExpression = "FindRewardById";
+            Reward reward = new Reward();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                SqlParameter rewardsIdParam = new SqlParameter
+                {
+                    ParameterName = "@RewardId",
+                    Value = id
+                };
+                command.Parameters.Add(rewardsIdParam);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        reward.ID = reader.GetInt32(0);
+                        reward.Title = reader.GetString(1);
+                        reward.Description = reader.GetString(2);
+                    }
+                }
+                reader.Close();
+            }
+            return reward;
         }
 
         public User FindUserById(int id)
         {
-            return GetUsersList().First(u => u.ID == id);
+            //return GetUsersList().First(u => u.ID == id);
+
+            string sqlExpression = "FindUserById";
+            User user = new User();
+            using (SqlConnection connection = new SqlConnection(connectionString))
+            {
+                connection.Open();
+                SqlCommand command = new SqlCommand(sqlExpression, connection);
+                SqlParameter usersIdParam = new SqlParameter
+                {
+                    ParameterName = "@UserId",
+                    Value = id
+                };
+                command.Parameters.Add(usersIdParam);
+                SqlDataReader reader = command.ExecuteReader();
+
+                if (reader.HasRows)
+                {
+                    while (reader.Read())
+                    {
+                        user.ID = reader.GetInt32(0);
+                        user.FirstName = reader.GetString(1);
+                        user.LastName = reader.GetString(2);
+                        user.BirthDate = reader.GetDateTime(3);
+                    }
+                }
+                reader.Close();
+            }
+            return user;
+
         }
 
         public List<Reward> GetRewardsList()

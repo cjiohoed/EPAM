@@ -100,6 +100,42 @@ LEFT JOIN Rewards ON UserRewards.RewardsId = Rewards.RewardsId;
 
 
 
+GO
+CREATE PROCEDURE DeleteReward
+@RewardsId INT
+AS
+DELETE FROM UserRewards
+WHERE RewardsId = @RewardsId
+DELETE FROM Rewards
+WHERE RewardsId = @RewardsId
+
+GO 
+CREATE PROCEDURE DeleteUser
+@UsersId INT 
+AS 
+DELETE FROM UserRewards 
+WHERE UsersId = @UsersId 
+DELETE FROM Users 
+WHERE UsersId = @UsersId
+
+GO
+CREATE PROCEDURE FindUserById
+@UserId INT
+AS
+SELECT * FROM Users
+WHERE UsersId = @UserId
+
+GO
+CREATE PROCEDURE FindRewardById
+@RewardId INT
+AS
+SELECT * FROM Rewards
+WHERE RewardsId = @RewardId
+
+
+
+
+
 
 INSERT INTO Users (FirstName, LastName, BirthDate)
 VALUES ('Аверичев','Алексей',1983-05-25);
