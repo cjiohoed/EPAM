@@ -281,7 +281,7 @@ namespace UsersAndRewards.DAL
                 SqlCommand command = new SqlCommand(sqlExpression, connection);
                 SqlParameter rewardsIdParam = new SqlParameter
                 {
-                    ParameterName = "@RewardId",
+                    ParameterName = "@RewardsId",
                     Value = id
                 };
                 command.Parameters.Add(rewardsIdParam);
@@ -313,7 +313,7 @@ namespace UsersAndRewards.DAL
                 SqlCommand command = new SqlCommand(sqlExpression, connection);
                 SqlParameter usersIdParam = new SqlParameter
                 {
-                    ParameterName = "@UserId",
+                    ParameterName = "@UsersId",
                     Value = id
                 };
                 command.Parameters.Add(usersIdParam);

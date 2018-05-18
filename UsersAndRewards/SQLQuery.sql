@@ -107,17 +107,19 @@ WHERE UsersId = @UsersId
 
 GO
 CREATE PROCEDURE FindUserById
-@UserId INT
+@UsersId INT
 AS
-SELECT * FROM Users
-WHERE UsersId = @UserId
+SELECT UsersId, FirstName, LastName, BirthDate
+FROM Users
+WHERE UsersId = @UsersId
 
 GO
 CREATE PROCEDURE FindRewardById
-@RewardId INT
+@RewardsId INT
 AS
-SELECT * FROM Rewards
-WHERE RewardsId = @RewardId
+SELECT RewardsId, Title, [Description]
+FROM Rewards
+WHERE RewardsId = @RewardsId
 
 
 
