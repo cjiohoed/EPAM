@@ -12,7 +12,8 @@ namespace UsersAndRewards.DAL
 {
     public class DataDALdb : IDataDAL
     {
-        private string connectionString = ConfigurationManager.ConnectionStrings["DefaultConnection"].ConnectionString;
+        //private string connectionString = ConfigurationManager.ConnectionStrings["HomeConnection"].ConnectionString;
+        private string connectionString = ConfigurationManager.ConnectionStrings["WorkConnection"].ConnectionString;
 
         public void AddReward(Reward reward)
         {
