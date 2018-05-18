@@ -33,20 +33,6 @@ OUTPUT inserted.UsersId
 VALUES (@FirstName, @LastName, @BirthDate)
 
 GO
-CREATE PROCEDURE DeleteUser
-	@UsersId INT
-AS
-DELETE FROM Users
-WHERE UsersId=@UsersId;
-
-GO
-CREATE PROCEDURE DeleteReward
-	@RewardsId INT
-AS
-DELETE FROM Rewards
-WHERE RewardsId=@RewardsId;
-
-GO
 CREATE PROCEDURE EditUser
 	@UsersId INT,
 	@FirstName NVARCHAR(50),
@@ -97,9 +83,6 @@ FROM Users
 LEFT JOIN UserRewards ON Users.UsersId = UserRewards.UsersId
 LEFT JOIN Rewards ON UserRewards.RewardsId = Rewards.RewardsId;
 
-
-
-
 GO
 CREATE PROCEDURE DeleteReward
 @RewardsId INT
@@ -134,35 +117,8 @@ WHERE RewardsId = @RewardId
 
 
 
-
-
-
 INSERT INTO Users (FirstName, LastName, BirthDate)
 VALUES ('Аверичев','Алексей',1983-05-25);
 
 INSERT INTO Rewards ([Title], [Description])
 VALUES ('Шнобелевская','За всякое');
-
-SELECT * FROM Users;
-DELETE FROM Users;
-
-DELETE FROM UserRewards;
-SELECT * FROM UserRewards;
-
-SELECT * FROM Rewards;
-DELETE FROM Rewards;
-
-ALTER TABLE Rewards
-ADD UNIQUE ([Title]);
-
-SELECT * FROM Rewards;
-
-SELECT * FROM UserRewards ORDER BY [UsersId];
-
-SELECT * 
-FROM Users 
-LEFT JOIN UserRewards ON Users.UsersId = UserRewards.UsersId
-LEFT JOIN Rewards ON UserRewards.RewardsId = Rewards.RewardsId;
-
-INSERT INTO UserRewards([UsersId],[RewardsId])
-VALUES (123, 59);
