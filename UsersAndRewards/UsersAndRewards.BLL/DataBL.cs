@@ -81,5 +81,20 @@ namespace UsersAndRewards.BLL
             dataDAL.DeleteReward(id);
         }
 
+        public void DeleteManyRewards(List<Reward> rewsforDelete)
+        {
+            foreach (var r in rewsforDelete)
+            {
+                foreach (User user in GetUsersList())
+                {
+                    if (user.Rewards.Contains(r))
+                    {
+                        user.Rewards.Remove(r);
+                    }
+                }
+                DeleteReward(r.ID);
+            }
+        }
+
     }
 }

@@ -69,7 +69,6 @@ namespace UsersAndRewards.PL.WinForms
 
                     data.EditUser(user);
                 }
-                RefreshRewardsGrid();
                 RefreshUsersGrid();
 
             }
@@ -85,23 +84,22 @@ namespace UsersAndRewards.PL.WinForms
                 {
                     rows.Add(ctlUsersGrid.SelectedCells[i].RowIndex);
                 }
-                List<User> usersForDelete = new List<User>();
+                List<int> ids = new List<int>();
                 foreach (var i in rows)
                 {
                     int id = (int)ctlUsersGrid.Rows[i].Cells[0].Value;
-                    usersForDelete.Add(data.FindUserById(id));
+                    ids.Add(id);
                 }
                 string msg = "Are you sure?";
                 string caption = "Confirmation";
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 if (MessageBox.Show(msg, caption, buttons) == DialogResult.Yes)
                 {
-                    foreach (var u in usersForDelete)
+                    foreach (var id in ids)
                     {
-                        data.DeleteUser(u.ID);
+                        data.DeleteUser(id);
                     }
                 }
-                RefreshRewardsGrid();
                 RefreshUsersGrid();
             }
         }

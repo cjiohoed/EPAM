@@ -137,11 +137,7 @@ namespace UsersAndRewards.PL.WinForms
             {
                 Rewards.Add(AllRewards.FirstOrDefault(r => r.Title == title));
             }
-            //foreach (string title in ctlUserRewardsList.CheckedItems)
-            //{
-            //    Rewards.Add(AllRewards.FirstOrDefault(r => r.Title == title));
-            //}
-
+            // UNIQUE Rewards.Title
         }
     }
 }

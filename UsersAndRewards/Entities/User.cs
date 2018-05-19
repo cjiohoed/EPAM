@@ -19,7 +19,21 @@ namespace Entities
                 return GetAge();
             }
         }
-        public List<Reward> Rewards { get; set; }
+        private List<Reward> rewardList;
+        public List<Reward> Rewards
+        {
+            get
+            {
+                return rewardList;
+            }
+            set
+            {
+                if (value != null)
+                {
+                    rewardList = value;
+                }
+            }
+        }
 
         private int GetAge()
         {

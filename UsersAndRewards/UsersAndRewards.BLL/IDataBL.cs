@@ -20,5 +20,6 @@ namespace UsersAndRewards.BLL
         void DeleteReward(int id);
         User FindUserById(int id);
         List<UserViewModel> GetUsersViewModel();
+        void DeleteManyRewards(List<Reward> rewsforDelete);
     }
 }

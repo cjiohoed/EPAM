@@ -66,8 +66,6 @@ namespace UsersAndRewards.PL.WinForms
                     data.EditReward(reward);
                 }
                 RefreshRewardsGrid();
-                RefreshUsersGrid();
-
             }
         }
 
@@ -91,20 +89,9 @@ namespace UsersAndRewards.PL.WinForms
                 MessageBoxButtons buttons = MessageBoxButtons.YesNo;
                 if (MessageBox.Show(msg, caption, buttons) == DialogResult.Yes)
                 {
-                    foreach (var r in rewsforDelete)
-                    {
-                        foreach (User user in data.GetUsersList())
-                        {
-                            if (user.Rewards.Contains(r))
-                            {
-                                user.Rewards.Remove(r);
-                            }
-                        }
-                        data.DeleteReward(r.ID);
-                    }
+                    data.DeleteManyRewards(rewsforDelete);
                 }
                 RefreshRewardsGrid();
-                RefreshUsersGrid();
             }
         }
 
